@@ -1,7 +1,11 @@
 class TDJNewBlogPostFetcher {
+  baseUrl() {
+    return 'https://contenu.terredesjeunes.org';
+  }
+
   fetch() {
     const that = this;
-    const url = 'http://contenu.terredesjeunes.org/api/v1/all.json';
+    const url = this.baseUrl() + '/api/v1/all.json';
 
     const xhr = new XMLHttpRequest();
 
@@ -19,8 +23,94 @@ class TDJNewBlogPostFetcher {
   }
 
   fetchResponse(response) {
-    console.log(response);
+    this.fetchResponseParsed(JSON.parse(response));
   }
+
+  fetchResponseParsed(response) {
+    const that = this;
+    response.forEach((node) => {
+      that.fetchResponseSingle(node);
+    });
+  }
+
+  random() {
+    return 'rand' + Math.round(Math.random()*1000000000000);
+  }
+
+  fetchResponseSingle(node) {
+    this.fetchResponseSingleParsed(node.title, node.antenne, node.url, node.img, node.date, node.excerpt);
+  }
+
+  fetchResponseSingleParsed(title, antenne, url, img, date, excerpt) {
+    this.insertByTemplate('carousel', title, antenne, url, [img[0]], date, excerpt);
+    this.insertByTemplate('main', title, antenne, url, img, date, excerpt);
+  }
+
+  insertByTemplate(name, title, antenne, url, img, date, excerpt) {
+    console.log('inserting by template on ' + name);
+    const rand = this.random();
+
+    $('.tdj-template-' + name)
+      .clone()
+      .removeClass('tdj-template-' + name)
+      .addClass(rand)
+      .insertBefore('.tdj-placeholder-' + name);
+
+    console.log('Created .' + rand);
+
+    $('.' + rand)
+      .find('.tdj-template-antenne')
+      .html(antenne);
+
+    $('.' + rand)
+      .find('.tdj-template-title')
+      .html(title);
+
+    $('.' + rand)
+      .find('.tdj-template-excerpt')
+      .html(excerpt);
+
+    $('.' + rand)
+      .find('.tdj-template-date')
+      .html(this.humanDate(date));
+
+    $('.' + rand)
+      .find('.tdj-template-url')
+      .attr('href', this.baseUrl() + url);
+
+    this.insertImages(rand, img);
+  }
+
+  humanDate(date) {
+    return date.slice(0, 10);
+  }
+
+  insertImages(parentClass, images) {
+    if (!images.length) {
+      return;
+    }
+    // Extract the first image
+    const first = images.shift();
+
+    // Find the image container
+    const image_wrapper = $('.' + parentClass)
+      .find('.tdj-template-image');
+
+    // Set the first image.
+    image_wrapper.find('img').attr('src', this.baseUrl() + first);
+
+    const that = this;
+
+    // Set other images.
+    images.forEach((i) => {
+      image_wrapper
+        .clone()
+        .find('img')
+        .attr('src', that.baseUrl() + i)
+        .insertAfter(image_wrapper);
+    });
+  }
+
 }
 
 $(function() {

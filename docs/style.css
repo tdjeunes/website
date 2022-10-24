@@ -1,33 +1,37 @@
-body {
+body.connexion {
   background: rgb(207, 223, 152);
 }
 
-* {
+.connexion {
   font-family: Arial, sans-serif;
 }
 
-.tdj-media {
+.connexion .tdj-media {
   max-width: 100%;
   border: 3px solid black;
 }
 
-img {
+.connexion img {
   max-width: 100%;
 }
 
-.tdj-max-width {
+.connexion .tdj-max-width {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
 
-h1, h2 {
+.connexion h1, .connexion h2 {
   text-align: center;
 }
-.tdj-button-wrapper {
+.connexion .tdj-button-wrapper {
   text-align: center;
   width: 100%;
 }
-.btn {
+.connexion .btn {
   margin: 7px;
+}
+
+.tdj-template {
+  display: none;
 }
