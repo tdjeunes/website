@@ -7,8 +7,9 @@ body.connexion {
 }
 
 .connexion .tdj-media {
-  max-width: 100%;
-  border: 3px solid black;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .connexion img {

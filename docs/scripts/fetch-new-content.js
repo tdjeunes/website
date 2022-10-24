@@ -4,8 +4,10 @@ class TDJNewBlogPostFetcher {
   }
 
   fetch() {
+    // Changes every 5 minutes.
+    const cachebuster = Math.floor(Date.now()/300000);
     const that = this;
-    const url = this.baseUrl() + '/api/v1/all.json';
+    const url = this.baseUrl() + '/api/v1/all.json?cache-buster=' + cachebuster;
 
     const xhr = new XMLHttpRequest();
 
