@@ -52,6 +52,13 @@ class TDJNewBlogPostFetcher {
     console.log('inserting by template on ' + name);
     const rand = this.random();
 
+    const antenneFilter = $('.tdj-template-' + name).attr('data-antenne');
+
+    if (antenneFilter && antenneFilter != antenne) {
+      console.log('Aborting because ' + antenneFilter + ' is not ' + antenne);
+      return;
+    }
+
     $('.tdj-template-' + name)
       .clone()
       .removeClass('tdj-template-' + name)

@@ -1345,64 +1345,6 @@
                         <span id="counterTDJ" style=
                         "color: #665A5A;">450000</span></h2>
                       </div>
-                      <script>
-                      <![CDATA[
-                          <!--
-                          //
-
-                           var baseTimeMiliseconds = 1211390000000
-                                /* we will calculate our tree coverage based on this time, in may 2008 */
-                           var treesAtBase = 3930100000000
-                                /* number of trees at the base time */
-                           var lessTreesPerMilisecond = .231
-                                /* how many less trees are there per milisecond */
-                           var theTDJPlantedTreesAtBase = 450000
-                                /* how many TDJ trees have been planted by TDJ at base time */
-                           var theTDJMoreTreesPerMilisecond = (((((30000/365)/24)/60)/60)/1000);
-                                /* how many more TDJ trees per milisecond */
-
-                          function display(){
-
-                                var currentTime = getmiliseconds()
-                                        /* this is the time now */
-                                var timeDiff = currentTime - baseTimeMiliseconds
-                                        /* this is the difference in miliseconds since the base time */
-                                var num = treesAtBase - timeDiff*lessTreesPerMilisecond
-                                var theValueToDisplay = addCommas(num.toFixed(0))
-                                document.getElementById("counter2").innerHTML = theValueToDisplay
-
-                                var numT = theTDJPlantedTreesAtBase + timeDiff*theTDJMoreTreesPerMilisecond
-                                var theValueToDisplayT = addCommas(numT.toFixed(0))
-                                document.getElementById("counterTDJ").innerHTML = theValueToDisplayT
-
-                              setTimeout("display()",100)
-                          }
-
-                          function getmiliseconds(){
-                                /*returns the number of milisecods since 1970*/
-
-                                var currentTime = new Date()
-                              return currentTime.getTime();
-                          }
-
-                          function addCommas(nStr)
-                          {
-                                nStr += '';
-                                x = nStr.split('.');
-                                x1 = x[0];
-                                x2 = x.length > 1 ? '.' + x[1] : '';
-                                var rgx = /(\d+)(\d{3})/;
-                                while (rgx.test(x1)) {
-                                        x1 = x1.replace(rgx, '$1' + ',' + '$2');
-                                }
-                                return x1 + x2;
-                          }
-
-
-                          display()
-                          -->
-                      ]]>
-                      </script>
                     </div>
                   </div><!-- /block-inner -->
                 </div><!-- /block -->
@@ -4289,7 +4231,7 @@
       </div><!-- /footer-message-wrapper -->
     </div><!-- /page-inner -->
   </div><!-- /page -->
-  <script src="/scripts/fetch-new-content.js?token=2046"></script>
+  <script src="/scripts/fetch-new-content.js?token=1521"></script>
   <!-- Mirrored from terredesjeunes.org/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 17 Oct 2022 13:04:26 GMT -->
 </body>
 </html>
