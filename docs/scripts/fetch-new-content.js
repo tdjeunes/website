@@ -44,7 +44,9 @@ class TDJNewBlogPostFetcher {
   }
 
   fetchResponseSingleParsed(title, antenne, url, img, date, excerpt) {
-    this.insertByTemplate('carousel', title, antenne, url, [img[0]], date, excerpt);
+    if (typeof img !== 'undefined' && img.length) {
+      this.insertByTemplate('carousel', title, antenne, url, [img[0]], date, excerpt);
+    }
     this.insertByTemplate('main', title, antenne, url, img, date, excerpt);
   }
 
@@ -95,7 +97,7 @@ class TDJNewBlogPostFetcher {
   }
 
   insertImages(parentClass, images) {
-    if (!images.length) {
+    if (typeof images === 'undefined' || !images.length) {
       return;
     }
     // Extract the first image
