@@ -216,7 +216,7 @@ class TDJAntennesFetcher extends TDJBaseFetcher {
     img.classList.add('imagecache', 'imagecache-tdj_thumb_small_sidemenu', 'imagecache-default', 'imagecache-tdj_thumb_small_sidemenu_default');
 
     const imgLink = document.createElement('a');
-    imgLink.href = countryItem.url;
+    imgLink.href = countryItem.page_url;
     imgLink.appendChild(img);
 
     imageDiv.appendChild(imgLink);
@@ -229,7 +229,7 @@ class TDJAntennesFetcher extends TDJBaseFetcher {
     titleDiv.classList.add('views-field-title');
 
     const titleLink = document.createElement('a');
-    titleLink.href = countryItem.url;
+    titleLink.href = countryItem.page_url;
     titleLink.textContent = countryItem.title;
 
     const titleSpan = document.createElement('span');
