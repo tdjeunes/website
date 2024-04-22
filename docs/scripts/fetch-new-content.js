@@ -1,42 +1,56 @@
-class TDJNewBlogPostFetcher {
+class TDJBaseFetcher {
   baseUrl() {
     return 'https://contenu.terredesjeunes.org';
   }
 
-  fetch() {
+  cacheBuster() {
+    return Math.floor(Date.now()/300000);
+  }
+
+  fetch(callback) {
     // Changes every 5 minutes.
-    const cachebuster = Math.floor(Date.now()/300000);
+    const cachebuster = this.cacheBuster();
     const that = this;
-    const url = this.baseUrl() + '/api/v1/all.json?cache-buster=' + cachebuster;
+    const url = this.baseUrl() + this.apiPath() + '?cache-buster=' + cachebuster;
 
     const xhr = new XMLHttpRequest();
 
-    // Making our connection
     xhr.open("GET", url, true);
 
-    // function execute after request is successful
     xhr.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
-        that.fetchResponse(this.responseText);
+        callback(this.responseText);
       }
     }
-    // Sending our request
     xhr.send();
   }
 
-  fetchResponse(response) {
-    this.fetchResponseParsed(JSON.parse(response));
-  }
-
-  fetchResponseParsed(response) {
+  fetchData() {
     const that = this;
-    response.forEach((node) => {
-      that.fetchResponseSingle(node);
+    this.fetch((response) => {
+      that.fetchResponseParsed(JSON.parse(response));
     });
   }
 
   random() {
     return 'rand' + Math.round(Math.random()*1000000000000);
+  }
+
+  humanDate(date) {
+    return date.slice(0, 10);
+  }
+
+}
+
+class TDJNewBlogPostFetcher extends TDJBaseFetcher {
+  apiPath() {
+    return '/api/v1/all.json';
+  }
+
+  fetchResponseParsed(response) {
+    response.forEach((node) => {
+      this.fetchResponseSingle(node);
+    });
   }
 
   fetchResponseSingle(node) {
@@ -51,7 +65,6 @@ class TDJNewBlogPostFetcher {
   }
 
   insertByTemplate(name, title, antenne, url, img, date, excerpt) {
-    console.log('inserting by template on ' + name);
     const rand = this.random();
 
     const antenneFilter = $('.tdj-template-' + name).attr('data-antenne');
@@ -66,8 +79,6 @@ class TDJNewBlogPostFetcher {
       .removeClass('tdj-template-' + name)
       .addClass(rand)
       .insertBefore('.tdj-placeholder-' + name);
-
-    console.log('Created .' + rand);
 
     $('.' + rand)
       .find('.tdj-template-antenne')
@@ -90,10 +101,6 @@ class TDJNewBlogPostFetcher {
       .attr('href', this.baseUrl() + url);
 
     this.insertImages(rand, img);
-  }
-
-  humanDate(date) {
-    return date.slice(0, 10);
   }
 
   insertImages(parentClass, images) {
@@ -121,11 +128,123 @@ class TDJNewBlogPostFetcher {
         .insertAfter(image_wrapper);
     });
   }
+}
 
+class TDJAntennesFetcher extends TDJBaseFetcher {
+  apiPath() {
+    return '/api/v1/antennes.json';
+  }
+
+  fetchResponseParsed(response) {
+    const that = this;
+    const container = document.getElementById("antennes-by-country");
+
+    if (container) {
+      const groupedByCountry = this.groupItemsByCountry(response);
+      const sortedCountries = this.sortCountries(Object.keys(groupedByCountry));
+
+      sortedCountries.forEach((country) => {
+        const countryItems = groupedByCountry[country];
+        this.displayItemsByCountry(container, country, countryItems);
+      });
+    }
+  }
+
+  groupItemsByCountry(response) {
+    const groupedByCountry = {};
+
+    response.forEach((item) => {
+      if (item.active && item.country) {
+        if (!groupedByCountry[item.country]) {
+          groupedByCountry[item.country] = [];
+        }
+        groupedByCountry[item.country].push(item);
+      }
+    });
+
+    return groupedByCountry;
+  }
+
+  sortCountries(countries) {
+    return countries.sort();
+  }
+
+  displayItemsByCountry(container, country, countryItems) {
+    const itemDiv = document.createElement('div');
+    itemDiv.classList.add('item-list');
+
+    const heading = document.createElement('h3');
+    heading.textContent = country;
+
+    const ul = document.createElement('ul');
+    countryItems.forEach((countryItem, index) => {
+      const li = this.createListItem(countryItem, index);
+      ul.appendChild(li);
+    });
+
+    itemDiv.appendChild(heading);
+    itemDiv.appendChild(ul);
+
+    container.appendChild(itemDiv);
+  }
+
+  createListItem(countryItem, index) {
+    const li = document.createElement('li');
+    li.classList.add('views-row', 'views-row-' + (index + 1), (index % 2 === 0 ? 'views-row-odd' : 'views-row-even'));
+
+    if (index === 0) {
+      li.classList.add('views-row-first');
+    }
+
+    const imageDiv = this.createImageDiv(countryItem);
+    const titleDiv = this.createTitleDiv(countryItem);
+
+    li.appendChild(imageDiv);
+    li.appendChild(titleDiv);
+
+    return li;
+  }
+
+  createImageDiv(countryItem) {
+    const imageDiv = document.createElement('div');
+    imageDiv.classList.add('views-field-field-image-fid');
+
+    const img = document.createElement('img');
+    img.src = this.baseUrl() + countryItem.logo_image;
+    img.alt = countryItem.title;
+    img.title = countryItem.title;
+    img.classList.add('imagecache', 'imagecache-tdj_thumb_small_sidemenu', 'imagecache-default', 'imagecache-tdj_thumb_small_sidemenu_default');
+
+    const imgLink = document.createElement('a');
+    imgLink.href = countryItem.page_url;
+    imgLink.appendChild(img);
+
+    imageDiv.appendChild(imgLink);
+
+    return imageDiv;
+  }
+
+  createTitleDiv(countryItem) {
+    const titleDiv = document.createElement('div');
+    titleDiv.classList.add('views-field-title');
+
+    const titleLink = document.createElement('a');
+    titleLink.href = countryItem.page_url;
+    titleLink.textContent = countryItem.title;
+
+    const titleSpan = document.createElement('span');
+    titleSpan.classList.add('field-content');
+    titleSpan.appendChild(titleLink);
+
+    titleDiv.appendChild(titleSpan);
+
+    return titleDiv;
+  }
 }
 
 $(function() {
   fetcher = new TDJNewBlogPostFetcher();
-
-  fetcher.fetch();
+  fetcher.fetchData();
+  fetcher = new TDJAntennesFetcher();
+  fetcher.fetchData();
 });
