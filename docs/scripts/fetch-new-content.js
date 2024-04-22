@@ -1,3 +1,4 @@
+<!-- ***ARCHIVED FILE*** -->
 class TDJBaseFetcher {
   baseUrl() {
     return 'https://contenu.terredesjeunes.org';
