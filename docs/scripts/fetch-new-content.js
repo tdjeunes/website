@@ -3,6 +3,14 @@ class TDJBaseFetcher {
     return 'https://contenu.terredesjeunes.org';
   }
 
+  imageProviderBaseUrl() {
+    return 'https://images.terredesjeunes.org';
+  }
+
+  imageMapFileUrl() {
+    return 'http://image-mapping.terredesjeunes.org/mapping.json';
+  }
+
   cacheBuster() {
     return Math.floor(Date.now()/300000);
   }
@@ -65,6 +73,7 @@ class TDJNewBlogPostFetcher extends TDJBaseFetcher {
   }
 
   insertByTemplate(name, title, antenne, url, img, date, excerpt) {
+
     const rand = this.random();
 
     const antenneFilter = $('.tdj-template-' + name).attr('data-antenne');
@@ -104,29 +113,92 @@ class TDJNewBlogPostFetcher extends TDJBaseFetcher {
   }
 
   insertImages(parentClass, images) {
+
     if (typeof images === 'undefined' || !images.length) {
       return;
     }
-    // Extract the first image
-    const first = images.shift();
+    // Optimized Image mapping file.
+    const imageMapFileUrl = this.imageMapFileUrl();
+    // Fetch the JSON file once
+    fetch(imageMapFileUrl)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to fetch JSON');
+      }
+      return response.json();
+    })
+    .then(mappingData => {
 
-    // Find the image container
-    const image_wrapper = $('.' + parentClass)
-      .find('.tdj-template-image');
+      // Extract the first image
+      const first = images.shift();
 
-    // Set the first image.
-    image_wrapper.find('img').attr('src', this.baseUrl() + first);
+      // Find the image container
+      const image_wrapper = $('.' + parentClass)
+        .find('.tdj-template-image');
 
-    const that = this;
+      const image = image_wrapper.find('img');
 
-    // Set other images.
-    images.forEach((i) => {
-      image_wrapper
-        .clone()
-        .find('img')
-        .attr('src', that.baseUrl() + i)
-        .insertAfter(image_wrapper);
+      // Get the width and height attributes
+      const width = image.attr('width');
+      const height = image.attr('height');
+
+      // Initialize variables for size components
+      let imageSize = '';
+
+      // Check conditions and construct the size string accordingly
+      if (width && height) {
+        // Both width and height are set
+        imageSize = width + 'x' + height;
+      } else if (width) {
+        // Only width is set
+        imageSize = width + 'x';
+      } else if (height) {
+        // Only height is set
+        imageSize = 'x' + height;
+      }
+
+      const firstImgSrc = this.getMappedImageSrc(mappingData, first, imageSize);
+      // Set the first image.
+      image_wrapper.find('img').attr('src', firstImgSrc);
+
+      const that = this;
+
+      // Set other images.
+      images.forEach(async (i) => {
+        let otherImgSrc = that.getMappedImageSrc(mappingData, i, imageSize);
+        image_wrapper
+          .clone()
+          .find('img')
+          .attr('src', otherImgSrc)
+          .insertAfter(image_wrapper);
+      });
+
+    }).catch(error => {
+        console.error('Error fetching or processing JSON:', error);
+        // Optionally handle error, e.g., set a fallback image for all images
     });
+
+  }
+
+  getMappedImageSrc(mappingData, img, imageSize) {
+    let imageProviderBaseUrl = this.imageProviderBaseUrl();
+    // Get optimized image URL from mapping data
+    let optimizedSrc = mappingData[img.replace('/media', '')];
+    let finalImageSrc = '';
+    if (optimizedSrc && optimizedSrc[imageSize]) {
+      const secureurlpart = optimizedSrc[imageSize]
+      // Construct the optimized URL
+      const optimizedURL = `${secureurlpart}`;
+
+      // Update img src with optimized URL
+      finalImageSrc = imageProviderBaseUrl + optimizedURL;
+    }
+    else {
+      // using imageMapFileUrl, we cannot map the unoptimized image to
+      // an optimized image. We will use the original image.
+      finalImageSrc = this.baseUrl() + img;
+    }
+    return finalImageSrc;
   }
 }
 
