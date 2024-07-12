@@ -73,7 +73,6 @@ class TDJNewBlogPostFetcher extends TDJBaseFetcher {
   }
 
   insertByTemplate(name, title, antenne, url, img, date, excerpt) {
-
     const rand = this.random();
 
     const antenneFilter = $('.tdj-template-' + name).attr('data-antenne');
