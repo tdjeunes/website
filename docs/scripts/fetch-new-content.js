@@ -3,10 +3,12 @@ class TDJBaseFetcher {
     return 'https://contenu.terredesjeunes.org';
   }
 
+  // The domain of the image server.
   imageProviderBaseUrl() {
     return 'https://images.terredesjeunes.org';
   }
 
+  // The URL of the JSON file containing the image.
   imageMapFileUrl() {
     return 'http://image-mapping.terredesjeunes.org/mapping.json';
   }
