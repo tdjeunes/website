@@ -3,6 +3,16 @@ class TDJBaseFetcher {
     return 'https://contenu.terredesjeunes.org';
   }
 
+  // The domain of the image server.
+  imageProviderBaseUrl() {
+    return 'https://images.terredesjeunes.org';
+  }
+
+  // The URL of the JSON file containing the image.
+  imageMapFileUrl() {
+    return 'http://image-mapping.terredesjeunes.org/mapping.json';
+  }
+
   cacheBuster() {
     return Math.floor(Date.now()/300000);
   }
@@ -104,29 +114,104 @@ class TDJNewBlogPostFetcher extends TDJBaseFetcher {
   }
 
   insertImages(parentClass, images) {
+
     if (typeof images === 'undefined' || !images.length) {
       return;
     }
-    // Extract the first image
-    const first = images.shift();
+    // Optimized Image mapping file.
+    const imageMapFileUrl = this.imageMapFileUrl();
+    // Fetch the JSON file once
+    fetch(imageMapFileUrl)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to fetch JSON');
+      }
+      return response.json();
+    })
+    .then(mappingData => {
 
-    // Find the image container
-    const image_wrapper = $('.' + parentClass)
-      .find('.tdj-template-image');
+      // Extract the first image
+      const first = images.shift();
 
-    // Set the first image.
-    image_wrapper.find('img').attr('src', this.baseUrl() + first);
+      // Find the image container
+      const image_wrapper = $('.' + parentClass)
+        .find('.tdj-template-image');
 
-    const that = this;
+      const image = image_wrapper.find('img');
 
-    // Set other images.
-    images.forEach((i) => {
-      image_wrapper
-        .clone()
-        .find('img')
-        .attr('src', that.baseUrl() + i)
-        .insertAfter(image_wrapper);
+      // Get the width and height attributes
+      const width = image.attr('width');
+      const height = image.attr('height');
+
+      // Initialize variables for size components
+      let imageSize = '';
+
+      // Check conditions and construct the size string accordingly
+      if (width && height) {
+        // Both width and height are set
+        imageSize = width + 'x' + height;
+      } else if (width) {
+        // Only width is set
+        imageSize = width + 'x';
+      } else if (height) {
+        // Only height is set
+        imageSize = 'x' + height;
+      }
+
+      const firstImgSrc = this.getMappedImageSrc(mappingData, first, imageSize);
+      // Set the first image.
+      image_wrapper.find('img').attr('src', firstImgSrc);
+
+      const that = this;
+
+      // Set other images.
+      images.forEach(async (i) => {
+        let otherImgSrc = that.getMappedImageSrc(mappingData, i, imageSize);
+        image_wrapper
+          .clone()
+          .find('img')
+          .attr('src', otherImgSrc)
+          .insertAfter(image_wrapper);
+      });
+
+    }).catch(error => {
+        console.error('Error fetching or processing JSON:', error);
+        // Optionally handle error, e.g., set a fallback image for all images
     });
+
+  }
+  
+/**
+ * Function to find optimized image src path from image src and size.
+ *
+ * @param {object} mappingData - Secure Optimized image Json data which is generated for each image and sizes.
+ * @param {string} img - Original image src.
+ *  example:- /media/screenshot_2024-07-06_at_10.00.38.jpg 
+ * @param {string} imageSize - Size of the optimized image to get from mappingData.
+ *   example:- x200 , 500X200, 200x. 
+ */
+ getMappedImageSrc(mappingData, img, imageSize) {
+    // Get base url of optimized image provider server.
+    let imageProviderBaseUrl = this.imageProviderBaseUrl();
+    // Get optimized image URL path from mapping data by passing original image path.
+    let optimizedSrc = mappingData[img.replace('/media', '')];
+    // Holds image src.
+    let finalImageSrc = '';
+    if (optimizedSrc && optimizedSrc[imageSize]) {
+      const secureurlpart = optimizedSrc[imageSize]
+      // Construct the optimized URL
+      const optimizedURL = `${secureurlpart}`;
+
+      // Update img src with optimized URL
+      finalImageSrc = imageProviderBaseUrl + optimizedURL;
+    }
+    else {
+      // using imageMapFileUrl, we cannot map the unoptimized image to
+      // an optimized image. We will use the original image.
+      console.log("Optimized image not found.");
+      finalImageSrc = this.baseUrl() + img;
+    }
+    return finalImageSrc;
   }
 }
 
