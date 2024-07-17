@@ -178,11 +178,22 @@ class TDJNewBlogPostFetcher extends TDJBaseFetcher {
     });
 
   }
-
-  getMappedImageSrc(mappingData, img, imageSize) {
+  
+/**
+ * Function to find optimized image src path from image src and size.
+ *
+ * @param {object} mappingData - Secure Optimized image Json data which is generated for each image and sizes.
+ * @param {string} img - Original image src.
+ *  example:- /media/screenshot_2024-07-06_at_10.00.38.jpg 
+ * @param {string} imageSize - Size of the optimized image to get from mappingData.
+ *   example:- x200 , 500X200, 200x. 
+ */
+ getMappedImageSrc(mappingData, img, imageSize) {
+    // Get base url of optimized image provider server.
     let imageProviderBaseUrl = this.imageProviderBaseUrl();
-    // Get optimized image URL from mapping data
+    // Get optimized image URL path from mapping data by passing original image path.
     let optimizedSrc = mappingData[img.replace('/media', '')];
+    // Holds image src.
     let finalImageSrc = '';
     if (optimizedSrc && optimizedSrc[imageSize]) {
       const secureurlpart = optimizedSrc[imageSize]
@@ -195,6 +206,7 @@ class TDJNewBlogPostFetcher extends TDJBaseFetcher {
     else {
       // using imageMapFileUrl, we cannot map the unoptimized image to
       // an optimized image. We will use the original image.
+      console.log("Optimized image not found.");
       finalImageSrc = this.baseUrl() + img;
     }
     return finalImageSrc;
