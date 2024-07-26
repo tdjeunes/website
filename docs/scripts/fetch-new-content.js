@@ -10,7 +10,7 @@ class TDJBaseFetcher {
 
   // The URL of the JSON file containing the image.
   imageMapFileUrl() {
-    return 'http://image-mapping.terredesjeunes.org/mapping.json';
+    return 'https://image-mapping.terredesjeunes.org/mapping.json';
   }
 
   cacheBuster() {
@@ -180,15 +180,15 @@ class TDJNewBlogPostFetcher extends TDJBaseFetcher {
     });
 
   }
-  
+
 /**
  * Function to find optimized image src path from image src and size.
  *
  * @param {object} mappingData - Secure Optimized image Json data which is generated for each image and sizes.
  * @param {string} img - Original image src.
- *  example:- /media/screenshot_2024-07-06_at_10.00.38.jpg 
+ *  example:- /media/screenshot_2024-07-06_at_10.00.38.jpg
  * @param {string} imageSize - Size of the optimized image to get from mappingData.
- *   example:- x200 , 500X200, 200x. 
+ *   example:- x200 , 500X200, 200x.
  */
  getMappedImageSrc(mappingData, img, imageSize) {
     // Get base url of optimized image provider server.
