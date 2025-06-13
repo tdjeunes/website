@@ -1,0 +1,74 @@
+{% comment %}
+  Copié du compte FormSpree le 2025-05-04-00:55:45.
+  Modifié pour mieux ressembler au design.
+{% endcomment %}
+
+<form id="my-form" action="https://formspree.io/f/xkgrjeqo" method="POST" class="custom-form volunteer-form mb-5 mb-lg-0" role="form">
+  <h4 id="my-form-status" class="my-form-status"></h4>
+  <h5 id="my-form-confirmation" class="my-form-confirmation"></h5>
+  <div class="my-hide-me-on-submit">
+    <label class="my-visually-hidden-label">Email:</label>
+    <input class="form-control" type="email" name="email" pattern="[^ @]*@[^ @]*" placeholder="moi@example.com" required/>
+    <label class="my-visually-hidden-label">Communiquer avec:</label>
+    <select class="form-control" name="role" id="volunteer-role" required>
+      <option value="mondial" selected>Communiquer avec le secrétariat mondial de Terre des jeunes</option>
+      {% for antenne in site.categories.jekyll_antennes %}
+        {% if antenne.email and antenne.active %}
+          <option value="{{ antenne.email }} {{ antenne.title }} {{ antenne.country }}">Communiquer avec {{ antenne.title }} - {{ antenne.country }}</option>
+        {% endif %}
+      {% endfor %}
+    </select>
+    <input class="form-control my-form-subject" type="text" name="subject" value="J'ai un message pour Terre des jeunes"/>
+    <input class="form-control my-form-confirmation-id" type="hidden" name="confirmation-id" value="ID"/>
+    <label class="my-visually-hidden-label">Message:</label>
+    <textarea name="message" rows="6" class="form-control my-form-message" id="volunteer-message" placeholder="Votre message" required></textarea>
+    <button type="submit" id="my-form-button" class="form-control">Soumettre</button>
+  </div>
+</form>
+
+<!-- Place this script at the end of the body tag -->
+<script>
+  var form = document.getElementById("my-form");
+
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth() + 1; // Month is 0-indexed, so add 1
+  const day = today.getDate();
+  const random = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
+  const id = year + "-" + month + "-" + day + "-" + random;
+
+  $('.my-form-confirmation-id').val(id);
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    var status = document.getElementById("my-form-status");
+    var confirmation = document.getElementById("my-form-confirmation");
+    var data = new FormData(event.target);
+    fetch(event.target.action, {
+      method: form.method,
+      body: data,
+      headers: {
+          'Accept': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        console.log(response);
+        status.innerHTML = "Merci pour votre message. Nous vous reviendrons sous peu.";
+        confirmation.innerHTML = "Votre numéro de confirmation est : " + id;
+        form.reset()
+      } else {
+        response.json().then(data => {
+          if (Object.hasOwn(data, 'errors')) {
+            status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+          } else {
+            status.innerHTML = "Une erreur est survenue lors de l'envoi de votre message. Vous pouvez tenter de nous contacter via nos réseaux sociaux."
+          }
+        })
+      }
+    }).catch(error => {
+      status.innerHTML = "Une erreur est survenue lors de l'envoi de votre message. Vous pouvez tenter de nous contacter via nos réseaux sociaux."
+    });
+    $('.my-hide-me-on-submit').hide();
+  }
+  form.addEventListener("submit", handleSubmit)
+</script>

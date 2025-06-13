@@ -1,0 +1,34 @@
+{% comment %}
+
+  Nous devons présenter les démoignages par groupe de 2, pour que deux démoignages rentrent dans un item de carrousel. Le prermier groupe de 2
+  doit être "active".
+
+  Voir https://stackoverflow.com/questions/50754073/using-modulo-on-forloop-index-in-jekyll-liquid pour la technique que nous utilisons.
+
+{% endcomment %}
+
+{% for temoignage in site.categories.jekyll_temoignages %}
+
+  {% assign modulo = forloop.index0 | modulo:2 %}
+  {% assign _citation = temoignage.extrait %}
+  {% assign _img = temoignage.image %}
+  {% assign _nom = temoignage.title %}
+  {% assign _fonction = temoignage.fonction %}
+  {% assign _url = temoignage.url %}
+
+  {% if forloop.first %}
+    {% assign _active = " active" %}
+    {% include sections/testimonial/testimonial_startgroup.html %}
+  {% elsif modulo == 0 %}
+    {% include sections/testimonial/testimonial_endgroup.html %}
+    {% assign _active = "" %}
+    {% include sections/testimonial/testimonial_startgroup.html %}
+  {% endif %}
+
+  {% include sections/testimonial/testimonial_single.html %}
+
+  {% if forloop.last %}
+    {% include sections/testimonial/testimonial_endgroup.html %}
+  {% endif %}
+
+{% endfor %}

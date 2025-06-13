@@ -1,0 +1,41 @@
+.my-carousel-title-wrapper {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  top: auto;
+  width: 80%;
+}
+
+.my-carousel-title {
+  background: rgba(2, 121, 51, 0.6);
+  text-transform: uppercase;
+  font-weight: 800;
+  color: white;
+  font-size: 2.2em;
+}
+
+@media (min-width: 768px) {
+  .my-carousel-title-wrapper {
+    bottom: 80px;
+    left: 80px;
+    top: auto;
+  }
+  .my-carousel-title {
+    font-weight: 600;
+    font-size: 3em;
+  }
+}
+
+/**
+ * Quand dans le content manager on dit que l'action de l'image
+ * est en haut, on veut que le focus soit en haut si l'image est
+ * trop haute.
+ */
+.my-carousel .carousel-position-top img.carousel-image {
+  height: auto;
+}
+
+.my-carousel .my-40e-logo {
+  width: 200px !important;
+  height: auto !important;
+}

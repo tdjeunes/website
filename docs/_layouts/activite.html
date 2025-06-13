@@ -1,0 +1,22 @@
+{% capture inferred_sections2 %}
+
+  {% assign _crumbs = site.data.config.default_activites_crumbs %}
+  {% include sections/breadcrumb.html %}
+
+  {% assign _h1 = page.title %}
+  {% if page.image %}
+    {% assign _bg = page.image %}
+  {% else %}
+    {% assign _bg = site.data.config.default_header_bg_img %}
+  {% endif %}
+  {% include sections/h1_hero.html %}
+
+  {% include sections/messages.html %}
+
+  {% assign _text = content %}
+  {% include sections/onlytext.html %}
+
+  {% endcapture %}
+{% assign inferred_sections = inferred_sections | append: inferred_sections2 %}
+
+{% include layouts/page.html %}

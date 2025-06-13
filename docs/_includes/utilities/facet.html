@@ -1,0 +1,20 @@
+{% assign template="utilities/facet.html" %}
+{% include structure/debug.html %}
+{% assign p="_category" %}{% assign v=_category %}{% include structure/r.html %}
+{% assign p="_facet" %}{% assign v=_facet %}{% include structure/r.html %}
+{% assign p="_classes" %}{% assign v=_classes %}{% include structure/r.html %}
+
+{% if _category != 'jekyll_blogposts' %}
+
+  {% assign _urlencoded = _category | url_encode %}
+
+  <a href="/actualites/" data-add-category="{{ _urlencoded }}"  data-facet="{{ _facet }}" class="tags-block-link my-category btn {{ _classes }}">
+    {% if _drapeau %}
+      <img src="{{ _drapeau }}" alt="{{ _category }}" class="my-facet-drapeau" />
+    {% endif %}
+    {{ _category }} <span class="badge">...</span>
+  </a>
+{% endif %}
+
+{% assign template="utilities/facet.html" %}
+{% include structure/enddebug.html %}

@@ -1,0 +1,35 @@
+{% capture inferred_sections2 %}
+
+  {% assign _crumbs = site.data.config.default_temoignage_crumbs %}
+  {% include sections/breadcrumb.html %}
+
+  {% assign _h1 = page.title %}
+  {% if page.img %}
+    {% assign _bg = page.img | first %}
+  {% else %}
+    {% assign _bg = site.data.config.default_header_bg_img %}
+  {% endif %}
+  {% if page.antenne2[0] %}
+    {% capture _supertext %}
+      {% assign _antenne = page.antenne2[0] %}
+      {% include utilities/antenne2PaysHtml.html %}
+    {% endcapture %}
+  {% endif %}
+  {% include sections/h1_hero.html %}
+
+  {% include sections/messages.html %}
+
+  {% assign _text = content %}
+  {% assign _antenne = page.antenne2[0] %}
+  {% capture _date %}
+    {% assign _date = page.date %}
+    {% include utilities/date.html %}
+  {% endcapture %}
+  {% assign _categories = page.categories %}
+  {% assign _antennes = page.antenne2 %}
+  {% include sections/onlytext_blog.html %}
+
+  {% endcapture %}
+{% assign inferred_sections = inferred_sections | append: inferred_sections2 %}
+
+{% include layouts/page.html %}

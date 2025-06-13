@@ -1,0 +1,29 @@
+  - name: 'bio'
+    create: true
+    label: 'Biographies'
+    folder: 'docs/jekyll_bios/_posts/'
+    slug: '{{slug}}'
+    fields:
+      - label: 'Nom'
+        name: 'title'
+        widget: 'string'
+      - label: 'Titre (fonction), par exemple "Directeur exécutif"'
+        name: 'fonction'
+        widget: 'string'
+      - label: Image
+        name: image
+        widget: image
+      - label: 'Contenu'
+        name: 'body'
+        widget: 'markdown'
+      - label: "Réseaux sociaux"
+        name: "reseaux"
+        widget: "list"
+        fields:
+        - label: 'Type'
+          name: 'type'
+          widget: 'string'
+          hint: 'ex: facebook, instagram, twitter-x, linkedin'
+        - label: 'Lien'
+          name: 'lien'
+          widget: 'string'

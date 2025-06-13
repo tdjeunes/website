@@ -1,0 +1,17 @@
+{% assign template="section/message.html" %}
+{% include structure/debug.html %}
+{% assign p="_message" %}{% assign v=_message %}{% include structure/r.html %}
+{% assign p="_type" %}{% assign v=_type %}{% include structure/r.html %}
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-12 mettre-alertes-ici">
+        <div class="alert alert-{{ _type }}" role="alert">
+          {{ _message }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% assign template="section/message.html" %}
+{% include structure/enddebug.html %}

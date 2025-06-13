@@ -1,0 +1,27 @@
+{% assign template="liste_motsdupresident.html" %}
+{% include structure/debug.html %}
+<section>
+  <div class="container">
+    <div class="row">
+      {% for mot in site.categories.jekyll_motsdupresident %}
+        <div class="col-lg-6 col-12">
+          <div class="news-block">
+            <div class="mot-number">
+              Mot du Président #{{ mot.numero }}
+            </div>
+            <div class="mot-number">
+              {{ mot.saison }} {{ mot.annee }}
+            </div>
+            <h3>
+              <a href="{{ mot.url }}">
+                {{ mot.title }}
+              </a>
+            </h3>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% assign template="liste_motsdupresident.html" %}
+{% include structure/enddebug.html %}

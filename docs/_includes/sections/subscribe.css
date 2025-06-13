@@ -1,0 +1,16 @@
+.mailchimp-section {
+  background: var(--primary-color);
+}
+
+/**
+ * Center the signup form.
+ */
+#mc_embed_signup {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#mc_embed_signup h2,
+#mc_embed_signup .indicates-required {
+  display: none;
+}

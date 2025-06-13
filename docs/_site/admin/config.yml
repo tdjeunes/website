@@ -1,0 +1,833 @@
+
+locale: 'fr'
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "_"
+backend:
+  # See https://www.netlifycms.org/docs/authentication-backends/#github-backend
+  name: github
+  repo: alberto56/tdj-comm
+  branch: main
+  base_url: https://auth.static.dcycle.com
+  auth_endpoint: auth/github/alberto56
+media_folder: 'docs/media'
+public_folder: "/media"
+collections:
+  - name: 'blog'
+    create: true
+    label: 'Articles'
+    folder: 'docs/jekyll_blogposts/_posts/'
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - label: "Antenne"
+        name: antenne
+        widget: "select"
+        options:
+        - Togo
+        - Sénégal
+        - Seepat Burkina Faso
+        - "Côte d'ivoire"
+        - Haïti
+        - "ICCOD"
+        - "SOLIFEDE RDC"
+        - Québec
+        - Cameroun
+      - label: "Antenne (v2)"
+        name: antenne2
+        widget: "select"
+        multiple: true
+        options:
+
+        - Tierra de los Jóvenes en México
+
+        - TERRE DES JEUNES RDC
+
+        - Niamey-Niger
+
+        - Terre des jeunes Martinique
+
+        - Kosmos Garden, projet Terre des jeunes en Grèce
+
+        - Togo
+
+        - SOLIFEDE
+
+        - TDJ Sénégal
+
+        - Organisation des Jeunes pour le Monde d’Avenir (OJMA)
+
+        - OJMA - Organisation des jeunes pour le monde d'avenir
+
+        - Québec
+
+        - Niamey-Niger
+
+        - TDJ Nicaragua
+
+        - Mondial
+
+        - ICCOD
+
+        - TDJ Haïti/Ayiti
+
+        - St. Marc (Haïti)
+
+        - Port Margot, Haïti
+
+        - PLAJEF Planete des jeunes de la franco-Phonie / Terre des jeunes Verrettes (Haïti)
+
+        - Rezo Koumbit Jèn Lakay, Jérémie, Haïti
+
+        - TDJ/Jean-Rabel, Haïti
+
+        - Groupe de Recherche et d’Action Sociale (GRAS), Hinche, Haïti
+
+        - Gros-Morne (Haïti)
+
+        - Gonaïves, Haïti
+
+        - Delmas, Haïti
+
+        - GRESADD Les Cayes, Haïti
+
+        - Metsäelo ry Finlande
+
+        - TDJ Yakro
+
+        - Côte d'Ivoire
+
+        - Colombie
+
+        - Terre des jeunes Cameroun
+
+        - Burundi
+
+        - SEEPAT
+
+        - TDJ Bénin
+
+      - label: "Catégorie"
+        name: categories
+        required: false
+        widget: "select"
+        multiple: true
+        options:
+
+        - Journée Mondiale de l'Environnement
+
+        - Culture
+
+        - Agriculture
+
+        - Sensibilisation
+
+        - Santé
+
+        - Recherches
+
+        - Nouvelles technologies
+
+        - Environnement
+
+        - Energie
+
+        - Education
+
+        - Ecologie
+
+        - Donation
+
+        - Developpement Durable
+
+        - Bénévolat
+
+        - Actualités récentes
+
+        - Société civile
+
+        - Rapports annuels
+
+        - Forêt
+
+        - Eau
+
+        - Déchets
+
+        - Climat
+
+        - Actions internes
+
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'blog' }
+      - label: "Tags (for example programming, web design)"
+        name: "tags"
+        widget: "list"
+      - label: "Images"
+        name: "img"
+        widget: "list"
+        required: false
+        field: {label: Image, name: image, widget: image}
+      - label: Position de la première image
+        hint:
+          Où se trouve l'action dans cette photo.
+        name: position
+        options:
+          - { label: 'Centre', value: 'center' }
+          - { label: 'Haut', value: 'top' }
+        widget: select
+        required: false
+      - { label: 'Contenu', name: 'body', widget: 'markdown' }
+
+  - name: 'categories'
+    create: true
+    label: 'Categories'
+    folder: 'docs/jekyll_categories/_posts/'
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - { label: 'Titre (par exemple Eau, Déchets, Climat, Forêt, Société civile...)', name: 'title', widget: 'string' }
+
+  - name: 'motsdupresident'
+    create: true
+    label: 'Mots du Président'
+    folder: 'docs/jekyll_motsdupresident/_posts/'
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - label: 'Titre'
+        name: 'title'
+        widget: 'string'
+        hint: "Par exemple Mot du Président 34 Automne 2016: Lancement de la campagne de financement"
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'motdupresident' }
+      - label : 'Lien permanent'
+        name: 'permalink'
+        widget: 'string'
+        required: false
+        hint: 'Sert à créer le lien vers la page, par exemple /mots-du-president/60/'
+      - label : 'Numéro'
+        name: 'numero'
+        widget: 'string'
+        required: false
+        hint: 'Par exemple 40, 41, 60, etc.'
+      - label : 'Date'
+        name: 'date'
+        widget: 'string'
+        required: false
+        hint: 'Par exemple 2016-04-20'
+      - label: 'Image'
+        name: "img"
+        widget: "list"
+        required: false
+        fields:
+        - {label: Image, name: image, widget: image, required: false}
+        - {label: 'Descriptif pour personnes non-voyantes', name: alt, widget: string, required: false, hint: 'Par exemple: Cinq personnes en train de planter des arbres'}
+        - {label: "Descriptif et crédit", name: desc, widget: string, required: false, hint: "par exemple: Plantaiton d'arbre durant la fête de l'arbre 2015 au Cameroun, photo par Jean-Paul Pierre"}
+      - label: 'Contenu'
+        name: 'body'
+        widget: 'markdown'
+        required: false
+
+  - name: 'pages'
+    create: true
+    label: 'Pages'
+    folder: 'docs/jekyll_pages/_posts/'
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - { label: 'Titre', name: 'title', widget: 'string' }
+      - label: "Mise en page"
+        name: layout
+        widget: "select"
+        options:
+        - { label: 'apropos', value: 'apropos' }
+        - { label: 'blog', value: 'blog' }
+        - { label: 'contact', value: 'contact' }
+        - { label: 'don', value: 'don' }
+        - { label: 'liste_antennes', value: 'liste_antennes' }
+        - { label: 'liste_articles', value: 'liste_articles' }
+        - { label: 'liste_bios', value: 'liste_bios' }
+        - { label: 'liste_motsdupresident', value: 'liste_motsdupresident' }
+        - { label: 'liste_partenaires', value: 'liste_partenaires' }
+        - { label: 'liste_temoignages', value: 'liste_temoignages' }
+        - { label: 'page', value: 'page' }
+        - { label: 'Page structurée (expérimental)', value: 'page2' }
+      - label: 'Chemin'
+        name: 'permalink'
+        widget: 'string'
+        required: false
+        hint: 'Sert à créer le lien vers la page, par exemple /a-propos-de-nous/'
+      - label: "Sections (expérimental)"
+        name: "sections"
+        widget: "list"
+        required: false
+        fields:
+        - label: 'Structure'
+          name: 'structure'
+          widget: 'select'
+          options:
+          - { label: 'Carousel', value: 'carousel' }
+          hint: 'ex: facebook, instagram, twitter-x, linkedin'
+      - { label: 'Content', name: 'body', widget: 'markdown', required: false }
+
+  - name: 'activite'
+    create: true
+    label: 'Activités'
+    folder: 'docs/jekyll_activites/_posts/'
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - label: "Titre, par exemple Éducation à l'environnement"
+        name: 'title'
+        widget: 'string'
+      - label: "Lien permanent, par exemple /education/"
+        name: 'permalink'
+        widget: 'string'
+      - label: "Layout"
+        name: layout
+        widget: "select"
+        options:
+        - { label: "Activité générique", value: 'activite' }
+        - { label: 'Synécoculture', value: 'synecoculture' }
+      - label: Image
+        name: image
+        widget: image
+      - label: "Documents"
+        name: "documents"
+        widget: "list"
+        required: false
+        field: {label: Document, name: document, widget: file}
+      - label: 'Contenu'
+        name: 'body'
+        widget: 'markdown'
+
+  - name: 'carousel'
+    create: true
+    label: 'Carousel'
+    folder: 'docs/jekyll_carousel/_posts/'
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+    - label: Titre
+      name: title
+      widget: string
+    - { label: 'Active', name: 'active', widget: 'boolean', default: true }
+    - label: Order
+      hint:
+        a vient avant b vient avant z.
+      name: order
+      widget: string
+      required: false
+    - label: lien
+      hint:
+        Dans le format http://example.com/
+      name: lien
+      widget: string
+      required: false
+    - label: Image
+      name: image
+      widget: image
+      required: false
+    - label: Position
+      hint:
+        Où se trouve l'action dans cette photo.
+      name: position
+      options:
+        - { label: 'Centre', value: 'center' }
+        - { label: 'Haut', value: 'top' }
+      widget: select
+      required: false
+
+  - name: 'pays'
+    create: true
+    label: 'Pays'
+    folder: 'docs/jekyll_pays/_posts/'
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - label: 'Nom du pays'
+        name: 'title'
+        widget: 'string'
+      - label: 'Drapeau (prendre 256 flat rounded corners de https://flagdownload.com/)'
+        name: 'drapeau'
+        widget: 'image'
+        required: false
+      - label: 'Layout'
+        name: 'layout'
+        widget: 'hidden'
+        default: 'pays'
+      - label: 'Chemin'
+        hint:
+          par exemple "/regions/haiti/" ou "/regions/rdc/".
+        name: 'permalink'
+        widget: 'string'
+        required: false
+
+  - name: 'antenne'
+    create: true
+    label: 'Antennes'
+    folder: 'docs/jekyll_antennes/_posts/'
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string', required: false }
+      - { label: 'Lien, par exemple /mexico/', name: 'permalink', widget: 'string', required: false }
+      - { label: 'Pays', name: 'country', widget: 'string', required: false }
+      - label: "Liens"
+        name: "liens"
+        widget: "list"
+        fields:
+        - label: 'Text'
+          name: 'texte'
+          widget: 'string'
+          required: false
+          hint: 'ex: Notre charte'
+        - label: 'Document'
+          name: 'document'
+          required: false
+          widget: 'file'
+        - label: 'Lien'
+          name: 'lien'
+          required: false
+          widget: 'string'
+          hint: 'ex: http://example.com/charte'
+      - label: "Email"
+        name: email
+        widget: "string"
+        required: false
+      - label: "Téléphone"
+        name: tel
+        widget: "string"
+        required: false
+      - label: "Pays (v2)"
+        name: country2
+        widget: "select"
+        multiple: true
+        options:
+
+        - Mexique
+
+        - Togo
+
+        - Sénégal
+
+        - R. D. Congo
+
+        - Québec
+
+        - Niger
+
+        - Nicaragua
+
+        - Mondial
+
+        - Martinique
+
+        - Haïti
+
+        - Grèce
+
+        - Finlande
+
+        - Côte d'Ivoire
+
+        - Colombie
+
+        - Cameroun
+
+        - Burundi
+
+        - Burkina Faso
+
+        - Bénin
+
+      - { label: 'Page Url (désuet)', name: 'page_url', widget: 'string', required: false }
+      - { label: 'Active', name: 'active', widget: 'boolean', default: true }
+      - { label: 'Logo Image (25*25)', name: 'logo_image', widget: 'image', required: false, default: '/media/default-antenna-logo.png' }
+      - label: "Images"
+        name: "img"
+        widget: "list"
+        required: false
+        field: {label: Image, name: image, widget: image}
+      - { label: 'Contenu', name: 'body', widget: 'markdown', required: false }
+
+  - name: 'bio'
+    create: true
+    label: 'Biographies'
+    folder: 'docs/jekyll_bios/_posts/'
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - label: 'Nom'
+        name: 'title'
+        widget: 'string'
+      - label: 'Titre (fonction), par exemple "Directeur exécutif"'
+        name: 'fonction'
+        widget: 'string'
+      - label: Image
+        name: image
+        widget: image
+      - label: 'Contenu'
+        name: 'body'
+        widget: 'markdown'
+      - label: "Réseaux sociaux"
+        name: "reseaux"
+        widget: "list"
+        fields:
+        - label: 'Type'
+          name: 'type'
+          widget: 'string'
+          hint: 'ex: facebook, instagram, twitter-x, linkedin'
+        - label: 'Lien'
+          name: 'lien'
+          widget: 'string'
+
+  - name: 'partenaire'
+    create: true
+    label: 'Partenaires'
+    folder: 'docs/jekyll_partenaires/_posts/'
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - label: 'Nom'
+        name: 'title'
+        widget: 'string'
+      - label: Image
+        name: image
+        widget: image
+      - label: 'lien'
+        name: 'lien'
+        widget: 'string'
+      - label: 'Contenu'
+        name: 'body'
+        widget: 'markdown'
+
+  - name: 'texte'
+    create: true
+    label: 'Textes (mission, comment devenir bénévole, etc.)'
+    folder: 'docs/jekyll_texts/_posts/'
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'blog' }
+      - label: "Tags (for example programming, web design)"
+        name: "tags"
+        widget: "list"
+      - label: "Images"
+        name: "img"
+        widget: "list"
+        required: false
+        field: {label: Image, name: image, widget: image}
+      - { label: 'Contenu', name: 'body', widget: 'markdown' }
+
+  - name: "vars"
+    label: "Variables (phrases, liens, etc. sur les pages)"
+    editor:
+      preview: false
+    files:
+      - label: "Variables"
+        name: "variables"
+        create: false
+        file: "docs/_data/variables.yml"
+        fields:
+          - label: "Variable"
+            name: "variable"
+            widget: "list"
+            fields:
+              - label: "ID de la variable (ne pas changer)"
+                name: "title"
+                widget: "string"
+              - label: "description de la variable"
+                name: "desc"
+                required: false
+                widget: "string"
+              - label: "Valeur de la variable"
+                required: false
+                name: "val"
+                widget: "string"
+
+  - name: 'temoignages'
+    create: true
+    label: 'Témoignages'
+    folder: 'docs/jekyll_temoignages/_posts/'
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+    - label: Nom de la personne
+      name: title
+      widget: string
+      hint: "Par exemple Jean-Paul Pierre"
+    - label: Fonction de la personne
+      name: fonction
+      widget: string
+      hint: "Par exemple Chargé de projet, ONU"
+    - label: Source
+      name: source
+      widget: string
+      hint: "Par exemple Ruth l'a dit à Bohui par WhatsApp le 1er mai 2025"
+    - label: Image
+      name: image
+      widget: image
+      required: false
+      hint: "Image associée avec la personne ou l'organisation"
+    - { label: 'Extrait', name: 'extrait', widget: 'markdown' }
+    - { label: 'Citation', name: 'body', widget: 'markdown' }
+
+  - name: 'redirections'
+    create: true
+    label: 'Redirections'
+    folder: 'docs/jekyll_redirections/_posts/'
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - label: 'Titre de la redirection'
+        name: 'title'
+        widget: 'string'
+      - label: 'De'
+        name: 'permalink'
+        widget: 'string'
+        hint: 'par exemple "/rapports.html"'
+      - label: 'À'
+        name: 'redirect'
+        widget: 'string'
+        hint: 'par exemple "/actualites/#categories/(rapports%20annuels), ou /actualites/x/y/z"'
+
+  - name: 'pages_v2'
+    create: true
+    label: 'Pages (expérimental)'
+    folder: 'docs/jekyll_pages_v2/_posts/'
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - { label: 'Titre', name: 'title', widget: 'string' }
+      - label: 'Chemin (permalink)'
+        name: 'permalink'
+        widget: 'string'
+        required: false
+        hint: 'Sert à créer le lien vers la page, par exemple /a-propos-de-nous/'
+      - label: "Sections (expérimental)"
+        name: "sections"
+        widget: "list"
+        required: false
+        fields:
+        - label: 'Structure'
+          name: 'structure'
+          widget: 'select'
+          options:
+          - { label: 'Breadcrumb', value: 'breadcrumb' }
+          - { label: 'Message', value: 'message' }
+          - { label: 'Image and content', value: 'image_content' }
+          - { label: 'Content and image', value: 'content_image' }
+          - { label: 'Status', value: 'status' }
+          - { label: 'Collage', value: 'collage' }
+        - { label: 'Message', name: 'message', widget: 'string', required: false, hint: 'some text [only:message]' }
+        - { label: 'Type', name: 'type', widget: 'string', required: false, hint: 'type of message, e.g. "info", "warning", "error" [only:message]' }
+        - label: 'Crumbs'
+          hint: 'Breadcrumbs [only:breadcrumb]'
+          name: 'crumbs'
+          widget: "list"
+          required: false
+          fields:
+          - label: 'Title'
+            name: 'title'
+            widget: 'string'
+          - label: 'Url'
+            name: 'url'
+            widget: 'string'
+        - { label: 'Image', name: 'image', widget: 'image', required: false, hint: 'select an image [only:image_content,content_image]' }
+        - { label: 'Content', name: 'content', widget: 'markdown', required: false, hint: 'some text [only:image_content,content_image]' }
+      - { label: 'Content', name: 'body', widget: 'markdown', required: false }
+
+  - name: 'pages_v3'
+    create: true
+    label: 'Pages (expérimental, v3)'
+    folder: 'docs/jekyll_pages_v3/_posts/'
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - { label: 'Titre', name: 'title', widget: 'string' }
+      - label: 'Chemin (permalink)'
+        name: 'permalink'
+        widget: 'string'
+        required: false
+        hint: 'Sert à créer le lien vers la page, par exemple /a-propos-de-nous/'
+      - label: "Sections (expérimental)"
+        name: "sections"
+        widget: "list"
+        required: false
+        fields:
+        - label: 'Structure'
+          name: 'structure'
+          widget: 'select'
+          options:
+          - { label: 'Breadcrumb', value: 'breadcrumb' }
+          - { label: 'Message', value: 'message' }
+          - { label: 'Image and content', value: 'image_content' }
+          - { label: 'Content and image', value: 'content_image' }
+          - { label: 'Status', value: 'status' }
+          - { label: 'Collage', value: 'collage' }
+        - { label: 'Message', name: 'message', widget: 'string', required: false, hint: 'some text [only:message]' }
+        - { label: 'Type', name: 'type', widget: 'string', required: false, hint: 'type of message, e.g. "info", "warning", "error" [only:message]' }
+        - label: 'Crumbs'
+          hint: 'Breadcrumbs [only:breadcrumb]'
+          name: 'crumbs'
+          widget: "list"
+          required: false
+          fields:
+          - label: 'Title'
+            name: 'title'
+            widget: 'string'
+          - label: 'Url'
+            name: 'url'
+            widget: 'string'
+        - { label: 'Image', name: 'image', widget: 'image', required: false, hint: 'select an image [only:image_content,content_image]' }
+        - { label: 'Content', name: 'content', widget: 'markdown', required: false, hint: 'some text [only:image_content,content_image]' }
+      - { label: 'Content', name: 'body', widget: 'markdown', required: false }
+
+  - name: 'cartes_40e'
+    create: true
+    label: 'Cartes du 40e'
+    folder: 'docs/jekyll_cartes40e/_posts/'
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - label: 'Titre'
+        name: 'title'
+        widget: 'string'
+        hint: "Par exemple Un mot de la Présidente de TDJ Sénégal"
+      - label: "Antenne"
+        required: false
+        name: antenne
+        widget: "select"
+        multiple: true
+        options:
+
+        - Tierra de los Jóvenes en México
+
+        - TERRE DES JEUNES RDC
+
+        - Niamey-Niger
+
+        - Terre des jeunes Martinique
+
+        - Kosmos Garden, projet Terre des jeunes en Grèce
+
+        - Togo
+
+        - SOLIFEDE
+
+        - TDJ Sénégal
+
+        - Organisation des Jeunes pour le Monde d’Avenir (OJMA)
+
+        - OJMA - Organisation des jeunes pour le monde d'avenir
+
+        - Québec
+
+        - Niamey-Niger
+
+        - TDJ Nicaragua
+
+        - Mondial
+
+        - ICCOD
+
+        - TDJ Haïti/Ayiti
+
+        - St. Marc (Haïti)
+
+        - Port Margot, Haïti
+
+        - PLAJEF Planete des jeunes de la franco-Phonie / Terre des jeunes Verrettes (Haïti)
+
+        - Rezo Koumbit Jèn Lakay, Jérémie, Haïti
+
+        - TDJ/Jean-Rabel, Haïti
+
+        - Groupe de Recherche et d’Action Sociale (GRAS), Hinche, Haïti
+
+        - Gros-Morne (Haïti)
+
+        - Gonaïves, Haïti
+
+        - Delmas, Haïti
+
+        - GRESADD Les Cayes, Haïti
+
+        - Metsäelo ry Finlande
+
+        - TDJ Yakro
+
+        - Côte d'Ivoire
+
+        - Colombie
+
+        - Terre des jeunes Cameroun
+
+        - Burundi
+
+        - SEEPAT
+
+        - TDJ Bénin
+
+      - label: 'Image'
+        required: false
+        name: "img"
+        widget: "list"
+        field: {label: Image, name: img, widget: image}
+      - label: 'Vidéo'
+        required: false
+        hint: "Pour une video /media/video.mp4, assurez-vous qu'il y a aussi une fichier media/video.mp4.jpg avec une image de la vidéo"
+        name: "video"
+        widget: "list"
+        field: {label: Vieo, name: video, widget: file}
+      - label: 'Contenu'
+        name: 'body'
+        widget: 'markdown'
+        required: false
+
+  - name: 'formations'
+    create: true
+    label: 'Formations'
+    folder: 'docs/jekyll_formations/_posts/'
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string', required: false }
+      - label: "Section"
+        name: section
+        widget: "select"
+        options:
+
+        - "TEXTES GÉNÉRAUX SUR LA PROBLÉMATIQUE ENVIRONNEMENTALE : DÉVELOPPEMENT DURABLE et SURVOL DE LA CRISE ÉCOLOGIQUE"
+
+        - "AGRICULTURE URBAINE"
+
+        - "AGRICULTURE"
+
+        - "L'ARBRE ET LE REBOISEMENT"
+
+        - "QUALITÉ DE L'AIR ET LES EFFETS DE LA COMBUSTION DU PLASTIQUE"
+
+        - "GESTION DES DÉCHETS"
+
+        - "GESTION DES SOLS"
+
+        - "CONSTRUCTION ÉCOLOGIQUE (des idées pour construire différement)"
+
+        - "CHANGEMENTS CLIMATIQUES"
+
+        - "BIODIVERSITÉ"
+
+        - "ACTUALITÉ SCIENTIFIQUE"
+
+        - "RESSOURCES PÉDAGOGIQUES POUR ENSEIGNANTS ET ÉLÈVES"
+
+        - "AUTRES RESSOURCES"
+
+      - label: "Liens"
+        name: "liens"
+        widget: "list"
+        fields:
+        - label: 'Text'
+          name: 'texte'
+          widget: 'string'
+          required: false
+          hint: 'ex: Notre charte'
+        - label: 'Document'
+          name: 'document'
+          required: false
+          widget: 'file'
+        - label: 'Lien'
+          name: 'lien'
+          required: false
+          widget: 'string'
+          hint: 'ex: http://example.com/charte'
+      - { label: 'Image', name: 'img', widget: 'image', required: false, default: '/archives/avant-2025/sites/terredesjeunes.org/files/imagecache/tdj_image_ressource/imagefield_default_images/Screen%20shot%202011-04-21%20at%2012.05.41%20PM.png' }
+      - { label: 'Contenu', name: 'body', widget: 'markdown', required: false }
+

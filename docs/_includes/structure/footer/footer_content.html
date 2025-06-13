@@ -1,0 +1,44 @@
+<!-- footer sections -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <!-- Section Logo et Description -->
+      <div class="col-lg-4 col-12 mb-4">
+        <img src="/images/logo/logotdj_blac.png" class="logo img-fluid" alt="Logo Terre des Jeunes">
+        <p class="text-white mt-3">Nous sommes Terre des Jeunes, un organisation sans but lucratif visant à sensibiliser les jeunes du monde entier à la sauvegarde de l'environnement et à la gestion locale ou régionale du patrimoine naturel et culturel, par et pour les jeunes eux-mêmes.</p>
+      </div>
+      <!-- Section Liens Directs -->
+      <div class="col-lg-4 col-md-6 col-12 mb-4">
+        <h5 class="site-footer-title mb-3 text-white">Liens Directs</h5>
+        <ul class="footer-menu list-unstyled">
+          {% for item in site.data.config.menu_bas %}
+          <li class="footer-menu-item"><a href="{{ item.url }}" class="footer-menu-link text-white">{{ item.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <!-- Section Réseaux Sociaux -->
+      <div class="col-lg-4 col-md-6 col-12 mb-4">
+        <h5 class="site-footer-title mb-3 text-white">Suivez-nous</h5>
+        <ul class="social-icon list-unstyled d-flex justify-content-center">
+          {% for item in site.data.config.social %}
+          {% if item.actif %}
+          <li class="social-icon-item me-3">
+            <a href="{{ item.url }}" class="social-icon-link bi-{{ item.icon }} text-white"></a>
+          </li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- Footer Bottom -->
+  <div class="site-footer-bottom py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <p class="text-white mb-0">&copy; 2025 Terre des Jeunes. Tous droits réservés. Modifier <a href="{{site.github_repo_url}}/edit/main/docs/{{page.path}}">le code source</a>{% if _decap_path %} ou <a href="{{ _decap_path }}">dans le content manager</a>{% endif %}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

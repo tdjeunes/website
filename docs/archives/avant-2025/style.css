@@ -1,0 +1,38 @@
+body.connexion {
+  background: rgb(207, 223, 152);
+}
+
+.connexion {
+  font-family: Arial, sans-serif;
+}
+
+.connexion .tdj-media {
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.connexion img {
+  max-width: 100%;
+}
+
+.connexion .tdj-max-width {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.connexion h1, .connexion h2 {
+  text-align: center;
+}
+.connexion .tdj-button-wrapper {
+  text-align: center;
+  width: 100%;
+}
+.connexion .btn {
+  margin: 7px;
+}
+
+.tdj-template {
+  display: none;
+}

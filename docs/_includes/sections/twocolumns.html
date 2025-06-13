@@ -1,0 +1,16 @@
+{% assign template="sections/twocolumns.html" %}
+{% include structure/debug.html %}
+{% assign p="_col1" %}{% assign v=_col1 %}{% include structure/r.html %}
+{% assign p="_col2" %}{% assign v=_col2 %}{% include structure/r.html %}
+<section>
+  <div class="row">
+    <div class="col-lg-6 col-12">
+      {{ _col1 | markdownify }}
+    </div>
+    <div class="col-lg-6 col-12">
+      {{ _col2 | markdownify}}
+    </div>
+  </div>
+</section>
+{% assign template="sections/twocolumns.html" %}
+{% include structure/enddebug.html %}

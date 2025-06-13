@@ -1,0 +1,7 @@
+  - name: 'categories'
+    create: true
+    label: 'Categories'
+    folder: 'docs/jekyll_categories/_posts/'
+    slug: '{{slug}}'
+    fields:
+      - { label: 'Titre (par exemple Eau, Déchets, Climat, Forêt, Société civile...)', name: 'title', widget: 'string' }

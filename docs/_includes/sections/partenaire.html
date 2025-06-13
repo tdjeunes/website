@@ -1,0 +1,19 @@
+<!-- sections nos partenaires -->
+<section class="container mx-auto" id="parteners">
+  <div class="col-lg-12 col-12 text-center mb-4">
+    <h2>Partenaires de Terre des jeunes</h2>
+    <p class="text-muted">Découvrez nos précieux partenaires qui soutiennent nos causes.</p>
+  </div>
+  <div class="row">
+    <div class="partner-wrapper">
+      {% for partner in site.categories.jekyll_partenaires %}
+      <div class="col-lg-2 col-md-4 col-6">
+        <a href="{{ partner.url }}" target="_blank" class="partner-card">
+          <img src="{{ partner.image }}" alt="logo de {{ parnter.title }}" class="partner-logo">
+          <p>{{ partner.title }}</p>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

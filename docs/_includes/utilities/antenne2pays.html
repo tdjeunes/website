@@ -1,0 +1,19 @@
+{% assign template="antenne2pays.html" %}
+{% include structure/debug.html %}
+{% assign p="_antenne" %}{% assign v=_antenne %}{% include structure/r.html %}
+{% assign __result = "" %}
+
+{% for antenne in site.categories.jekyll_antennes %}
+  {% if antenne.title == _antenne %}
+    {% for pays in site.categories.jekyll_pays %}
+      {% if pays.title == antenne.country2[0] %}
+        {% assign __result = pays %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+
+{% assign template="antenne2paysHtml.html" %}
+
+{% assign template="antenne2pays.html" %}
+{% include structure/enddebug.html %}

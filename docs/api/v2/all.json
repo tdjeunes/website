@@ -1,0 +1,84 @@
+---
+---
+{% capture antennes %}
+  {% for obj in site.categories.jekyll_antennes %}
+    {% if forloop.first %}{% else %},{% endif %}
+    {
+      "url": {{ obj.url | jsonify }},
+      "title": {{ obj.title | jsonify }},
+      "content": {{ obj.content | jsonify }},
+      "categories": {{ obj.categories | jsonify }},
+      "country": {{ obj.country2 | jsonify }},
+      "page_url": {{ obj.page_url | jsonify }},
+      "active": {{ obj.active | jsonify }},
+      "logo_image": {{ obj.logo_image | jsonify }}
+    }
+  {% endfor %}
+{% endcapture %}
+{% capture activites %}
+  {% for obj in site.categories.jekyll_activites %}
+    {% if forloop.first %}{% else %},{% endif %}
+    {
+      "url": {{ obj.url | jsonify }},
+      "title": {{ obj.title | jsonify }},
+      "content": {{ obj.content | jsonify }},
+      "image": {{ obj.image | jsonify }}
+    }
+  {% endfor %}
+{% endcapture %}
+{% capture actualites %}
+  {% for obj in site.categories.jekyll_blogposts %}
+    {% if forloop.first %}{% else %},{% endif %}
+    {
+      "url": {{ obj.url | jsonify }},
+      "title": {{ obj.title | jsonify }},
+      "categories": {{ obj.categories | jsonify }},
+      "content": {{ obj.content | jsonify }},
+      "antenne2": {{ obj.antenne2 | jsonify }},
+      "img": {{ obj.img | jsonify }},
+      "position": {{ obj.position | jsonify }}
+    }
+  {% endfor %}
+{% endcapture %}
+{% capture pays %}
+  {% for obj in site.categories.jekyll_pays %}
+    {% if forloop.first %}{% else %},{% endif %}
+    {
+      "url": {{ obj.url | jsonify }},
+      "title": {{ obj.title | jsonify }}
+    }
+  {% endfor %}
+{% endcapture %}
+{% capture bios %}
+  {% for obj in site.categories.jekyll_bios %}
+    {% if forloop.first %}{% else %},{% endif %}
+    {
+      "url": {{ obj.url | jsonify }},
+      "title": {{ obj.title | jsonify }},
+      "content": {{ obj.content | jsonify }},
+      "fonction": {{ obj.fonction | jsonify }},
+      "image": {{ obj.image | jsonify }},
+      "reseaux": {{ obj.reseaux | jsonify }}
+    }
+  {% endfor %}
+{% endcapture %}
+{% capture mots %}
+  {% for obj in site.categories.jekyll_motsdupresident %}
+    {% if forloop.first %}{% else %},{% endif %}
+    {
+      "url": {{ obj.url | jsonify }},
+      "title": {{ obj.title | jsonify }},
+      "content": {{ obj.content | jsonify }},
+      "date": {{ obj.date | jsonify }},
+      "img": {{ obj.img | jsonify }}
+    }
+  {% endfor %}
+{% endcapture %}
+{
+  "antennes": [{{ antennes }}],
+  "activites": [{{ activites }}],
+  "actualites": [{{ actualites }}],
+  "bios": [{{ bios }}],
+  "pays": [{{ pays }}],
+  "mots": [{{ mots }}]
+}

@@ -1,0 +1,22 @@
+{% capture inferred_sections2 %}
+
+  {% assign _crumbs = site.data.config.default_syneco_garden_crumbs %}
+  {% include sections/breadcrumb.html %}
+
+  {% assign _height = 'short' %}
+  {% assign code = page.code | upcase %}
+  {% assign _h1 = page.title | append: " (" | append: code | append: ")" | append: " à " | append: page.ville %}
+  {% assign _bg = site.data.config.default_header_bg_img %}
+  {% include sections/h1_hero.html %}
+
+  {% include sections/messages.html %}
+
+  {% assign _pdf = page.pdf %}
+  {% assign _img = page.jpg %}
+  {% assign _carte = page.carte %}
+  {% include sections/syneco/single.html %}
+
+  {% endcapture %}
+{% assign inferred_sections = inferred_sections | append: inferred_sections2 %}
+
+{% include layouts/page.html %}

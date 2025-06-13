@@ -1,0 +1,42 @@
+{% assign template="sections/syneco/maps.html" %}
+{% include structure/debug.html %}
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2>Six (6) terrains sont ciblés à Garoua, ville de 2 millions d'habitants dans le Nord du Cameroun.</h2>
+        <p><a class="custom-btn btn" href="https://www.google.com/maps/d/u/0/edit?mid=16c87ahO525W-AWMGwMZOaQWxiwq29MA&ll=9.370491353064027%2C13.445762750000032&z=14">Voyez les emplacements sur Google My Maps</a></p>
+      </div>
+    </div>
+    <div class="row">
+      {% for terrain in site.categories.jekyll_syneco2025terrains %}
+        {% if terrain.ville == "Garoua" %}
+          {% assign _nom = terrain.title %}
+          {% assign _preview = terrain.preview %}
+          {% assign _code = terrain.code %}
+          {% assign _url = terrain.url %}
+          {% include sections/syneco/terrain.html %}
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <h2>Six (6) terrains sont ciblés à Figuil, ville de 30&nbsp;000 habitants dans le Nord du Cameroun, à deux heures de Garoua.</h2>
+        <p><a class="custom-btn btn" href="https://www.google.com/maps/d/u/0/edit?mid=1OD1fcg4ZYpv2sRY0vTgWqwvDEmE3EgI&ll=9.89902716949461%2C14.055945000000003&z=11">Voyez les emplacements sur Google My Maps</a></p>
+      </div>
+    </div>
+    <div class="row">
+      {% for terrain in site.categories.jekyll_syneco2025terrains %}
+        {% if terrain.ville == "Figuil" %}
+          {% assign _nom = terrain.title %}
+          {% assign _preview = terrain.preview %}
+          {% assign _code = terrain.code %}
+          {% assign _url = terrain.url %}
+          {% include sections/syneco/terrain.html %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% assign template="sections/syneco/maps.html" %}
+{% include structure/enddebug.html %}

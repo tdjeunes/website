@@ -1,0 +1,18 @@
+{% assign template="sections/collage/text.html" %}
+{% include structure/debug.html %}
+{% assign p="_title" %}{% assign v=_title %}{% include structure/r.html %}
+{% assign p="_content" %}{% assign v=_content %}{% include structure/r.html %}
+
+<div class="my-collage-card col-12 col-md-6 col-lg-4 mb-4" style="position: absolute; left: 0%; top: 0px;">
+  <div class="card">
+    <div class="card-body">
+      {% include sections/collage/title.html %}
+      <p class="card-text">
+        {{ _content | markdownify }}
+      </p>
+    </div>
+  </div>
+</div>
+
+{% assign template="sections/collage/text.html" %}
+{% include structure/enddebug.html %}

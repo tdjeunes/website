@@ -1,0 +1,13 @@
+variable:
+  - title: benevolat_page_accueil_titre
+    desc: Dans la section bénévolat sur la page d'accueil
+    val: À propos de Bénévolat
+  - title: benevolat_page_accueil_desc
+    desc: Dans la section bénévolat sur la page d'accueil
+    val: Le bénévolat à Terre des jeunes est une belle opportunité pour les jeunes
+      de s'impliquer dans des projets significatifs. En travaillant ensemble,
+      ils développent des compétences précieuses, créent des liens solides et
+      contribuent à des causes qui leur tiennent à cœur. Ce partage
+      d'expériences enrichit leur parcours personnel et professionnel.
+  - title: prendre_soins_de_la_terre_accueil_icone
+    desc: texte

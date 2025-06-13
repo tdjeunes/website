@@ -1,0 +1,730 @@
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Terre des jeunes</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Inclusion de jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
+  <link href="/css/style.css?token=1749843439" rel="stylesheet">
+  <link href="/css/my.css?token=1749843439" rel="stylesheet">
+  <script>
+    // https://stackoverflow.com/questions/9838812
+function loadJSON(path, success, error) {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function()
+  {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        if (success)
+          success(JSON.parse(xhr.responseText));
+      } else {
+        if (error)
+          error(xhr);
+      }
+    }
+  };
+  xhr.open("GET", path, true);
+  xhr.send();
+}
+
+    class TDJ {
+  constructor() {
+    this._data = null;
+    this._callbacks = [];
+  }
+  static instance() {
+    if (!TDJ._instance) {
+      TDJ._instance = new TDJ();
+    }
+    return TDJ._instance;
+  }
+  dataAvailable() {
+    return this._data !== null;
+  }
+  init() {
+    const that = this;
+    loadJSON('/api/v2/all.json',
+      function(data) {
+        that._data = data;
+        that._callbacks.forEach(callback => callback(data));
+      },
+      function(xhr) {
+        console.error(xhr);
+      },
+    );
+  }
+  getData(callback) {
+    if (this.dataAvailable()) {
+      callback(this._data);
+    }
+    else {
+      this._callbacks.push(callback);
+    }
+  }
+}
+
+    TDJ.instance().init();
+  </script>
+</head>
+
+  <body id="section_1">
+    
+    <header class="site-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-12 d-flex flex-wrap">
+        <p class="d-flex me-4 mb-0">
+        </p>
+        <p class="d-flex mb-0">
+        </p>
+      </div>
+      <div class="col-lg-3 col-12 ms-auto d-lg-block d-none ">
+        <ul class="social-icon">
+          
+            
+              <li class="social-icon-item">
+                <a href="https://www.linkedin.com/company/terre-des-jeunes" class="social-icon-link bi-linkedin"></a>
+              </li>
+            
+          
+            
+              <li class="social-icon-item">
+                <a href="https://www.facebook.com/groups/terredesjeunes/" class="social-icon-link bi-facebook"></a>
+              </li>
+            
+          
+            
+          
+            
+          
+            
+          
+          <li class="social-icon-item">
+            <a href="/connexion/">Connexion</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- nav dejaaa -->
+<nav class="navbar navbar-expand-lg bg-light shadow-lg">
+  <div class="container">
+    <!-- Logo + Nom -->
+    <a class="navbar-brand d-flex align-items-center my-dark-on-light" href="/">
+      <img src="/logo/logo-tdj40-vert-outline-blanc-x-800-355.png" class="logo img-fluid me-2" alt="Logo Terre des jeunes 40 ans">
+      <h2 class="fw-bold logo">Terre des jeunes</h2>
+    </a>
+    <!-- Bouton Toggle (pour mobile) -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Menu de Navigation -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="/40e/">40 ans</a></li>
+        <li class="nav-item"><a class="nav-link" href="/a-propos/">À propos</a></li>
+        <li class="nav-item"><a class="nav-link click-scroll" href="/#activites">Activités</a></li>
+        <li class="nav-item"><a class="nav-link click-scroll" href="/actualites/">Actualités</a></li>
+
+        <li class="nav-item"><a class="nav-link click-scroll" href="/contact/">Contact</a></li>
+        <li class="nav-item ms-lg-3">
+          <a class="nav-link custom-btn custom-border-btn btn btn-primary" href="/don/">Faire un Don</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <main>
+      
+
+  
+  
+
+<!-- STARTING TEMPLATE section/breadcumb.html-->
+
+
+
+
+<section class="my-nav-breadcrumb pt-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-12">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            
+              
+              
+              <li class="breadcrumb-item">
+                <a href="/">
+                  Accueil
+                </a>
+              </li>
+            
+              
+              
+              <li class="breadcrumb-item my-last-breadcrumb-item">
+                <a href="/mots-du-president/">
+                  Mots du Président
+                </a>
+              </li>
+            
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ENDING TEMPLATE section/breadcumb.html-->
+
+
+
+
+  
+  
+  
+  
+  
+
+<!-- STARTING TEMPLATE h1_hero.html-->
+
+
+
+
+
+
+
+
+<section class="news-detail-header-section text-center short-header-section" style="background-image: url(/images/news/medium-shot-volunteers-with-clothing-donations.jpg)">
+  <div class="section-overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-12">
+        
+          <div class="my-h1-hero-supertext">
+            <span class="my-header-on-picture-background text-white">
+              Mot du Président # 17 –  
+            </span>
+          </div>
+          </div>
+        
+        <h1 class="text-white">
+          <span class="my-header-on-picture-background">
+            La tournée au Togo
+          </span>
+        </h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ENDING TEMPLATE h1_hero.html-->
+
+
+
+
+  
+
+<!-- STARTING TEMPLATE messages.html-->
+
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-12 mettre-alertes-ici">
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ENDING TEMPLATE messages.html-->
+
+
+
+
+  
+  
+
+<!-- STARTING TEMPLATE onlytext.html-->
+
+
+
+
+<section class="news-section section-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="news-block-top">
+          <div class="news-block-body">
+            <p>25 juillet 2014, lune des fleurs épanouies, Matawinie, Québec.
+Solstice d’Été
+Mot du Président No 17
+ 
+Bon été à vous tous, mes amis de la grande famille de Terre des Jeunes!
+Le 4 juin dernier, je me suis posé sur la piste de l’aéroport de Lomé, (capitale du Togo). Après de longs mois à espérer ce voyage, me voilà enfin sur cette terre qui nous attend avec patience et espérance.</p>
+
+<p>Encore complètement dans mon décalage horaire….venant de Montréal en passant par Paris, voilà que l’équipe de Terre des Jeunes Togo m’accueille à l’aéroport avec une belle affiche ‘‘Bienvenu Président’’! J’étais très touché…. mais le meilleur était à venir.</p>
+
+<p>La même soirée de mon arrivée, j’ai eu le droit à un très bel accueil dans la maison de Cyriaque (Président National de Terre des Jeunes Togo). Ils m’ont remis un bouquet de fleur, de la préparation de manioc sur le sol pour me souhaiter la bienvenue, un bracelet, un collier et des chants, ils m’ont enroulé dans une tissu africain et ils m’ont mis une couronne sur la tête. Pendant ce temps la percussion et des danses rythmaient l’air! J’étais endormi comme dans un beau rêve! Après les discours de bienvenue etc., je suis allé me reposer encore tout imprégné de ces moments de magie.</p>
+
+<p>Les deux semaines qui ont suivi furent très productives en contacts et réunions de mise au point avant le sommet 2015 qui est projeté.</p>
+
+<p>Le 5 juin, journée mondiale de l’environnement, j’étais au Togo! Terre qui a bien besoin qu’on prenne soin d’elle…. ce fut la première réunion avec l’équipe locale de Terre des Jeunes Togo.</p>
+
+<p>Le 6 juin nous sommes allés tous ensemble à Aképé pour la Fête de l’arbre locale malgré la pluie qui nous a fait des blagues. Les enfants ont fait une belle danse. Nous avons planté des Tecks.</p>
+
+<p>Le 7 juin nous avons fait un mini sommet Terre des Jeunes avec Sylvie de Côte d’ivoire (Yamoussoukro), Cyriaque du Togo et Daniel du Bénin. Nous avions des représentants des 3 pays très proche où Terre des Jeunes est présent. Nous avons fait une très longue réunion de 15h00 de l’après midi à 2h30 du matin avec seulement 1h de pause pour manger! Nous avons parlé de toutes les questions que se posaient les représentants de ces 3 pays et avons tenté de répondre au mieux. De plus je leur ai présenté le ‘‘modèle type’’ d’écovillage traditionnel que nous pouvons adopter.</p>
+
+<p>Le 8 juin nous sommes allés au site où on construira le village traditionnel proche du village de Tsiviépé. La population nous a accueuillie avec musique et danses. Nous avons posé la première stèle du village…. beaucoup de belles émotions dans ces moments avec nos amis africains.</p>
+
+<p>Le 9 juin nous sommes allés au Pic d’Agou, c’est la montagne la plus haute du pays. Nous avons encore eu un très bel accueil de la part de toute la population. Le site est très beau. Nous avons visité le dispensaire organisé par TDJ-Togo et tout le village. Encore une fois beaucoup d’émotion dans ces beaux moments de rencontre entre peuples. Ce site accueillera le festival qui suivra le sommet 2015.</p>
+
+<p>Dans cette tournée qui n’est pas encore terminée, nous étions accompagnés de 2 jeunes femmes françaises qui sont venues au Togo pour faire un stage avec TDJ-Togo. Leur présence fut très agréable.</p>
+
+<p>Le 12 juin nous avons pu rencontrer des hauts responsables du pays. Nous avons rencontré Le chef de cabinet du ministère de l’éducation M. Bielo pour prendre des ententes de partenariat puis M. Tenou responsable du programme environnement au PNUD Togo et finalement M. Johnson Ministre de l’environnement. Avec ce dernier nous avons établi des liens pour travailler ensemble sur des projets futurs.</p>
+
+<p>Le 13 juin nous sommes montés en voiture, camion, moto à Sokodé. Le voyage fut éprouvant mais nous avons eu une très belle surprise à notre arrivée à 22h30 de voir toute l’équipe Terre des Jeunes Sokodé toujours réveillée qui nous ont fait un petit spectacle sur le besoin de protéger les arbres etc. puis un repas dans la nuit (2h du matin) dans la maison du père du Président local.</p>
+
+<p>Le 14 juin nous sommes allés planter des arbres dans un orphelinat de Sokodé qui est un des partenaires de TDJ-Sokodé. Puis nous sommes retournés à Lomé….8 heures de route!</p>
+
+<p>Les 15 et 16 beaucoup de réunions avec l’équipe TDJ-Togo et des contacts administratifs pour trouver des fonds. Un jeune français est aussi arrivé cette journée pour compléter l’équipe de volontaires.</p>
+
+<p>Le 17 juin était ma dernière journée avec une grande réunion bilan des deux semaines…. plus une formation que je leur ai donnée sur les constructions traditionnelles, les modèles d’anagriculture alvéolaire et la structure et l’organisation d’un village traditionnel.</p>
+
+<p>C’est avec beaucoup de joie et d’émotion que je vous parle de cette équipe de Terre des Jeunes Togo, avec ses 12 antennes et son dynamisme incroyable. Il leur reste encore beaucoup de travail à réaliser pour construire l’écovillage qui abritera le sommet Terre des Jeunes 2015! Donnons-leur notre soutien et notre énergie pour qu’ils puissent mener à bien ce projet! </p>
+
+<p>C’est avec peine que j’ai quitté ce beau pays le 17 juin dans la soirée après quelques chants et moments passés avec tous nos amis africains et nos amis volontaires français.</p>
+
+<p>Je vous souhaite tous de venir en 2015 au Togo pour rencontrer cette belle population et participer à cette rencontre unique : le Sommet Terre des Jeunes 2015! On vous y attend!</p>
+
+<p>(Vous pouvez voir des photos de toutes les rencontres etc. sur la page d’accueil de Terre des Jeunes).</p>
+
+<p>Salutations cordiales et joyeux été de la part de toute l’équipe Transnationale!</p>
+
+<p>Riel Huaorani,
+Président de Terre des Jeunes Transnational
+www.terredesjeunes.org 1-514-890-4445</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ENDING TEMPLATE onlytext.html-->
+
+
+
+
+  
+
+<!-- STARTING TEMPLATE subscribe.html-->
+
+
+<section class="mailchimp-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 align-self-center">
+        <h2>Vous inscrire aux Mots du Président (4 fois par année)</h2>
+        
+
+<div id="mc_embed_shell">
+  <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
+<div id="mc_embed_signup">
+<form action="https://terredesjeunes.us21.list-manage.com/subscribe/post?u=e414f763cb884889dd790de2c&amp;id=2b25a06134&amp;f_id=000da1e6f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+    <div id="mc_embed_signup_scroll"><h2>Subscribe</h2>
+        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+        <div class="mc-field-group"><label for="mce-EMAIL">Adresse mail <span class="asterisk">*</span></label><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value=""></div>
+    <div id="mce-responses" class="clear foot">
+        <div class="response" id="mce-error-response" style="display: none;"></div>
+        <div class="response" id="mce-success-response" style="display: none;"></div>
+    </div>
+<div aria-hidden="true" style="position: absolute; left: -5000px;">
+    /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
+    <input type="text" name="b_e414f763cb884889dd790de2c_2b25a06134" tabindex="-1" value="">
+</div>
+    <div class="optionalParent">
+        <div class="clear foot">
+            <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe">
+            <p style="margin: 0px auto;"><a href="https://eepurl.com/jcXi-Y" title="Mailchimp - email marketing made easy and fun"><span style="display: inline-block; background-color: transparent; border-radius: 4px;"><img class="refferal_badge" src="https://digitalasset.intuit.com/render/content/dam/intuit/mc-fe/en_us/images/intuit-mc-rewards-text-dark.svg" alt="Intuit Mailchimp" style="width: 220px; height: 40px; display: flex; padding: 2px 0px; justify-content: center; align-items: center;"></span></a></p>
+        </div>
+    </div>
+</div>
+</form>
+</div>
+<script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script><script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';/*
+* Translated default messages for the $ validation plugin.
+* Locale: FR
+*/
+$.extend($.validator.messages, {
+    required: "Ce champ est requis.",
+    remote: "Veuillez remplir ce champ pour continuer.",
+    email: "Veuillez entrer une adresse email valide.",
+    url: "Veuillez entrer une URL valide.",
+    date: "Veuillez entrer une date valide.",
+    dateISO: "Veuillez entrer une date valide (ISO).",
+    number: "Veuillez entrer un nombre valide.",
+    digits: "Veuillez entrer (seulement) une valeur numérique.",
+    creditcard: "Veuillez entrer un numéro de carte de crédit valide.",
+    equalTo: "Veuillez entrer une nouvelle fois la même valeur.",
+    accept: "Veuillez entrer une valeur avec une extension valide.",
+    maxlength: $.validator.format("Veuillez ne pas entrer plus de {0} caractères."),
+    minlength: $.validator.format("Veuillez entrer au moins {0} caractères."),
+    rangelength: $.validator.format("Veuillez entrer entre {0} et {1} caractères."),
+    range: $.validator.format("Veuillez entrer une valeur entre {0} et {1}."),
+    max: $.validator.format("Veuillez entrer une valeur inférieure ou égale à {0}."),
+    min: $.validator.format("Veuillez entrer une valeur supérieure ou égale à {0}.")
+});}(jQuery));var $mcj = jQuery.noConflict(true);</script></div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ENDING TEMPLATE subscribe.html-->
+
+
+
+
+  
+    </main>
+    <!-- footer sections -->
+    <!-- footer sections -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <!-- Section Logo et Description -->
+      <div class="col-lg-4 col-12 mb-4">
+        <img src="/images/logo/logotdj_blac.png" class="logo img-fluid" alt="Logo Terre des Jeunes">
+        <p class="text-white mt-3">Nous sommes Terre des Jeunes, un organisation sans but lucratif visant à sensibiliser les jeunes du monde entier à la sauvegarde de l'environnement et à la gestion locale ou régionale du patrimoine naturel et culturel, par et pour les jeunes eux-mêmes.</p>
+      </div>
+      <!-- Section Liens Directs -->
+      <div class="col-lg-4 col-md-6 col-12 mb-4">
+        <h5 class="site-footer-title mb-3 text-white">Liens Directs</h5>
+        <ul class="footer-menu list-unstyled">
+          
+          <li class="footer-menu-item"><a href="/#activites" class="footer-menu-link text-white">Causes</a></li>
+          
+          <li class="footer-menu-item"><a href="/a-propos/historique/" class="footer-menu-link text-white">Historique</a></li>
+          
+          <li class="footer-menu-item"><a href="/mots-du-president/" class="footer-menu-link text-white">Mots du Président</a></li>
+          
+          <li class="footer-menu-item"><a href="/actualites/" class="footer-menu-link text-white">Actualités</a></li>
+          
+          <li class="footer-menu-item"><a href="/guide-style/" class="footer-menu-link text-white">Guide de style et logo</a></li>
+          
+          <li class="footer-menu-item"><a href="/statuts/" class="footer-menu-link text-white">Statuts</a></li>
+          
+          <li class="footer-menu-item"><a href="/contact/" class="footer-menu-link text-white">Contactez-nous</a></li>
+          
+          <li class="footer-menu-item"><a href="/admin/status/" class="footer-menu-link text-white">Statut technique</a></li>
+          
+          <li class="footer-menu-item"><a href="/formations/ressources/" class="footer-menu-link text-white">Ressources pour les formations</a></li>
+          
+          <li class="footer-menu-item"><a href="/lancer-une-antenne.html" class="footer-menu-link text-white">Lancer une antenne</a></li>
+          
+          <li class="footer-menu-item"><a href="/archives/" class="footer-menu-link text-white">Archives</a></li>
+          
+        </ul>
+      </div>
+      <!-- Section Réseaux Sociaux -->
+      <div class="col-lg-4 col-md-6 col-12 mb-4">
+        <h5 class="site-footer-title mb-3 text-white">Suivez-nous</h5>
+        <ul class="social-icon list-unstyled d-flex justify-content-center">
+          
+          
+          <li class="social-icon-item me-3">
+            <a href="https://www.linkedin.com/company/terre-des-jeunes" class="social-icon-link bi-linkedin text-white"></a>
+          </li>
+          
+          
+          
+          <li class="social-icon-item me-3">
+            <a href="https://www.facebook.com/groups/terredesjeunes/" class="social-icon-link bi-facebook text-white"></a>
+          </li>
+          
+          
+          
+          
+          
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- Footer Bottom -->
+  <div class="site-footer-bottom py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <p class="text-white mb-0">&copy; 2025 Terre des Jeunes. Tous droits réservés. Modifier <a href="https://github.com/alberto56/tdj-comm/edit/main/docs/jekyll_motsdupresident/_posts/2025-04-19-17.md">le code source</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- JAVASCRIPT FILES -->
+<script src="/js/jquery.sticky.js"></script>
+<script src="/js/counter.js"></script>
+<script src="/js/custom.js"></script>
+<script>
+  // we will store the image optmization map file json data in globalMappingData variable. Later we can access
+  // globalMappingData in news block to map the news block images.
+  let globalMappingData = null;
+  const newsContainer = document.getElementById("newsContainer"); // Assurez-vous que l'élément existe
+  const recentNewsContainer = document.getElementById("recentNewsContainer");
+  const countryList = document.getElementById("countryList");
+
+  function loadDefaultNews(defaultArticles) {
+    if (!defaultArticles || defaultArticles.length === 0) {
+      $('.my-hide-if-no-articles').hide();
+      return;
+    }
+
+    const newsContainer = document.getElementById("newsContainer"); // Assurez-vous que l'élément existe
+
+    if (!newsContainer) {
+      return;
+    }
+
+    newsContainer.innerHTML = ""; // Vider le conteneur avant d'ajouter de nouveaux articles
+
+    // Limiter le nombre d'articles affichés
+    const articlesToShow = defaultArticles.slice(0, );
+
+    articlesToShow.forEach(article => {
+    const newsBlock = document.createElement("div");
+    newsBlock.className = "col-lg- col-md-6 col-sm-12 mb-4";
+    newsBlock.setAttribute('data-url-for-filtering', article.url);
+
+    // Tronquer le titre à 50 caractères max
+    const truncatedTitle = article.title.length > 60 ? article.title.substring(0, 55) + "..." : article.title;
+
+    let lirePlus = '';
+    if (typeof article.url !== 'undefined') {
+        lirePlus = `<a href="${article.url}" class="custom-btn btn mt-2">Lire plus</a>`;
+    }
+
+    let pays = '';
+    if (typeof article.pays !== 'undefined') {
+        if (article.pays.drapeau && article.pays.pays && article.pays.antenne) {
+            pays = `<div class="pays-sur-article">
+                <img src="${article.pays.drapeau}"
+                    alt="${article.pays.pays}"
+                    class="img-fluid rounded-circle"
+                    style="object-fit: cover;">
+                <div class="antenne">${article.pays.antenne}</div>
+            </div>`;
+        }
+    }
+
+    if (typeof article.image == "undefined") {
+        article.image = "/images/news/medium-shot-volunteers-with-clothing-donations.jpg";
+    }
+
+    let imgSrc = article.image;
+    if (globalMappingData && imgSrc.startsWith("/media")) {
+      // fetch optimized Image Url for news block images.
+      const optimizePath = getOptimizedImageUrl(article.image, "604x400", globalMappingData, "https://images.terredesjeunes.org");
+      if (optimizePath != "") {
+        imgSrc = optimizePath;
+      }
+    } else {
+      // Optional: wait or retry
+      console.warn('Global Mapping data not loaded yet.');
+    }
+
+    let objPos = "";
+    if (article.position == 'top') {
+      objPos = "object-position: top;";
+    }
+
+    newsBlock.innerHTML = `
+        <div class="card shadow-sm mb-4" style="border: none;">
+            <div class="card-body text-center">
+                ${pays}
+                <h5 class="card-title">${truncatedTitle}</h5>
+                <div style="width: 100%; height: 200px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                    <img src="${imgSrc}" alt="${article.title}" class="img-fluid rounded" data-optimized-size="800x"
+                        style="width: 100%; height: 100%; object-fit: cover; ${objPos}">
+                </div>
+                ${lirePlus}
+            </div>
+        </div>
+    `;
+
+    newsContainer.appendChild(newsBlock);
+    });
+  }
+
+  // Récupérer les actualités par pays
+  async function fetchNewsByCountry(countryName) {
+      try {
+          const response = await fetch(`${NEWS_API_URL}?q=${encodeURIComponent(countryName)}&apiKey=${API_KEY}`);
+          const data = await response.json();
+
+          if (data.articles?.length) {
+              displayNews(data.articles);
+          } else {
+              newsContainer.innerHTML = `<p>Aucune actualité trouvée pour ${countryName}.</p>`;
+          }
+      } catch (error) {
+          console.error(`Erreur lors de la récupération des actualités pour ${countryName}:`, error);
+      }
+  }
+
+  // Afficher les actualités dans le conteneur principal
+  function displayNews(articles) {
+      newsContainer.innerHTML = "";
+      articles.forEach(article => {
+          const newsBlock = document.createElement("div");
+          newsBlock.className = "col-lg-6 col-md-6 col-sm-12 mb-4";
+          newsBlock.innerHTML = `
+      <div class="news-block"  style:"height:30px">
+          <img src="${article.urlToImage || 'C:\Users\rodri\OneDrive\Documents\GitHub\TerreDjeunes\images\news'}" alt="${article.title}" class="img-fluid">
+          <h4>${article.title}</h4>
+          <p>${article.description || "Pas de description disponible."}</p>
+          <a href="${article.url}" class="btn btn-primary read-more" target="_blank"><b>Lire plus</b></a>
+      </div>
+  `;
+          newsContainer.appendChild(newsBlock);
+      });
+  }
+
+  // Gérer les likes et dislikes
+  document.querySelectorAll('.like-icon').forEach(icon => {
+              icon.addEventListener('click', function () {
+                  let likes = parseInt(this.getAttribute('data-likes')) + 1;
+                  this.setAttribute('data-likes', likes);
+                  this.nextElementSibling.textContent = likes;
+              });
+          });
+
+          document.querySelectorAll('.dislike-icon').forEach(icon => {
+              icon.addEventListener('click', function () {
+                  let dislikes = parseInt(this.getAttribute('data-dislikes')) + 1;
+                  this.setAttribute('data-dislikes', dislikes);
+                  this.nextElementSibling.textContent = dislikes;
+              });
+          });
+</script>
+<!-- sections team -->
+<script>
+  //   team Terre des jeunes
+
+  const teamMembers = [
+  { name: "Alice Dupont", role: "Développeuse", image: "images/members/102.png", bio: "Alice est une développeuse passionnée.", social: { facebook: "#", instagram: "#", linkedin: "#" } },
+  { name: "Jean Martin", role: "Designer UX/UI", image: "images/members/membercreat.jpg", bio: "Jean conçoit des expériences utilisateurs.", social: { instagram: "#" } },
+  { name: "Marie Curie", role: "Scientifique", image: "images/c.jpg", bio: "Marie est une pionnière de la physique nucléaire.", social: { facebook: "#", linkedin: "#" } },
+  { name: "Jacques Leblanc", role: "Manager", image: "images/250.jpg", bio: "Jacques excelle en gestion de projets." },
+  ];
+
+  function team_reseaux(member) {
+    if (!member.reseaux) {
+      return '';
+    }
+    let ret = '<div class="team-social text-center">';
+    member.reseaux.forEach(function(social) {
+      ret += `<a class="btn btn-square" href="${social.lien}"><i class="bi bi-${social.type}"></i></a>`;
+    });
+    return ret + '</div>';
+  }
+
+  function populateTeamMembers(teamMembers) {
+  const teamContainer = document.getElementById('team-members');  /*mettre-membres-ici */
+  if (!teamContainer) {
+    return;
+  }
+  teamContainer.innerHTML = `
+          <div class="row row-cols-1 row-cols-md-3 row-cols-lg-6 g-4">
+              ${teamMembers.map((member, index) => `
+                  <div class="col">
+                    <a href="${member.url}">
+                      <div class="card text-center shadow-sm" style="cursor: pointer; border: none;" onclick="showModal(${index})">
+                          <img src="${member.image}" class="card-img-top rounded-circle mx-auto mt-3" alt="${member.name}"
+                            style="width: 120px; height: 120px; object-fit: cover;">
+                          <div class="card-body">
+                              <h5 class="card-title">${member.name}</h5>
+                              <p class="card-text text-muted">${member.role}</p>
+                              ${team_reseaux(member)}
+                          </div>
+                      </div>
+                    </a>
+                  </div>
+              `).join('')}
+          </div>
+      `;
+  }
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+      const navbarToggler = document.querySelector(".navbar-toggler");
+      const navLinks = document.querySelectorAll(".nav-link");
+
+      navLinks.forEach(link => {
+          link.addEventListener("click", function () {
+              if (navbarToggler.getAttribute("aria-expanded") === "true") {
+                  navbarToggler.click(); // Fermer le menu après le clic sur un lien
+              }
+          });
+      });
+  });
+</script>
+<script src="/js/contenu/contenu.js?token=1749843439"></script>
+<script>
+  const services = new Services();
+  $( document ).ready(async function() {
+    await services.init({
+      membres: {
+        callback: function(team) {
+          populateTeamMembers(team);
+        },
+      },
+      articles: {
+        callback: function(news) {
+          loadDefaultNews(news);
+        },
+        not: typeof _notArticlesOfType == "undefined" ? [] : _notArticlesOfType,
+        onlyantenne: typeof _onlyArticlesOfAntenne == "undefined" ? [] : _onlyArticlesOfAntenne,
+      }
+    });
+  });
+</script>
+<script src="/js/image-mapping.js?token=1749843439"></script>
+<script>
+  // Event listener to execute loadImages function when the page is fully loaded
+  window.addEventListener('load', function() {
+    loadImages("https://images.terredesjeunes.org", "https://image-mapping.terredesjeunes.org/mapping-beta-tdj-comm.json");
+  })
+</script>
+
+  </body>
+</html>
+

@@ -1,0 +1,55 @@
+<header class="site-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-12 d-flex flex-wrap">
+        <p class="d-flex me-4 mb-0">
+        </p>
+        <p class="d-flex mb-0">
+        </p>
+      </div>
+      <div class="col-lg-3 col-12 ms-auto d-lg-block d-none ">
+        <ul class="social-icon">
+          {% for item in site.data.config.social %}
+            {% if item.actif %}
+              <li class="social-icon-item">
+                <a href="{{ item.url }}" class="social-icon-link bi-{{ item.icon }}"></a>
+              </li>
+            {% endif %}
+          {% endfor %}
+          <li class="social-icon-item">
+            <a href="/connexion/">Connexion</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- nav dejaaa -->
+<nav class="navbar navbar-expand-lg bg-light shadow-lg">
+  <div class="container">
+    <!-- Logo + Nom -->
+    <a class="navbar-brand d-flex align-items-center my-dark-on-light" href="/">
+      <img src="/logo/logo-tdj40-vert-outline-blanc-x-800-355.png" class="logo img-fluid me-2" alt="Logo Terre des jeunes 40 ans">
+      <h2 class="fw-bold logo">Terre des jeunes</h2>
+    </a>
+    <!-- Bouton Toggle (pour mobile) -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Menu de Navigation -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="/40e/">40 ans</a></li>
+        <li class="nav-item"><a class="nav-link" href="/a-propos/">À propos</a></li>
+        <li class="nav-item"><a class="nav-link click-scroll" href="/#activites">Activités</a></li>
+        <li class="nav-item"><a class="nav-link click-scroll" href="/actualites/">Actualités</a></li>
+
+        <li class="nav-item"><a class="nav-link click-scroll" href="/contact/">Contact</a></li>
+        <li class="nav-item ms-lg-3">
+          <a class="nav-link custom-btn custom-border-btn btn btn-primary" href="/don/">Faire un Don</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

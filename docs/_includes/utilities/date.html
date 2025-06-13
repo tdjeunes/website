@@ -1,0 +1,41 @@
+{% comment %}
+https://jekyll.one/pages/public/tools/toolbox/jekyll/date_time_formats/
+{% endcomment %}
+{% assign template="date.html" %}
+{% include structure/debug.html %}
+{% assign p="_date" %}{% assign v=_date %}{% include structure/r.html %}
+
+{% assign _year = _date | date: '%Y' %}
+{% assign _month_numerical = _date | date: '%-m' %}
+{% assign _day = _date | date: '%-d' %}
+
+{% if _month_numerical == "1" %}
+  {% assign _month = "janvier" %}
+{% elsif _month_numerical == "2" %}
+  {% assign _month = "février" %}
+{% elsif _month_numerical == "3" %}
+  {% assign _month = "mars" %}
+{% elsif _month_numerical == "4" %}
+  {% assign _month = "avril" %}
+{% elsif _month_numerical == "5" %}
+  {% assign _month = "mai" %}
+{% elsif _month_numerical == "6" %}
+  {% assign _month = "juin" %}
+{% elsif _month_numerical == "7" %}
+  {% assign _month = "juillet" %}
+{% elsif _month_numerical == "8" %}
+  {% assign _month = "août" %}
+{% elsif _month_numerical == "9" %}
+  {% assign _month = "septembre" %}
+{% elsif _month_numerical == "10" %}
+  {% assign _month = "octobre" %}
+{% elsif _month_numerical == "11" %}
+  {% assign _month = "novembre" %}
+{% else %}
+  {% assign _month = "décembre" %}
+{% endif %}
+
+{{ _day }} {{ _month }} {{ _year }}
+
+{% assign template="date.html" %}
+{% include structure/enddebug.html %}

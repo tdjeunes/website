@@ -1,0 +1,1313 @@
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Terre des jeunes</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Inclusion de jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
+  <link href="/css/style.css?token=1749843439" rel="stylesheet">
+  <link href="/css/my.css?token=1749843439" rel="stylesheet">
+  <script>
+    // https://stackoverflow.com/questions/9838812
+function loadJSON(path, success, error) {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function()
+  {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        if (success)
+          success(JSON.parse(xhr.responseText));
+      } else {
+        if (error)
+          error(xhr);
+      }
+    }
+  };
+  xhr.open("GET", path, true);
+  xhr.send();
+}
+
+    class TDJ {
+  constructor() {
+    this._data = null;
+    this._callbacks = [];
+  }
+  static instance() {
+    if (!TDJ._instance) {
+      TDJ._instance = new TDJ();
+    }
+    return TDJ._instance;
+  }
+  dataAvailable() {
+    return this._data !== null;
+  }
+  init() {
+    const that = this;
+    loadJSON('/api/v2/all.json',
+      function(data) {
+        that._data = data;
+        that._callbacks.forEach(callback => callback(data));
+      },
+      function(xhr) {
+        console.error(xhr);
+      },
+    );
+  }
+  getData(callback) {
+    if (this.dataAvailable()) {
+      callback(this._data);
+    }
+    else {
+      this._callbacks.push(callback);
+    }
+  }
+}
+
+    TDJ.instance().init();
+  </script>
+</head>
+
+  <body id="section_1">
+    
+    <header class="site-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-12 d-flex flex-wrap">
+        <p class="d-flex me-4 mb-0">
+        </p>
+        <p class="d-flex mb-0">
+        </p>
+      </div>
+      <div class="col-lg-3 col-12 ms-auto d-lg-block d-none ">
+        <ul class="social-icon">
+          
+            
+              <li class="social-icon-item">
+                <a href="https://www.linkedin.com/company/terre-des-jeunes" class="social-icon-link bi-linkedin"></a>
+              </li>
+            
+          
+            
+              <li class="social-icon-item">
+                <a href="https://www.facebook.com/groups/terredesjeunes/" class="social-icon-link bi-facebook"></a>
+              </li>
+            
+          
+            
+          
+            
+          
+            
+          
+          <li class="social-icon-item">
+            <a href="/connexion/">Connexion</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- nav dejaaa -->
+<nav class="navbar navbar-expand-lg bg-light shadow-lg">
+  <div class="container">
+    <!-- Logo + Nom -->
+    <a class="navbar-brand d-flex align-items-center my-dark-on-light" href="/">
+      <img src="/logo/logo-tdj40-vert-outline-blanc-x-800-355.png" class="logo img-fluid me-2" alt="Logo Terre des jeunes 40 ans">
+      <h2 class="fw-bold logo">Terre des jeunes</h2>
+    </a>
+    <!-- Bouton Toggle (pour mobile) -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Menu de Navigation -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="/40e/">40 ans</a></li>
+        <li class="nav-item"><a class="nav-link" href="/a-propos/">À propos</a></li>
+        <li class="nav-item"><a class="nav-link click-scroll" href="/#activites">Activités</a></li>
+        <li class="nav-item"><a class="nav-link click-scroll" href="/actualites/">Actualités</a></li>
+
+        <li class="nav-item"><a class="nav-link click-scroll" href="/contact/">Contact</a></li>
+        <li class="nav-item ms-lg-3">
+          <a class="nav-link custom-btn custom-border-btn btn btn-primary" href="/don/">Faire un Don</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <main>
+      
+
+  
+  
+
+<!-- STARTING TEMPLATE section/breadcumb.html-->
+
+
+
+
+<section class="my-nav-breadcrumb pt-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-12">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            
+              
+              
+              <li class="breadcrumb-item">
+                <a href="/">
+                  Accueil
+                </a>
+              </li>
+            
+              
+              
+              <li class="breadcrumb-item my-last-breadcrumb-item">
+                <a href="/#activites">
+                  Activités
+                </a>
+              </li>
+            
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ENDING TEMPLATE section/breadcumb.html-->
+
+
+
+
+  
+  
+  
+
+<!-- STARTING TEMPLATE h1_hero.html-->
+
+
+
+
+
+
+
+
+<section class="news-detail-header-section text-center" style="background-image: url(/media/cameroun.png)">
+  <div class="section-overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-12">
+        
+        <h1 class="text-white">
+          <span class="my-header-on-picture-background">
+            La Synécoculture
+          </span>
+        </h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ENDING TEMPLATE h1_hero.html-->
+
+
+
+
+  
+
+<!-- STARTING TEMPLATE messages.html-->
+
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-12 mettre-alertes-ici">
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ENDING TEMPLATE messages.html-->
+
+
+
+
+  
+  
+
+<!-- STARTING TEMPLATE onlytext.html-->
+
+
+
+
+<section class="news-section section-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="news-block-top">
+          <div class="news-block-body">
+            <blockquote>
+  <p><a href="https://www.facebook.com/profile.php?id=61566495247549">Suivre nos activités sur notre page Facebook</a></p>
+</blockquote>
+
+<p><strong>LA SYNECOCULTURE</strong>, une technique agricole à haut rendement dans la région nord du Cameroun (principalement dans la commune de Garoua 2 et à Figuil (Mayo-Louti)) sous EC IICT</p>
+
+<p>La Stratégie nationale de développement du Cameroun 2020-2030 vise à augmenter la production agricole, en se concentrant sur l’augmentation des rendements, en particulier sur les exploitations familiales. Le pays fait face à des défis liés aux sécheresses prolongées et à l’augmentation des températures.</p>
+
+<p><strong>La synecoculture</strong>, une technique agricole écologique venant du Japon, réduit au minimum les intrants chimiques et favorise la biodiversité tout en augmentant la production alimentaire et la résilience environnementale. En réponse aux défis climatiques, la Contribution déterminée au niveau national actualisée du Cameroun priorise la promotion de l’agriculture intelligente face au climat.</p>
+
+<p><strong>En établissant les bases, Terre des jeunes Cameroun (TDJC)</strong> a mis en œuvre avec succès un projet de synecoculture en 2020 après avoir été initié au concept lors du 5e Forum de la Synecoculture au Burkina Faso. Le projet comprenait 10 espèces de cultures et 30 variétés, cultivées de manière durable sur une parcelle de 1000 m² pour assurer des récoltes toute l’année.</p>
+
+<p> Le CTCN soutient un projet pilote de synecoculture dans la région nord du Cameroun, spécifiquement dans les communes de Garoua 2 et Figuil (Mayo-Louti). Cette initiative vise à améliorer la sécurité alimentaire, les profils nutritionnels, la qualité des sols, la rentabilité, l’adaptation au climat et la biodiversité des champs.</p>
+
+<p>L’échange de connaissances est essentiel, se concentrant sur le partage d’informations avec les parties prenantes dans des environnements similaires à travers le Cameroun faisant face à des défis analogues. Le projet comprend également l’invitation de deux experts environnementaux d’autres pays africains pour participer à des visites de trois semaines au Cameroun, favorisant l’apprentissage collaboratif et la coopération régionale.</p>
+
+<p><strong>RESULTATS ATTENDUS</strong></p>
+
+<p> Cette assistance technique vise à améliorer la productivité agricole en introduisant des techniques de synecoculture adaptées aux agriculteurs de subsistance dans un contexte climatique plus chaud et plus sec. Les objectifs de l’assistance technique sont :</p>
+
+<p>- Renforcement des capacités pour 500 personnes, principalement des jeunes avec 70 % de femmes, sur les techniques de synecoculture pour renforcer la résilience au changement climatique à Garoua 2 et Figuil (Mayo-Louti).</p>
+
+<p>- Répondre aux besoins communautaires identifiés.</p>
+
+<p>- Documenter des données quantitatives sur les avantages de la synecoculture par rapport à l’agriculture conventionnelle, y compris l’efficacité de l’irrigation, les rendements agricoles, la santé des sols et la biodiversité, avec l’établissement d’un système de suivi et d’évaluation.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[Local climate resilience through synecoculture, a high-yield agricultural technique in the northern region of Cameroon (mainly in the commune of Garoua 2 and in Figuil (Mayo-Louti)) under EC IICT</td>
+      <td>Climate Technology Centre &amp; Network</td>
+      <td>Mon, 05/06/2024](https://www.ctc-n.org/technical-assistance/projects/local-climate-resilience-through-synecoculture-high-yield)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><a href="https://www.doc-developpement-durable.org/file/Culture/Agriculture/synecoculture/index2.html">Manuel d’agriculture synécologique - complet (pages 1 à 55) (65 Mo) : 2016_Manuel_Synecoculture_Francais_all.pdf Sur le site miroir : https://www.sonycsl.co.jp/person/masa_funabashi/public/2016_Manuel_Synecoculture_Fran%C3%A7ais_all.pdf 2b) Manuel d’agriculture synécologique - partie 1 (pages 1 à 10) (0,3 Mo) : 2016_Manuel_Synecoculture_Francais_page01-10.pdf 2c) Manuel d’agriculture synécologique - partie 2 (pages 11 à 20) (20 Mo) : 2016_Manuel_Synecoculture_Francais_page11-20.pdf 2d) Manuel d’agriculture synécologique - partie 3 (pages 21 à 30) (15 Mo) : 2016_Manuel_Synecoculture_Francais_page21-30.pdf 2e) Manuel d’agriculture synécologique - partie 4 (pages 31 à 40) (20 Mo) : 2016_Manuel_Synecoculture_Francais_page31-40.pdf 2f) Manuel d’agriculture synécologique - partie 5 (pages 41 à 55) (12 Mo) : 2016_Manuel_Synecoculture_Francais_page41-55.pdf</a></p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ENDING TEMPLATE onlytext.html-->
+
+
+
+
+  
+
+<!-- STARTING TEMPLATE sections/syneco/maps.html-->
+
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2>Six (6) terrains sont ciblés à Garoua, ville de 2 millions d'habitants dans le Nord du Cameroun.</h2>
+        <p><a class="custom-btn btn" href="https://www.google.com/maps/d/u/0/edit?mid=16c87ahO525W-AWMGwMZOaQWxiwq29MA&ll=9.370491353064027%2C13.445762750000032&z=14">Voyez les emplacements sur Google My Maps</a></p>
+      </div>
+    </div>
+    <div class="row">
+      
+        
+          
+          
+          
+          
+          <div class="col-6 col-md-4 col-lg-2">
+  <div class="news-block">
+    <a href="/synecoculture/jardin-get/">
+      <div>Jardin scolaire Tongo (GET)</div>
+      <img class="my-syneco-terrain-preview" src="/media/get-preview.jpg" />
+    </a>
+  </div>
+</div>
+
+        
+      
+        
+          
+          
+          
+          
+          <div class="col-6 col-md-4 col-lg-2">
+  <div class="news-block">
+    <a href="/synecoculture/jardin-geny/">
+      <div>Jardin scolaire Nyakira (GENY)</div>
+      <img class="my-syneco-terrain-preview" src="/media/geny-preview.jpg" />
+    </a>
+  </div>
+</div>
+
+        
+      
+        
+          
+          
+          
+          
+          <div class="col-6 col-md-4 col-lg-2">
+  <div class="news-block">
+    <a href="/synecoculture/jardin-geng/">
+      <div>Jardin scolaire Ngourore (GENG)</div>
+      <img class="my-syneco-terrain-preview" src="/media/geng-preview.jpg" />
+    </a>
+  </div>
+</div>
+
+        
+      
+        
+          
+          
+          
+          
+          <div class="col-6 col-md-4 col-lg-2">
+  <div class="news-block">
+    <a href="/synecoculture/jardin-gcn/">
+      <div>Parcelle communautaire de Nyakira (GCN)</div>
+      <img class="my-syneco-terrain-preview" src="/media/gcn-preview.jpg" />
+    </a>
+  </div>
+</div>
+
+        
+      
+        
+          
+          
+          
+          
+          <div class="col-6 col-md-4 col-lg-2">
+  <div class="news-block">
+    <a href="/synecoculture/jardin-gcm/">
+      <div>Parcelle communautaire de Mbilga (GCM)</div>
+      <img class="my-syneco-terrain-preview" src="/media/gcm-preview.jpg" />
+    </a>
+  </div>
+</div>
+
+        
+      
+        
+          
+          
+          
+          
+          <div class="col-6 col-md-4 col-lg-2">
+  <div class="news-block">
+    <a href="/synecoculture/jardin-gca/">
+      <div>Parcelle communautaire de L'Apes-Wantoumi (GCA)</div>
+      <img class="my-syneco-terrain-preview" src="/media/gca-preview.jpg" />
+    </a>
+  </div>
+</div>
+
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <h2>Six (6) terrains sont ciblés à Figuil, ville de 30&nbsp;000 habitants dans le Nord du Cameroun, à deux heures de Garoua.</h2>
+        <p><a class="custom-btn btn" href="https://www.google.com/maps/d/u/0/edit?mid=1OD1fcg4ZYpv2sRY0vTgWqwvDEmE3EgI&ll=9.89902716949461%2C14.055945000000003&z=11">Voyez les emplacements sur Google My Maps</a></p>
+      </div>
+    </div>
+    <div class="row">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+          
+          
+          
+          <div class="col-6 col-md-4 col-lg-2">
+  <div class="news-block">
+    <a href="/synecoculture/jardin-fei/">
+      <div>Jardin scoalaire Indjode (FEI)</div>
+      <img class="my-syneco-terrain-preview" src="/media/fei-preview.jpg" />
+    </a>
+  </div>
+</div>
+
+        
+      
+        
+          
+          
+          
+          
+          <div class="col-6 col-md-4 col-lg-2">
+  <div class="news-block">
+    <a href="/synecoculture/jardin-fede/">
+      <div>Jardin scoalaire Delele (FEDE)</div>
+      <img class="my-syneco-terrain-preview" src="/media/fede-preview.jpg" />
+    </a>
+  </div>
+</div>
+
+        
+      
+        
+          
+          
+          
+          
+          <div class="col-6 col-md-4 col-lg-2">
+  <div class="news-block">
+    <a href="/synecoculture/jardin-feda/">
+      <div>Jardin scoalaire Dahal (FEDA)</div>
+      <img class="my-syneco-terrain-preview" src="/media/feda-preview.jpg" />
+    </a>
+  </div>
+</div>
+
+        
+      
+        
+          
+          
+          
+          
+          <div class="col-6 col-md-4 col-lg-2">
+  <div class="news-block">
+    <a href="/synecoculture/jardin-fcw/">
+      <div>Parcelle communautaire de Wafango (FCW)</div>
+      <img class="my-syneco-terrain-preview" src="/media/fcw-preview.jpg" />
+    </a>
+  </div>
+</div>
+
+        
+      
+        
+          
+          
+          
+          
+          <div class="col-6 col-md-4 col-lg-2">
+  <div class="news-block">
+    <a href="/synecoculture/jardin-fck/">
+      <div>Parcelle communautaire de Kereng (FCK)</div>
+      <img class="my-syneco-terrain-preview" src="/media/fck-preview.jpg" />
+    </a>
+  </div>
+</div>
+
+        
+      
+        
+          
+          
+          
+          
+          <div class="col-6 col-md-4 col-lg-2">
+  <div class="news-block">
+    <a href="/synecoculture/jardin-fcb/">
+      <div>Parcelle communautaire de Bawaka (FCB)</div>
+      <img class="my-syneco-terrain-preview" src="/media/fcb-preview.jpg" />
+    </a>
+  </div>
+</div>
+
+        
+      
+    </div>
+  </div>
+</section>
+
+
+<!-- ENDING TEMPLATE sections/syneco/maps.html-->
+
+
+
+  
+
+<!-- STARTING TEMPLATE sections/syneco/metrics.html-->
+
+
+<section>
+  <div class="container syneco-metrics-info">
+    <div class="row">
+      <div class="col-12">
+      </div>
+    </div>
+  </div>
+  <div class="container syneco-metrics">
+    <div class="row">
+      <div class="col-12">
+        <h2>Métriques</h2>
+        <p><p>Dans le cadre d’un contrat signé entre Terre des jeunes et le CTCN le 24 juin 2024, Terre des jeunes s’engage à fournir des “données quantitatives ouvertes” sur la productivité des jardins de synécoculture vs. les jardins conventionnels (activié et livrable 6.4), que vous trouverez ci-joints.</p>
+
+<h3 id="méthodologie">Méthodologie</h3>
+
+<p>Le projet compte douze (12) terrains, et chaque terrain est divisé en deux (2) parcelles, une suivant la méthode de production conventionnelle et l’autre suivant la méthode de production de synécoculture. Par méthode conventionnelle nous entendons une méthode de production qui est généralement utilisée dans la région, et qui est moins diversifiée que la synécoculture, et utilise plus d’intrants chimiques.</p>
+
+<p>Chaque mois à partir du 18 mars 2025, l’équipe terrain envoie, sous forme de chiffrier Excel, à l’équipe de Terre des jeunes des résultats d’enquête auprès des productrices, des 24 parcelles (chacun des douze terrains est divisé en deux parcelles), avec les questions suivantes:</p>
+
+<ul>
+  <li>M1: Dépense par semaine en CFA des intrants chimiques</li>
+  <li>M2: Entretien des écosystèmes et de la biodiversité</li>
+  <li>M3 : Inquiétude par rapport à l’utilisation durable de l’eau</li>
+  <li>M4.1 : Inquiétude par rapport à la sécurité alimentaire</li>
+  <li>M4.2: Inquiétude par rapport à la qualité nutritive de vos aliments</li>
+  <li>M4.3: Vente (valeur approximative des denrées vendues) en CFA</li>
+  <li>M4.4: Nombre de Récolte (démontrant que la synecoculture n’est pas saisonnier)</li>
+  <li>M4.4: Nombre de Récolte (démontrant que la synecoculture n’est pas saisonnier)</li>
+  <li>M5: Attaque des plantes</li>
+</ul>
+
+<p>Pour chaque métrique et chaque parcelle, on évalue uniquement des réponses chiffrées de 1 (très inquiet) à 5 (très satisfait). Des métriques qui ne correspondent pas à un chiffre de 1 à 5 sont exclues de l’analyse.</p>
+
+<p>L’équipe de gestion entre ensuite les données dans un <a href="https://docs.google.com/spreadsheets/d/1mZhrxwnM2VhfynTstiIp-PTUitLaBz28DV9Pi4ffT_M/edit?gid=0#gid=0">chiffrier Google Docs qui est public</a>.</p>
+
+<p>L’<a href="https://docs.google.com/spreadsheets/d/1mZhrxwnM2VhfynTstiIp-PTUitLaBz28DV9Pi4ffT_M/edit?gid=860806845#gid=860806845">onglet “overall”</a> contient les données nettoyées, traçables et transformées.</p>
+
+<p>Le projet Python <a href="https://github.com/dcycle/google-sheets-to-csv">Google Sheets To CVS</a> est ensuite utilsé pour prouire un fichier CSV à partir de ces données. Ce CSV est ensuite stocké à https://beta.terredesjeunes.org/data/syneco.csv.</p>
+
+<p>Le projet <a href="https://github.com/dcycle/starterkit-csv-to-d3">Starterkit CSV to D3</a> est utilisé pour convertir le CSV en graphiques D3.js.</p>
+</p>
+      </div>
+      <div class="col-12">
+        <div class="checkbox-container"></div>
+        <div id="chart-goes-here" class="chart-enclosure"></div>
+        <script type="text/javascript" src="//d3js.org/d3.v7.min.js"></script>
+        <script type="text/javascript">
+          /**
+ * Display a multiple line chart.
+ *
+ * @param {string} source
+ *   A location such as data/multivalued-1000-rows-20-columns.csv
+ * @param {string} chartLocation
+ *   An element on the page, often a div with an id, where the chart will be
+ *   displayed.
+ * @param {int} width
+ *   Width of the chart.
+ * @param {int} height
+ *   Height of the chart.
+ * @param {int} margin
+ *   Margins provides padding around the chart.
+ * @param {bool} displayXAxisPlotting
+ *   If displayXAxisPlotting is true to then X axis displayed in chart.
+ * @param {bool} displayYAxisPlotting
+ *   If displayYAxisPlotting is true to then Y axis displayed in chart.
+ *
+ * See https://d3-graph-gallery.com/graph/shape.html#myline.
+ */
+ function multipleLineChart(
+    source,
+    chartLocation,
+    width,
+    height,
+    margin,
+    displayXAxisPlotting,
+    displayYAxisPlotting
+) {
+    /*
+        Create SVG element
+        chartLocation is a selector string or a reference to an
+        existing HTML element where the SVG will be inserted.
+        For example, it might be a string like "#chart" to select
+        an element with the ID chart.
+    */
+    const svg = d3.select(chartLocation).append("svg")
+        /*
+            Sets the width of the SVG element.
+            Total width including margins then only x,y axis rendered completely inside chart.
+        */
+        .attr("width", width + margin.left + margin.right)
+        /*
+            Sets the height of the SVG element.
+            Total height including margins then only x,y axis rendered completely inside chart.
+        */
+        .attr("height", height + margin.top + margin.bottom)
+        /*
+            append("g") Appends a group element (<g>) to the SVG container.
+            Explanation:
+                The <g> element is used to group other SVG elements
+            together. It is often used to apply transformations and
+            styling to a collection of elements. By appending this
+            <g> element, you create a group that can be transformed or
+            styled as a unit.
+        */
+        .append("g")
+        /*
+            .attr("transform", translate(${margin.left},${margin.top})):
+            Moves the group element to account for margins, so the
+            actual chart area starts after the margin space.
+        */
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    // Read the CSV file.
+    d3.csv(source).then(data => {
+        // Identify the X-axis column (first column).
+        const xAxisColumn = Object.keys(data[0])[0];
+        // Extract Y-axis columns (all columns except the first one).
+        const columns = Object.keys(data[0]).slice(1);
+
+        /*
+          Parse data: convert strings to numbers
+        */
+        data.forEach(d => {
+            d[xAxisColumn] = +d[xAxisColumn];
+            columns.forEach(column => d[column] = +d[column]);
+        });
+
+        /*
+            Define scales and axes
+            d3.scaleLinear() is a function from D3.js that creates
+            a linear scale. Linear scales map numerical data values to
+            a continuous range of pixel values. It’s used for axes
+            where the data is distributed in a linear fashion.
+        */
+        const x = d3.scaleLinear()
+            /*
+                d3.extent(data, d => d[xAxisColumn]) calculates the
+                extent (i.e., minimum and maximum) of the data values for
+                the x-axis.
+                data is your dataset (an array of objects).
+                d => d[xAxisColumn] is a function that extracts the value
+                corresponding to xAxisColumn from each data object.
+                d3.extent returns an array with two values: the minimum
+                and maximum values in the dataset for the specified key.
+                This array sets the domain of the scale.
+            */
+            .domain(d3.extent(data, d => d[xAxisColumn]))
+            /*
+                range specifies the range of pixel values the data values will be mapped to.
+                [0, width] means that the smallest data value will be
+                mapped to pixel position 0, and the largest data value will
+                be mapped to pixel position width. If width is,
+                for example, 730 pixels, then the data values will be
+                mapped from 0 to 730 pixels along the x-axis.
+            */
+            .range([0, width]);
+
+        /*
+            Linear scales map numerical data values to
+            a continuous range of pixel values
+        */
+        let y = d3.scaleLinear()
+            /*
+                The .domain() method defines the input range for the scale.
+                In this case, 0 is the minimum value, ensuring that the scale starts at zero.
+                d3.max(data, d => d3.max(columns, col => d[col])) calculates
+                the maximum value of all the other columns across the data(except first column),
+                ensuring that the scale can accommodate the highest value found in the dataset.
+                This setup is particularly useful in line charts where you want the y-axis
+                to dynamically adjust to the range of values in your data, ensuring that all
+                lines fit well within the chart’s vertical space.
+            */
+            .domain([0, d3.max(data, d => d3.max(columns, col => d[col]))])
+            /*
+               .range([height, 0]) sets the output range of the scale.
+               It maps data values to pixel positions on the y-axis, where
+               height corresponds to the bottom of the chart and 0
+               corresponds to the top.
+            */
+            .range([height, 0]);
+
+        /*
+            d3.axisBottom(x): Creates a bottom-oriented axis using the x scale.
+            .ticks(data.length): Configures the axis to have tick marks for each
+            data point in the dataset, which helps in clearly displaying and aligning
+            the data points along the x-axis.
+        */
+        const xAxis = d3.axisBottom(x).ticks(data.length);
+        /*
+            d3.axisLeft(y): Creates a vertical axis positioned on the left side of the SVG,
+            using the y scale function to map data values to pixel positions.
+        */
+        const yAxis = d3.axisLeft(y);
+
+        if (displayXAxisPlotting) {
+            /*
+                The append('g') method adds a new group element to the SVG. This group element
+                will contain all the parts of the x-axis (ticks, labels, etc.).
+            */
+            svg.append('g')
+                .attr('class', 'x-axis')
+                /*
+                    The transform attribute is used to position the axis correctly. By translating
+                    the group to the bottom of the SVG (translate(0,${height})), the x-axis is
+                    placed along the bottom edge of the chart area.
+                */
+                .attr('transform', `translate(0,${height})`)
+                /*
+                    The .call(xAxis) method applies the axis generator to the group element. This
+                    method draws the x-axis based on the scale and configuration provided to
+                    d3.axisBottom(x).
+                */
+                .call(xAxis)
+                .attr('stroke', '#333')
+                .attr('fill', 'none');
+        }
+
+        if (displayYAxisPlotting) {
+            // svg.append('g'): Adds a new group element to the SVG.
+            svg.append('g')
+                // .attr('class', 'y-axis'): Sets the class for CSS styling and targeting.
+                .attr('class', 'y-axis')
+                // .call(yAxis): Draws the y-axis using the yAxis generator function.
+                .call(yAxis)
+                .attr('stroke', '#333')
+                .attr('fill', 'none');
+        }
+
+        // Add gridlines
+        svg.append('g')
+            .attr('class', 'grid')
+            .call(d3.axisLeft(y)
+                .tickSize(-width)
+                .tickFormat('')
+            );
+
+        /*
+          Define line generators
+          d3.line(): Creates a line generator function.
+        */
+        const line = d3.line()
+            // .x(d => x(d[xAxisColumn])): Maps data values to x-coordinates using the x scale.
+            .x(d => x(d[xAxisColumn]))
+            // .y(d => y(d.value)): Maps data values to y-coordinates using the y scale.
+            .y(d => y(d.value))
+            // Smooth curve.
+            .curve(d3.curveMonotoneX);
+
+        /*
+            This code creates and configures  separate line paths for a line chart
+            within the SVG element. Each line represents a different data series
+            (amount1, amount2, amount3......).
+        */
+        const amountLines = {};
+        columns.forEach((column, i) => {
+            amountLines[column] = svg.append('path')
+                .attr('class', 'line')
+                .attr('data-column', column) // Add data-column attribute
+                .style('stroke', d3.schemeCategory10[i % 10])
+                .style('stroke-width', 2) // Thicker line
+                .style('fill', 'none')
+                .style('opacity', 0); // Initially hide the line
+        });
+
+        // Create dynamic checkboxes and legends.
+        const checkboxContainer = d3.select('.checkbox-container');
+        columns.forEach((column, i) => {
+            checkboxContainer.append('label')
+                .html(`<input type="checkbox" checked id="checkbox-${column}"> <span style="color: ${d3.schemeCategory10[i % 10]};">&#9679;</span> ${column}`)
+                .style('display', 'block');
+        });
+
+        // Add tooltips
+        const tooltip = d3.select(chartLocation).append('div')
+            .attr('class', 'tooltip')
+            .style('opacity', 0)
+            .style('position', 'absolute')
+            .style('background-color', '#fff')
+            .style('border', '1px solid #ccc')
+            .style('padding', '5px')
+            .style('border-radius', '4px');
+
+        // Create a tooltip container for each line path.
+        svg.selectAll('.line')
+            .on('mouseover', function(event, d) {
+                tooltip.transition().duration(200).style('opacity', .9);
+                // Bring the hovered line to the front.
+                d3.select(this).raise();
+            })
+            .on('mousemove', function(event, d) {
+                const [mx, my] = d3.pointer(event);
+                const xValue = x.invert(mx);
+
+                // Find the closest data point to the mouse
+                const closestData = data.reduce((prev, curr) => {
+                    const prevDist = Math.abs(prev[xAxisColumn] - xValue);
+                    const currDist = Math.abs(curr[xAxisColumn] - xValue);
+                    return currDist < prevDist ? curr : prev;
+                });
+
+                // Get column name from the data-column attribute.
+                const column = d3.select(this).attr('data-column');
+                tooltip.html(`Week: ${closestData[xAxisColumn]}<br>${column}: ${closestData[column]}`)
+                    .style('left', `${event.pageX + 5}px`)
+                    .style('top', `${event.pageY - 28}px`);
+            })
+            .on('mouseout', function(d) {
+                tooltip.transition().duration(500).style('opacity', 0);
+            });
+
+        /*
+            Update function for lines
+            The function first determines which lines should be visible based on the state
+            of the checkboxes.
+        */
+        function updateLines() {
+            const selectedLines = columns.filter(col => document.getElementById(`checkbox-${col}`).checked);
+
+            // Calculate new y-axis domain based on selected lines.
+            if (selectedLines.length > 0) {
+                const yExtent = d3.extent(data.flatMap(d => selectedLines.map(col => d[col])));
+                y.domain([yExtent[0], yExtent[1]]);
+            } else {
+                // Handle case with no selected lines.
+                y.domain([0, 0]);
+            }
+
+            // Animate the y-axis transition
+            svg.select('.y-axis')
+                .transition()
+                .duration(750)
+                .call(d3.axisLeft(y));
+
+            // It updates the path data and color of each visible line to reflect the current
+            // data and styling preferences.
+            selectedLines.forEach((column, index) => {
+                amountLines[column]
+                    .datum(data.map(d => ({ [xAxisColumn]: d[xAxisColumn], value: d[column] })))
+                    // Apply transition to the path.
+                    .transition()
+                    // Staggered delay for each line.
+                    .delay(index * 500)
+                    .duration(750)
+                    .attr('d', line)
+                    // Make line visible.
+                    .style('opacity', 1)
+                    .style('stroke', d3.schemeCategory10[columns.indexOf(column) % 10]);
+            });
+
+            // It hides or shows each line accordingly.
+            columns.forEach(column => {
+                if (!selectedLines.includes(column)) {
+                    amountLines[column].transition()
+                        .duration(750)
+                        // Hide line with animation.
+                        .style('opacity', 0);
+                }
+            });
+        }
+
+        // Initial rendering of lines and y-axis
+        updateLines();
+
+        // Add event listeners to checkboxes
+        columns.forEach(column => {
+            document.getElementById(`checkbox-${column}`).addEventListener('change', updateLines);
+        });
+    }).catch(error => {
+        console.error('Error loading or parsing data:', error);
+        d3.select(chartLocation).append('p').text('Failed to load data.').style('color', 'red');
+    });
+}
+
+        </script>
+        <script type="text/javascript">
+          /*
+            Set dimensions
+            Margins provide padding around the chart, ensuring
+            that axis labels and titles are not crowded or clipped.
+            They also prevent data points from being too close to
+            the edges of the chart.
+          */
+          const margin = { top: 20, right: 20, bottom: 30, left: 50 };
+          /*
+            Width and Height determine the size of the area where
+            the actual chart is drawn. These values are derived by
+            subtracting the margins from the total SVG dimensions,
+            giving you the drawable area for your chart elements
+            (like lines, points, and axes).
+            Define margins, width, and height
+          */
+          const width = 1200 - margin.left - margin.right;
+          const height = 400 - margin.top - margin.bottom;
+
+          // If displayXAxisPlotting is true to then X axis displayed in chart.
+          const displayXAxisPlotting = true;
+          // If displayYAxisPlotting is true to then Y axis displayed in chart.
+          const displayYAxisPlotting = true;
+
+          multipleLineChart(
+            '/data/overview.csv',
+            '#chart-goes-here',
+            width,
+            height,
+            margin,
+            displayXAxisPlotting,
+            displayYAxisPlotting
+          );
+        </script>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ENDING TEMPLATE sections/syneco/metrics.html-->
+
+
+
+
+  
+    </main>
+    <!-- footer sections -->
+    <!-- footer sections -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <!-- Section Logo et Description -->
+      <div class="col-lg-4 col-12 mb-4">
+        <img src="/images/logo/logotdj_blac.png" class="logo img-fluid" alt="Logo Terre des Jeunes">
+        <p class="text-white mt-3">Nous sommes Terre des Jeunes, un organisation sans but lucratif visant à sensibiliser les jeunes du monde entier à la sauvegarde de l'environnement et à la gestion locale ou régionale du patrimoine naturel et culturel, par et pour les jeunes eux-mêmes.</p>
+      </div>
+      <!-- Section Liens Directs -->
+      <div class="col-lg-4 col-md-6 col-12 mb-4">
+        <h5 class="site-footer-title mb-3 text-white">Liens Directs</h5>
+        <ul class="footer-menu list-unstyled">
+          
+          <li class="footer-menu-item"><a href="/#activites" class="footer-menu-link text-white">Causes</a></li>
+          
+          <li class="footer-menu-item"><a href="/a-propos/historique/" class="footer-menu-link text-white">Historique</a></li>
+          
+          <li class="footer-menu-item"><a href="/mots-du-president/" class="footer-menu-link text-white">Mots du Président</a></li>
+          
+          <li class="footer-menu-item"><a href="/actualites/" class="footer-menu-link text-white">Actualités</a></li>
+          
+          <li class="footer-menu-item"><a href="/guide-style/" class="footer-menu-link text-white">Guide de style et logo</a></li>
+          
+          <li class="footer-menu-item"><a href="/statuts/" class="footer-menu-link text-white">Statuts</a></li>
+          
+          <li class="footer-menu-item"><a href="/contact/" class="footer-menu-link text-white">Contactez-nous</a></li>
+          
+          <li class="footer-menu-item"><a href="/admin/status/" class="footer-menu-link text-white">Statut technique</a></li>
+          
+          <li class="footer-menu-item"><a href="/formations/ressources/" class="footer-menu-link text-white">Ressources pour les formations</a></li>
+          
+          <li class="footer-menu-item"><a href="/lancer-une-antenne.html" class="footer-menu-link text-white">Lancer une antenne</a></li>
+          
+          <li class="footer-menu-item"><a href="/archives/" class="footer-menu-link text-white">Archives</a></li>
+          
+        </ul>
+      </div>
+      <!-- Section Réseaux Sociaux -->
+      <div class="col-lg-4 col-md-6 col-12 mb-4">
+        <h5 class="site-footer-title mb-3 text-white">Suivez-nous</h5>
+        <ul class="social-icon list-unstyled d-flex justify-content-center">
+          
+          
+          <li class="social-icon-item me-3">
+            <a href="https://www.linkedin.com/company/terre-des-jeunes" class="social-icon-link bi-linkedin text-white"></a>
+          </li>
+          
+          
+          
+          <li class="social-icon-item me-3">
+            <a href="https://www.facebook.com/groups/terredesjeunes/" class="social-icon-link bi-facebook text-white"></a>
+          </li>
+          
+          
+          
+          
+          
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- Footer Bottom -->
+  <div class="site-footer-bottom py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <p class="text-white mb-0">&copy; 2025 Terre des Jeunes. Tous droits réservés. Modifier <a href="https://github.com/alberto56/tdj-comm/edit/main/docs/jekyll_activites/_posts/2025-02-13-map_titre_resilience_climatique_locale_grace_a_la_synecoculture_body_la_synecoculture_une_technique_agricole_a_haut_rendement_dans_la_region_nord_du_cameroun_principalement_dans_la_commune_de_garoua_2_et_a_figuil_mayo-louti_sous_ec_ii.md">le code source</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- JAVASCRIPT FILES -->
+<script src="/js/jquery.sticky.js"></script>
+<script src="/js/counter.js"></script>
+<script src="/js/custom.js"></script>
+<script>
+  // we will store the image optmization map file json data in globalMappingData variable. Later we can access
+  // globalMappingData in news block to map the news block images.
+  let globalMappingData = null;
+  const newsContainer = document.getElementById("newsContainer"); // Assurez-vous que l'élément existe
+  const recentNewsContainer = document.getElementById("recentNewsContainer");
+  const countryList = document.getElementById("countryList");
+
+  function loadDefaultNews(defaultArticles) {
+    if (!defaultArticles || defaultArticles.length === 0) {
+      $('.my-hide-if-no-articles').hide();
+      return;
+    }
+
+    const newsContainer = document.getElementById("newsContainer"); // Assurez-vous que l'élément existe
+
+    if (!newsContainer) {
+      return;
+    }
+
+    newsContainer.innerHTML = ""; // Vider le conteneur avant d'ajouter de nouveaux articles
+
+    // Limiter le nombre d'articles affichés
+    const articlesToShow = defaultArticles.slice(0, );
+
+    articlesToShow.forEach(article => {
+    const newsBlock = document.createElement("div");
+    newsBlock.className = "col-lg- col-md-6 col-sm-12 mb-4";
+    newsBlock.setAttribute('data-url-for-filtering', article.url);
+
+    // Tronquer le titre à 50 caractères max
+    const truncatedTitle = article.title.length > 60 ? article.title.substring(0, 55) + "..." : article.title;
+
+    let lirePlus = '';
+    if (typeof article.url !== 'undefined') {
+        lirePlus = `<a href="${article.url}" class="custom-btn btn mt-2">Lire plus</a>`;
+    }
+
+    let pays = '';
+    if (typeof article.pays !== 'undefined') {
+        if (article.pays.drapeau && article.pays.pays && article.pays.antenne) {
+            pays = `<div class="pays-sur-article">
+                <img src="${article.pays.drapeau}"
+                    alt="${article.pays.pays}"
+                    class="img-fluid rounded-circle"
+                    style="object-fit: cover;">
+                <div class="antenne">${article.pays.antenne}</div>
+            </div>`;
+        }
+    }
+
+    if (typeof article.image == "undefined") {
+        article.image = "/images/news/medium-shot-volunteers-with-clothing-donations.jpg";
+    }
+
+    let imgSrc = article.image;
+    if (globalMappingData && imgSrc.startsWith("/media")) {
+      // fetch optimized Image Url for news block images.
+      const optimizePath = getOptimizedImageUrl(article.image, "604x400", globalMappingData, "https://images.terredesjeunes.org");
+      if (optimizePath != "") {
+        imgSrc = optimizePath;
+      }
+    } else {
+      // Optional: wait or retry
+      console.warn('Global Mapping data not loaded yet.');
+    }
+
+    let objPos = "";
+    if (article.position == 'top') {
+      objPos = "object-position: top;";
+    }
+
+    newsBlock.innerHTML = `
+        <div class="card shadow-sm mb-4" style="border: none;">
+            <div class="card-body text-center">
+                ${pays}
+                <h5 class="card-title">${truncatedTitle}</h5>
+                <div style="width: 100%; height: 200px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                    <img src="${imgSrc}" alt="${article.title}" class="img-fluid rounded" data-optimized-size="800x"
+                        style="width: 100%; height: 100%; object-fit: cover; ${objPos}">
+                </div>
+                ${lirePlus}
+            </div>
+        </div>
+    `;
+
+    newsContainer.appendChild(newsBlock);
+    });
+  }
+
+  // Récupérer les actualités par pays
+  async function fetchNewsByCountry(countryName) {
+      try {
+          const response = await fetch(`${NEWS_API_URL}?q=${encodeURIComponent(countryName)}&apiKey=${API_KEY}`);
+          const data = await response.json();
+
+          if (data.articles?.length) {
+              displayNews(data.articles);
+          } else {
+              newsContainer.innerHTML = `<p>Aucune actualité trouvée pour ${countryName}.</p>`;
+          }
+      } catch (error) {
+          console.error(`Erreur lors de la récupération des actualités pour ${countryName}:`, error);
+      }
+  }
+
+  // Afficher les actualités dans le conteneur principal
+  function displayNews(articles) {
+      newsContainer.innerHTML = "";
+      articles.forEach(article => {
+          const newsBlock = document.createElement("div");
+          newsBlock.className = "col-lg-6 col-md-6 col-sm-12 mb-4";
+          newsBlock.innerHTML = `
+      <div class="news-block"  style:"height:30px">
+          <img src="${article.urlToImage || 'C:\Users\rodri\OneDrive\Documents\GitHub\TerreDjeunes\images\news'}" alt="${article.title}" class="img-fluid">
+          <h4>${article.title}</h4>
+          <p>${article.description || "Pas de description disponible."}</p>
+          <a href="${article.url}" class="btn btn-primary read-more" target="_blank"><b>Lire plus</b></a>
+      </div>
+  `;
+          newsContainer.appendChild(newsBlock);
+      });
+  }
+
+  // Gérer les likes et dislikes
+  document.querySelectorAll('.like-icon').forEach(icon => {
+              icon.addEventListener('click', function () {
+                  let likes = parseInt(this.getAttribute('data-likes')) + 1;
+                  this.setAttribute('data-likes', likes);
+                  this.nextElementSibling.textContent = likes;
+              });
+          });
+
+          document.querySelectorAll('.dislike-icon').forEach(icon => {
+              icon.addEventListener('click', function () {
+                  let dislikes = parseInt(this.getAttribute('data-dislikes')) + 1;
+                  this.setAttribute('data-dislikes', dislikes);
+                  this.nextElementSibling.textContent = dislikes;
+              });
+          });
+</script>
+<!-- sections team -->
+<script>
+  //   team Terre des jeunes
+
+  const teamMembers = [
+  { name: "Alice Dupont", role: "Développeuse", image: "images/members/102.png", bio: "Alice est une développeuse passionnée.", social: { facebook: "#", instagram: "#", linkedin: "#" } },
+  { name: "Jean Martin", role: "Designer UX/UI", image: "images/members/membercreat.jpg", bio: "Jean conçoit des expériences utilisateurs.", social: { instagram: "#" } },
+  { name: "Marie Curie", role: "Scientifique", image: "images/c.jpg", bio: "Marie est une pionnière de la physique nucléaire.", social: { facebook: "#", linkedin: "#" } },
+  { name: "Jacques Leblanc", role: "Manager", image: "images/250.jpg", bio: "Jacques excelle en gestion de projets." },
+  ];
+
+  function team_reseaux(member) {
+    if (!member.reseaux) {
+      return '';
+    }
+    let ret = '<div class="team-social text-center">';
+    member.reseaux.forEach(function(social) {
+      ret += `<a class="btn btn-square" href="${social.lien}"><i class="bi bi-${social.type}"></i></a>`;
+    });
+    return ret + '</div>';
+  }
+
+  function populateTeamMembers(teamMembers) {
+  const teamContainer = document.getElementById('team-members');  /*mettre-membres-ici */
+  if (!teamContainer) {
+    return;
+  }
+  teamContainer.innerHTML = `
+          <div class="row row-cols-1 row-cols-md-3 row-cols-lg-6 g-4">
+              ${teamMembers.map((member, index) => `
+                  <div class="col">
+                    <a href="${member.url}">
+                      <div class="card text-center shadow-sm" style="cursor: pointer; border: none;" onclick="showModal(${index})">
+                          <img src="${member.image}" class="card-img-top rounded-circle mx-auto mt-3" alt="${member.name}"
+                            style="width: 120px; height: 120px; object-fit: cover;">
+                          <div class="card-body">
+                              <h5 class="card-title">${member.name}</h5>
+                              <p class="card-text text-muted">${member.role}</p>
+                              ${team_reseaux(member)}
+                          </div>
+                      </div>
+                    </a>
+                  </div>
+              `).join('')}
+          </div>
+      `;
+  }
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+      const navbarToggler = document.querySelector(".navbar-toggler");
+      const navLinks = document.querySelectorAll(".nav-link");
+
+      navLinks.forEach(link => {
+          link.addEventListener("click", function () {
+              if (navbarToggler.getAttribute("aria-expanded") === "true") {
+                  navbarToggler.click(); // Fermer le menu après le clic sur un lien
+              }
+          });
+      });
+  });
+</script>
+<script src="/js/contenu/contenu.js?token=1749843439"></script>
+<script>
+  const services = new Services();
+  $( document ).ready(async function() {
+    await services.init({
+      membres: {
+        callback: function(team) {
+          populateTeamMembers(team);
+        },
+      },
+      articles: {
+        callback: function(news) {
+          loadDefaultNews(news);
+        },
+        not: typeof _notArticlesOfType == "undefined" ? [] : _notArticlesOfType,
+        onlyantenne: typeof _onlyArticlesOfAntenne == "undefined" ? [] : _onlyArticlesOfAntenne,
+      }
+    });
+  });
+</script>
+<script src="/js/image-mapping.js?token=1749843439"></script>
+<script>
+  // Event listener to execute loadImages function when the page is fully loaded
+  window.addEventListener('load', function() {
+    loadImages("https://images.terredesjeunes.org", "https://image-mapping.terredesjeunes.org/mapping-beta-tdj-comm.json");
+  })
+</script>
+
+  </body>
+</html>
+

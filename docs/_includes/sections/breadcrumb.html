@@ -1,0 +1,28 @@
+{% assign template="section/breadcumb.html" %}
+{% include structure/debug.html %}
+{% assign p="_crumbs" %}{% assign v=_crumbs %}{% include structure/r.html %}
+<section class="my-nav-breadcrumb pt-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-12">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            {% for crumb in _crumbs %}
+              {% assign extra_li_classes = "" %}
+              {% if forloop.last %}
+                {% assign extra_li_classes = extra_li_classes | append: " my-last-breadcrumb-item" %}
+              {% endif %}
+              <li class="breadcrumb-item{{ extra_li_classes }}">
+                <a href="{{ crumb.url }}">
+                  {{ crumb.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+{% assign template="section/breadcumb.html" %}
+{% include structure/enddebug.html %}

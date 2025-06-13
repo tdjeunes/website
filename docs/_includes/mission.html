@@ -1,0 +1,32 @@
+<section class="section-padding tdj-en-chiffres">
+  <h1 class="text-center">Un autre monde est possible. Nous le créons.</h1>
+  <p class=" text-center">Nous sommes un partenaire terrain de confiance depuis 1985.</p>
+  <div class="card-container p-10">
+    <div class="card">
+      <i class="material-icons icon">public</i>
+      <p>Dans</p>
+      <h2><span class="mettre-nbre-pays-ici">10</span> pays</h2>
+    </div>
+    <div class="card" style="margin-bottom: 20px;">
+      <img src="/media/partenaire-onu.svg" alt="ONU" class="card-image">
+      <p>Accrédité à l'ONU depuis</p>
+      <h2>2016</h2>
+    </div>
+    <div class="card">
+      <i class="material-icons icon">check_circle</i>
+      <h2>120 +</h2>
+      <p>projets menés à terme</p>
+    </div>
+  </div>
+  <script>
+    // JavaScript for any future enhancements or animations
+    document.querySelectorAll('.tdj-en-chiffres .card').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.boxShadow = '0 12px 24px rgba(0, 0, 0, 0.2)';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.boxShadow = '0 6px 12px rgba(0, 0, 0, 0.1)';
+        });
+    });
+  </script>
+</section>

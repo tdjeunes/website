@@ -1,0 +1,18 @@
+{% assign template="onlytext.html" %}
+{% include structure/debug.html %}
+{% assign p="_text" %}{% assign v=_text %}{% include structure/r.html %}
+<section class="news-section section-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="news-block-top">
+          <div class="news-block-body">
+            {{ _text | markdownify }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% assign template="onlytext.html" %}
+{% include structure/enddebug.html %}

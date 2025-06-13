@@ -1,0 +1,44 @@
+<section class="my-carousel hero-section hero-section-full-height">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 col-12 p-0">
+        <div id="hero-slide" class="carousel carousel-fade slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            {% assign sorted = (site.categories.jekyll_carousel | sort: 'order') %}
+            {% assign extra_classes = ' active' %}
+            {% assign extra_attr = '' %}
+            {% for carousel in sorted %}
+              {% if carousel.position %}
+                {% assign extra_classes = extra_classes | append: ' carousel-position-' | append: carousel.position %}
+              {% endif %}
+              {% if carousel.active %}
+                <div class="carousel-item {{ extra_classes }}"{{ extra_attr }}>
+                  <img src="{{ carousel.image }}" class="d-block w-100 carousel-image" alt="..." data-optimized-size="800x">
+                  <div class="my-carousel-title-wrapper">
+                    <span class="my-carousel-title">
+                      <span class="my-carousel-title-inner">
+                        <img class="my-40e-logo" src="/logo/logo-tdj40-vert-outline-blanc-x-800-355.png" alt="40 ans TDJ"/>
+                        {{ carousel.title }}
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              {% endif %}
+              {% assign extra_classes = '' %}
+              {% assign extra_attr = ' data-bs-interval="2000"' %}
+            {% endfor %}
+          </div>
+          <!-- Carousel controls -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#hero-slide" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Précédent</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#hero-slide" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Suivant</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

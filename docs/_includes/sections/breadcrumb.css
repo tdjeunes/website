@@ -1,0 +1,21 @@
+:root {
+  --bs-breadcrumb-divider: '»';
+}
+
+.my-last-breadcrumb-item::after {
+  content: var(--bs-breadcrumb-divider);
+  color: white;
+}
+
+.my-last-breadcrumb-item::before {
+  color: white !important;
+}
+
+.my-nav-breadcrumb {
+  background: var(--primary-color);
+  font-weight: bold;
+}
+
+.my-nav-breadcrumb a {
+  color: var(--white-color);
+}

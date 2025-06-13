@@ -1,0 +1,63 @@
+{% assign template="sections/syneco/metrics.html" %}
+{% include structure/debug.html %}
+<section>
+  <div class="container syneco-metrics-info">
+    <div class="row">
+      <div class="col-12">
+      </div>
+    </div>
+  </div>
+  <div class="container syneco-metrics">
+    <div class="row">
+      <div class="col-12">
+        <h2>Métriques</h2>
+        <p>{{ site.data.config.syneco_metrics_about | markdownify }}</p>
+      </div>
+      <div class="col-12">
+        <div class="checkbox-container"></div>
+        <div id="chart-goes-here" class="chart-enclosure"></div>
+        <script type="text/javascript" src="//d3js.org/d3.v7.min.js"></script>
+        <script type="text/javascript">
+          {% include sections/syneco/metrics.js %}
+        </script>
+        <script type="text/javascript">
+          /*
+            Set dimensions
+            Margins provide padding around the chart, ensuring
+            that axis labels and titles are not crowded or clipped.
+            They also prevent data points from being too close to
+            the edges of the chart.
+          */
+          const margin = { top: 20, right: 20, bottom: 30, left: 50 };
+          /*
+            Width and Height determine the size of the area where
+            the actual chart is drawn. These values are derived by
+            subtracting the margins from the total SVG dimensions,
+            giving you the drawable area for your chart elements
+            (like lines, points, and axes).
+            Define margins, width, and height
+          */
+          const width = 1200 - margin.left - margin.right;
+          const height = 400 - margin.top - margin.bottom;
+
+          // If displayXAxisPlotting is true to then X axis displayed in chart.
+          const displayXAxisPlotting = true;
+          // If displayYAxisPlotting is true to then Y axis displayed in chart.
+          const displayYAxisPlotting = true;
+
+          multipleLineChart(
+            '/data/overview.csv',
+            '#chart-goes-here',
+            width,
+            height,
+            margin,
+            displayXAxisPlotting,
+            displayYAxisPlotting
+          );
+        </script>
+      </div>
+    </div>
+  </div>
+</section>
+{% assign template="sections/syneco/metrics.html" %}
+{% include structure/enddebug.html %}

@@ -1,0 +1,14 @@
+{% assign template="antenne2PaysHtml.html" %}
+{% include structure/debug.html %}
+{% assign p="_antenne" %}{% assign v=_antenne %}{% include structure/r.html %}
+{% include utilities/antenne2pays.html %}
+
+{% if __result %}
+  <div class="pays-sur-article pays-sur-article-hero">
+    <img src="{{__result.drapeau}}" alt="Drapeau: {{__result.title}}" class="img-fluid rounded-circle" style="object-fit: cover;">
+    <div class="antenne">{{__result.title}}</div>
+  </div>
+{% endif %}
+
+{% assign template="antenne2PaysHtml.html" %}
+{% include structure/enddebug.html %}

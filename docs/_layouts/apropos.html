@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="fr">
+    {% include structure/head.html %}
+  <body id="section_1">
+    {% if site.data.config.jekyll != true%}
+    <div class="localdev-warning">
+      Attention! Vous devez générer le site avec Docker. SVP faire:
+      <code>
+      docker-compose up
+      </code>
+      Puis visiter http://0.0.0.0:4000
+    </div>
+    {% endif %}
+    {% include navbar.html %}
+
+    <!-- sections main principal -->
+    <main>
+        <!-- Mission de terredesjeunes -->
+        <section class="section-padding section-bg" id="section_2">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-5 col-12">
+                        <img src="/images/logo/proo2.png"
+                         class="custom-text-box-image img-fluid" alt="" style="width: 600px; height: auto;">
+                         <div class="row">
+                            <div class="col-lg-6 col-md-6 col-12 mt-2">
+                                <div class="custom-text-box mb-lg-0">
+                                    <h5 class="mb-3">Mission de Terre des jeunes</h5>
+
+                                    <p>Is to build the new worldwide charties with the youngs people</p>
+
+                                    <ul class="custom-list mt-2">
+                                        <li class="custom-list-item d-flex">
+                                            <i class="bi-check custom-text-box-icon me-2"></i>
+                                            Terre DesJeunes
+                                        </li>
+
+                                        <li class="custom-list-item d-flex">
+                                            <i class="bi-check custom-text-box-icon me-2"></i>
+                                            build your future with us
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6  col-12 mt-2">
+                                {% include parts/numbers.html %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7 col-12">
+                        <div class="custom-text-box">
+                            <h2 class="mb-2"> QUI SOMMES-NOUS ?</h2>
+                            <h5 class="mb-3">Nous sommes Terre des Jeunes, un organisme sans but lucratif </h5>
+                            <p class="mb-0"> <span> Nous sommes Terre des Jeunes, un organisme sans but lucratif visant à sensibiliser
+                                les jeunes du monde entier à la sauvegarde de l'environnement et à la
+                                    gestion locale ou régionale du patrimoine naturel et culturel, par et pour les
+                                    jeunes eux-mêmes. Notre réseau d'antennes indépendantes repose sur le bénévolat et
+                                    la gestion locale par les jeunes pour traiter des problématiques
+                                    environnementales comme la déforestation, tout en valorisant les connaissances
+                                    locales et traditionnelles.
+
+                                </span>
+                                Le développement durable et la performance sociale, environnementale, et éthique de gouvernance sont devenus essentiels dans la prise de décision.
+Les entités décentralisées doivent répondre à ces demandes en termes de responsabilité sociale et environnementale, en collaboration avec la communauté et en formant les futurs cadres.
+Les changements climatiques menacent les droits fondamentaux des populations, surtout des enfants, à travers des impacts tels que la sécheresse, les inondations, le stress thermique, la pollution de l'air et les maladies. Selon l'Objectif de Développement Durable (ODD) 4.7, il est crucial que d'ici 2030, tous les élèves acquièrent des compétences en matière de développement durable et de citoyenneté mondiale.
+
+
+                            </p>
+                            <ul class="custom-list mt-2">
+                                <h5>Activités</h5>
+                                <li class="custom-list-item d-flex">
+                                    <i class="bi-check custom-text-box-icon me-2"></i>
+                                    Campagnes : Plantation d'arbres, recyclage et tri-selectif
+                                </li>
+
+                                <li class="custom-list-item d-flex">
+                                    <i class="bi-check custom-text-box-icon me-2"></i>
+                                    Education : Activités éducatives pour les jeunes.
+                                </li>
+                                <li class="custom-list-item d-flex">
+                                    <i class="bi-check custom-text-box-icon me-2"></i>
+                                    Banque Agricole de graines
+                                </li>
+                                <p>
+                             Une organisation dédiée à la préservation de l'environnement, promeut l'éducation à l'environnement comme clé pour le développement durable. Elle vise à promouvoir des dynamiques sociales, à travers une approche participative et critique au sein des communautés et des réseaux de solidarité.
+
+Depuis sa création, TERRE DES JEUNES sensibilise les jeunes du monde à s’impliquer dans des projets environnementaux par la promotion d'actions bénévoles et de techniques locales.
+Les programmes comprennent des activités comme la Fête de l’Arbre (FEDA), des ateliers sur la finance climat, des projets d'adduction d'eau, le renforcement des capacités des femmes en entrepreneuriat, la rétention des talents bénévoles, la collaboration en innovation et recherche avec les projets de bioénergie, l’innovation en termes de mobilité des hommes avec l’Eco-vélo et le renforcement des relations avec les communautés locales.
+
+En résumé, Terre des jeunes intègre une éducation environnementale pour préparer la prochaine génération à relever les défis du développement durable.
+
+                                </p>
+                            </ul>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {% include sections/rapports.html %}
+
+    </main>
+
+    {% include sections/partenaire.html %}
+
+    <!-- footer sections -->
+    {% if site.data.config.jekyll != true%}
+    <div class="localdev-warning">
+      Attention! Vous devez générer le site avec Docker. SVP faire:
+      <code>
+      docker-compose up
+      </code>
+      Puis visiter http://0.0.0.0:4000
+    </div>
+    {% endif %}
+    {% assign maxArticles = 6 %}
+    {% include footer.html %}
+
+       </body>
+   </html>

@@ -1,0 +1,68 @@
+{% assign template="onlytext_blog.html" %}
+{% include structure/debug.html %}
+{% assign p="_date" %}{% assign v=_date %}{% include structure/r.html %}
+{% assign p="_categories" %}{% assign v=_categories %}{% include structure/r.html %}
+<section class="news-section section-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7 col-12">
+        <div class="news-block">
+          <div class="news-block-info">
+            <div class="d-flex mt-2">
+              <div class="news-block-date">
+                <p>
+                  <i class="bi-calendar4 custom-icon me-1"></i>
+                  {{ _date }}
+                </p>
+              </div>
+              {% if _antenne %}
+                <div class="news-block-comment mx-5">
+                  <p>
+                    <i class="bi-flag custom-icon me-1"></i>
+                    {{ _antenne }}
+                  </p>
+                </div>
+              {% endif %}
+            </div>
+            <div class="news-block-body">
+              {{ content }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-12 mx-auto mt-4 mt-lg-0">
+        <div class="tags-block">
+          <h5 class="mb-3">Catégories</h5>
+          {% assign _facet = "categories" %}
+          {% for _category in _categories %}
+            {% assign _classes = "my-facet-new-page" %}
+            {% include utilities/facet.html %}
+          {% endfor %}
+
+          <div class="mt-5 my-show-only-if-there-is-a-country">
+            <h5 class="mb-3">Pays</h5>
+
+            <div class="my-show-only-these-country-buttons">
+              {% for antenne in _antennes %}
+                {% include utilities/antenne2pays.html %}
+                <div class="my-show">{{ __result.title }}</div>
+              {% endfor %}
+            </div>
+
+            {% assign _facet = "pays" %}
+            {% for pays in site.categories.jekyll_pays %}
+              {% assign _drapeau = pays.drapeau %}
+              {% assign _category = pays.title %}
+              {% assign _classes = "my-facet-new-page" %}
+              <div class="my-country-button" data-country="{{ pays.title }}">
+                {% include utilities/facet.html %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% assign template="onlytext_blog.html" %}
+{% include structure/enddebug.html %}

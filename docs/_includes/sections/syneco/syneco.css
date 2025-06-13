@@ -1,0 +1,18 @@
+.syneco-metrics .line {
+  fill: none;
+  /* Thickness of the line */
+  stroke-width: 10px;
+}
+.syneco-metrics .checkbox-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.syneco-metrics .legend {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.syneco-metrics .tooltip {
+  font-size: 12px;
+}

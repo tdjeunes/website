@@ -1,0 +1,25 @@
+  - name: 'temoignages'
+    create: true
+    label: 'Témoignages'
+    folder: 'docs/jekyll_temoignages/_posts/'
+    slug: '{{slug}}'
+    fields:
+    - label: Nom de la personne
+      name: title
+      widget: string
+      hint: "Par exemple Jean-Paul Pierre"
+    - label: Fonction de la personne
+      name: fonction
+      widget: string
+      hint: "Par exemple Chargé de projet, ONU"
+    - label: Source
+      name: source
+      widget: string
+      hint: "Par exemple Ruth l'a dit à Bohui par WhatsApp le 1er mai 2025"
+    - label: Image
+      name: image
+      widget: image
+      required: false
+      hint: "Image associée avec la personne ou l'organisation"
+    - { label: 'Extrait', name: 'extrait', widget: 'markdown' }
+    - { label: 'Citation', name: 'body', widget: 'markdown' }

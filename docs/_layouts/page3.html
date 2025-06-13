@@ -1,0 +1,21 @@
+{% capture inferred_sections2 %}
+  {% assign _h1 = page.title %}
+  {% assign _bg = site.data.config.default_header_bg_img %}
+  {% assign _height = 'short' %}
+
+  {% include sections/h1_hero.html %}
+
+  {% include sections/messages.html %}
+
+  {% for section in page.sections %}
+    {% assign _section = section %}
+    {% include structure/section.html %}
+  {% endfor %}
+
+  {% assign _text = content %}
+  {% include sections/onlytext.html %}
+
+  {% endcapture %}
+{% assign inferred_sections = inferred_sections | append: inferred_sections2 %}
+
+{% include layouts/page3.html %}

@@ -1,0 +1,15 @@
+{% assign template="parts/list_of_links.html" %}
+{% include structure/debug.html %}
+{% assign p="_links" %}{% assign v=_links %}{% include structure/r.html %}
+
+{% for link in _links %}
+  {% if link.document %}
+    {% assign target = link.document %}
+  {% else if link.lien %}
+    {% assign target = link.lien | replace: '[archives_site]', site.data.config.archives %}
+  {% endif %}
+<a class="custom-btn btn" href="{{ target }}">{{ link.texte }}</a>
+{% endfor %}
+
+{% assign template="parts/list_of_links.html" %}
+{% include structure/enddebug.html %}

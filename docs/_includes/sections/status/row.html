@@ -1,0 +1,16 @@
+{% assign template="sections/status/row.html" %}
+{% include structure/debug.html %}
+{% assign p="_name" %}{% assign v=_name %}{% include structure/r.html %}
+{% assign p="_desc" %}{% assign v=_desc %}{% include structure/r.html %}
+{% assign p="_id" %}{% assign v=_id %}{% include structure/r.html %}
+<tr class="{{ _id }} my-status-in-progress">
+  <th scope="row">{{ _name }}</th>
+  <td>{{ _desc }}</td>
+  <td>
+    <i class="my-status-icon my-status-check-in-progress bi bi-three-dots"></i>
+    <i class="my-status-icon my-status-check-ok bi bi-check-circle-fill"></i>
+    <i class="my-status-icon my-status-check-x bi bi-x-circle-fill"></i>
+  </td>
+</tr>
+{% assign template="sections/status/row.html" %}
+{% include structure/enddebug.html %}

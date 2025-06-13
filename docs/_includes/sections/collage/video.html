@@ -1,0 +1,20 @@
+{% assign template="sections/collage/video.html" %}
+{% include structure/debug.html %}
+{% assign p="_title" %}{% assign v=_title %}{% include structure/r.html %}
+{% assign p="_video" %}{% assign v=_video %}{% include structure/r.html %}
+
+<div class="col-12 col-md-6 col-lg-4 mb-4" style="position: absolute; left: 0%; top: 0px;">
+  <div class="card">
+    <video controls="controls" preload="none" poster="{{ _video }}.jpg">
+      <source src="{{ _video }}" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div class="card-body">
+      {% include sections/collage/title.html %}
+      <p class="card-text">{{ _title }}</p>
+    </div>
+  </div>
+</div>
+
+{% assign template="sections/collage/video.html" %}
+{% include structure/enddebug.html %}

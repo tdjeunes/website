@@ -1,0 +1,2119 @@
+
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Terre des jeunes</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Inclusion de jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
+  <link href="/css/style.css?token=1749843439" rel="stylesheet">
+  <link href="/css/my.css?token=1749843439" rel="stylesheet">
+  <script>
+    // https://stackoverflow.com/questions/9838812
+function loadJSON(path, success, error) {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function()
+  {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        if (success)
+          success(JSON.parse(xhr.responseText));
+      } else {
+        if (error)
+          error(xhr);
+      }
+    }
+  };
+  xhr.open("GET", path, true);
+  xhr.send();
+}
+
+    class TDJ {
+  constructor() {
+    this._data = null;
+    this._callbacks = [];
+  }
+  static instance() {
+    if (!TDJ._instance) {
+      TDJ._instance = new TDJ();
+    }
+    return TDJ._instance;
+  }
+  dataAvailable() {
+    return this._data !== null;
+  }
+  init() {
+    const that = this;
+    loadJSON('/api/v2/all.json',
+      function(data) {
+        that._data = data;
+        that._callbacks.forEach(callback => callback(data));
+      },
+      function(xhr) {
+        console.error(xhr);
+      },
+    );
+  }
+  getData(callback) {
+    if (this.dataAvailable()) {
+      callback(this._data);
+    }
+    else {
+      this._callbacks.push(callback);
+    }
+  }
+}
+
+    TDJ.instance().init();
+  </script>
+</head>
+
+  <body id="section_1">
+    
+    <header class="site-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-12 d-flex flex-wrap">
+        <p class="d-flex me-4 mb-0">
+        </p>
+        <p class="d-flex mb-0">
+        </p>
+      </div>
+      <div class="col-lg-3 col-12 ms-auto d-lg-block d-none ">
+        <ul class="social-icon">
+          
+            
+              <li class="social-icon-item">
+                <a href="https://www.linkedin.com/company/terre-des-jeunes" class="social-icon-link bi-linkedin"></a>
+              </li>
+            
+          
+            
+              <li class="social-icon-item">
+                <a href="https://www.facebook.com/groups/terredesjeunes/" class="social-icon-link bi-facebook"></a>
+              </li>
+            
+          
+            
+          
+            
+          
+            
+          
+          <li class="social-icon-item">
+            <a href="/connexion/">Connexion</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- nav dejaaa -->
+<nav class="navbar navbar-expand-lg bg-light shadow-lg">
+  <div class="container">
+    <!-- Logo + Nom -->
+    <a class="navbar-brand d-flex align-items-center my-dark-on-light" href="/">
+      <img src="/logo/logo-tdj40-vert-outline-blanc-x-800-355.png" class="logo img-fluid me-2" alt="Logo Terre des jeunes 40 ans">
+      <h2 class="fw-bold logo">Terre des jeunes</h2>
+    </a>
+    <!-- Bouton Toggle (pour mobile) -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Menu de Navigation -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="/40e/">40 ans</a></li>
+        <li class="nav-item"><a class="nav-link" href="/a-propos/">À propos</a></li>
+        <li class="nav-item"><a class="nav-link click-scroll" href="/#activites">Activités</a></li>
+        <li class="nav-item"><a class="nav-link click-scroll" href="/actualites/">Actualités</a></li>
+
+        <li class="nav-item"><a class="nav-link click-scroll" href="/contact/">Contact</a></li>
+        <li class="nav-item ms-lg-3">
+          <a class="nav-link custom-btn custom-border-btn btn btn-primary" href="/don/">Faire un Don</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <main>
+      
+
+  
+  
+
+<!-- STARTING TEMPLATE section/breadcumb.html-->
+
+
+
+
+<section class="my-nav-breadcrumb pt-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-12">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            
+              
+              
+              <li class="breadcrumb-item">
+                <a href="/">
+                  Accueil
+                </a>
+              </li>
+            
+              
+              
+              <li class="breadcrumb-item my-last-breadcrumb-item">
+                <a href="/actualites/">
+                  Actualités
+                </a>
+              </li>
+            
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ENDING TEMPLATE section/breadcumb.html-->
+
+
+
+
+  
+  
+  
+  
+  
+
+<!-- STARTING TEMPLATE h1_hero.html-->
+
+
+
+
+
+
+
+
+<section class="news-detail-header-section text-center" style="background-image: url(/media/img_20231219_120117_166.jpg)">
+  <div class="section-overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-12">
+        
+          <div class="my-h1-hero-supertext">
+            <span class="my-header-on-picture-background text-white">
+              
+      
+      
+
+<!-- STARTING TEMPLATE antenne2PaysHtml.html-->
+
+
+
+
+
+
+<!-- STARTING TEMPLATE antenne2pays.html-->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ENDING TEMPLATE antenne2pays.html-->
+
+
+
+
+
+  <div class="pays-sur-article pays-sur-article-hero">
+    <img src="/media/drapeau-burkina.png" alt="Drapeau: Burkina Faso" class="img-fluid rounded-circle" style="object-fit: cover;">
+    <div class="antenne">Burkina Faso</div>
+  </div>
+
+
+
+
+<!-- ENDING TEMPLATE antenne2PaysHtml.html-->
+
+
+
+    
+            </span>
+          </div>
+          </div>
+        
+        <h1 class="text-white">
+          <span class="my-header-on-picture-background">
+            Gestion des déchets solides à Sérékeni dans la commune de Djigouéra au Burkina Faso
+          </span>
+        </h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ENDING TEMPLATE h1_hero.html-->
+
+
+
+
+  
+
+<!-- STARTING TEMPLATE messages.html-->
+
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-12 mettre-alertes-ici">
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ENDING TEMPLATE messages.html-->
+
+
+
+
+  
+  
+  
+  
+  
+  
+
+<!-- STARTING TEMPLATE onlytext_blog.html-->
+
+
+
+
+
+
+<section class="news-section section-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7 col-12">
+        <div class="news-block">
+          <div class="news-block-info">
+            <div class="d-flex mt-2">
+              <div class="news-block-date">
+                <p>
+                  <i class="bi-calendar4 custom-icon me-1"></i>
+                  
+    
+    
+
+
+<!-- STARTING TEMPLATE date.html-->
+
+
+
+
+
+
+
+
+
+
+
+21 décembre 2023
+
+
+
+<!-- ENDING TEMPLATE date.html-->
+
+
+
+  
+                </p>
+              </div>
+              
+                <div class="news-block-comment mx-5">
+                  <p>
+                    <i class="bi-flag custom-icon me-1"></i>
+                    SEEPAT
+                  </p>
+                </div>
+              
+            </div>
+            <div class="news-block-body">
+              <!--\[if gte mso 9]><xml>
+ <o:OfficeDocumentSettings>
+  <o:AllowPNG/>
+ </o:OfficeDocumentSettings>
+</xml><!\[endif]-->
+
+<!--\[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:View>Normal</w:View>
+  <w:Zoom>0</w:Zoom>
+  <w:TrackMoves/>
+  <w:TrackFormatting/>
+  <w:HyphenationZone>21</w:HyphenationZone>
+  <w:PunctuationKerning/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>FR</w:LidThemeOther>
+  <w:LidThemeAsian>X-NONE</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+   <w:SplitPgBreakAndParaMark/>
+   <w:EnableOpenTypeKerning/>
+   <w:DontFlipMirrorIndents/>
+   <w:OverrideTableStyleHps/>
+  </w:Compatibility>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><!\[endif]-->
+
+<!--\[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="false"
+  DefSemiHidden="false" DefQFormat="false" DefPriority="99"
+  LatentStyleCount="376">
+  <w:LsdException Locked="false" Priority="0" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 7"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 8"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 9"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 1"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 2"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 3"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 4"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 5"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 6"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 7"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 8"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 9"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Normal Indent"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="footnote text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="annotation text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="header"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="footer"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index heading"/>
+  <w:LsdException Locked="false" Priority="35" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="table of figures"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="envelope address"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="envelope return"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="footnote reference"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="annotation reference"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="line number"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="page number"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="endnote reference"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="endnote text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="table of authorities"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="macro"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="toa heading"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number 5"/>
+  <w:LsdException Locked="false" Priority="10" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Closing"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Signature"/>
+  <w:LsdException Locked="false" Priority="1" SemiHidden="true"
+   UnhideWhenUsed="true" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text Indent"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Message Header"/>
+  <w:LsdException Locked="false" Priority="11" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Salutation"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Date"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text First Indent"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text First Indent 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Note Heading"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text Indent 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text Indent 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Block Text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Hyperlink"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="FollowedHyperlink"/>
+  <w:LsdException Locked="false" Priority="22" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" Priority="20" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Document Map"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Plain Text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="E-mail Signature"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Top of Form"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Bottom of Form"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Normal (Web)"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Acronym"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Address"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Cite"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Code"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Definition"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Keyboard"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Preformatted"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Sample"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Typewriter"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Variable"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Normal Table"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="annotation subject"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="No List"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Outline List 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Outline List 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Outline List 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Simple 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Simple 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Simple 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Classic 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Classic 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Classic 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Classic 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Colorful 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Colorful 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Colorful 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 7"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 8"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 7"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 8"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table 3D effects 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table 3D effects 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table 3D effects 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Contemporary"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Elegant"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Professional"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Subtle 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Subtle 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Web 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Web 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Web 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Balloon Text"/>
+  <w:LsdException Locked="false" Priority="39" Name="Table Grid"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Theme"/>
+  <w:LsdException Locked="false" SemiHidden="true" Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" QFormat="true"
+   Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" QFormat="true"
+   Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" QFormat="true"
+   Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" QFormat="true"
+   Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" QFormat="true"
+   Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" QFormat="true"
+   Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" SemiHidden="true"
+   UnhideWhenUsed="true" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="TOC Heading"/>
+  <w:LsdException Locked="false" Priority="41" Name="Plain Table 1"/>
+  <w:LsdException Locked="false" Priority="42" Name="Plain Table 2"/>
+  <w:LsdException Locked="false" Priority="43" Name="Plain Table 3"/>
+  <w:LsdException Locked="false" Priority="44" Name="Plain Table 4"/>
+  <w:LsdException Locked="false" Priority="45" Name="Plain Table 5"/>
+  <w:LsdException Locked="false" Priority="40" Name="Grid Table Light"/>
+  <w:LsdException Locked="false" Priority="46" Name="Grid Table 1 Light"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark"/>
+  <w:LsdException Locked="false" Priority="51" Name="Grid Table 6 Colorful"/>
+  <w:LsdException Locked="false" Priority="52" Name="Grid Table 7 Colorful"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 1"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 1"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 1"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 1"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 1"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 2"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 2"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 2"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 2"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 2"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 3"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 3"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 3"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 3"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 3"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 4"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 4"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 4"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 4"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 4"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 5"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 5"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 5"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 5"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 5"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 6"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 6"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 6"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 6"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 6"/>
+  <w:LsdException Locked="false" Priority="46" Name="List Table 1 Light"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark"/>
+  <w:LsdException Locked="false" Priority="51" Name="List Table 6 Colorful"/>
+  <w:LsdException Locked="false" Priority="52" Name="List Table 7 Colorful"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 1"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 1"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 1"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 1"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 1"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 2"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 2"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 2"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 2"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 2"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 3"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 3"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 3"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 3"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 3"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 4"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 4"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 4"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 4"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 4"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 5"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 5"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 5"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 5"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 5"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 6"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 6"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 6"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 6"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Mention"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Smart Hyperlink"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Hashtag"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Unresolved Mention"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Smart Link"/>
+ </w:LatentStyles>
+</xml><!\[endif]-->
+
+<!--\[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Tableau Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin-top:0cm;
+	mso-para-margin-right:0cm;
+	mso-para-margin-bottom:8.0pt;
+	mso-para-margin-left:0cm;
+	line-height:107%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;
+	mso-font-kerning:1.0pt;
+	mso-ligatures:standardcontextual;
+	mso-fareast-language:EN-US;}
+</style>
+<!\[endif]-->
+
+<!--StartFragment-->
+
+<p>Le 19 décembre 2023, l’équipe de SEEPAT composée de Mme OUOBA Aimée et SANOGO Hassimi a procédé à la formation des membres de la brigade verte de Sérékeni sur le tri et le traitement des déchets solides.</p>
+
+<p>17 femmes ont pris part à cette formation qui s’est tenue dans le centre de tri.</p>
+
+<p>Cette formation s’inscrit dans le cadre des activités de monitoring réalisées par l’association SEEPAT avec l’appui financier de la Fondation allemande Kirchmann Main dans la Main.</p>
+
+<p>Une quantité importante de déchets plastiques a déjà été nettoyée, traitée et stockée dans le magasin du centre de tri.</p>
+
+<p>SEEPAT travaille également pour trouver un acheteur de ces déchets plastiques, ce qui va permettre à la brigade verte de renforcer son autonomie financière et assurer durablement le fonctionnement du centre de tri.</p>
+
+<p>Deux structures ont déjà été identifiées par SEEPAT pour acheter les déchets plastiques. Un partenariat sera mis en place à cet effet entre la brigade verte et ces structures sous la supervision de la mairie et de SEEPAT.</p>
+
+<p>En outre, au niveau des écoles, l’élimination des déchets est devenue une activité quotidienne. Elles sont de plus en plus propres avec des innovations : cas de l’école C qui utilise des pneus usagés (Déchets) pour délimiter les espaces et embellir l’école.</p>
+
+<!--EndFragment-->
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-12 mx-auto mt-4 mt-lg-0">
+        <div class="tags-block">
+          <h5 class="mb-3">Catégories</h5>
+          
+          
+            
+            
+
+<!-- STARTING TEMPLATE utilities/facet.html-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ENDING TEMPLATE utilities/facet.html-->
+
+
+
+          
+            
+            
+
+<!-- STARTING TEMPLATE utilities/facet.html-->
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <a href="/actualites/" data-add-category="D%C3%A9chets"  data-facet="categories" class="tags-block-link my-category btn my-facet-new-page">
+    
+    Déchets <span class="badge">...</span>
+  </a>
+
+
+
+
+<!-- ENDING TEMPLATE utilities/facet.html-->
+
+
+
+          
+
+          <div class="mt-5 my-show-only-if-there-is-a-country">
+            <h5 class="mb-3">Pays</h5>
+
+            <div class="my-show-only-these-country-buttons">
+              
+                
+
+<!-- STARTING TEMPLATE antenne2pays.html-->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ENDING TEMPLATE antenne2pays.html-->
+
+
+
+                <div class="my-show">Burkina Faso</div>
+              
+            </div>
+
+            
+            
+              
+              
+              
+              <div class="my-country-button" data-country="Mexique">
+                
+
+<!-- STARTING TEMPLATE utilities/facet.html-->
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <a href="/actualites/" data-add-category="Mexique"  data-facet="pays" class="tags-block-link my-category btn my-facet-new-page">
+    
+      <img src="/media/flag_of_mexico_flat_round_corner-256x256.png" alt="Mexique" class="my-facet-drapeau" />
+    
+    Mexique <span class="badge">...</span>
+  </a>
+
+
+
+
+<!-- ENDING TEMPLATE utilities/facet.html-->
+
+
+
+              </div>
+            
+              
+              
+              
+              <div class="my-country-button" data-country="Togo">
+                
+
+<!-- STARTING TEMPLATE utilities/facet.html-->
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <a href="/actualites/" data-add-category="Togo"  data-facet="pays" class="tags-block-link my-category btn my-facet-new-page">
+    
+      <img src="/media/drapeau-togo.png" alt="Togo" class="my-facet-drapeau" />
+    
+    Togo <span class="badge">...</span>
+  </a>
+
+
+
+
+<!-- ENDING TEMPLATE utilities/facet.html-->
+
+
+
+              </div>
+            
+              
+              
+              
+              <div class="my-country-button" data-country="Sénégal">
+                
+
+<!-- STARTING TEMPLATE utilities/facet.html-->
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <a href="/actualites/" data-add-category="S%C3%A9n%C3%A9gal"  data-facet="pays" class="tags-block-link my-category btn my-facet-new-page">
+    
+      <img src="/media/drapeau-senegal.png" alt="Sénégal" class="my-facet-drapeau" />
+    
+    Sénégal <span class="badge">...</span>
+  </a>
+
+
+
+
+<!-- ENDING TEMPLATE utilities/facet.html-->
+
+
+
+              </div>
+            
+              
+              
+              
+              <div class="my-country-button" data-country="R. D. Congo">
+                
+
+<!-- STARTING TEMPLATE utilities/facet.html-->
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <a href="/actualites/" data-add-category="R.+D.+Congo"  data-facet="pays" class="tags-block-link my-category btn my-facet-new-page">
+    
+      <img src="/media/drapeau-rd-congo.png" alt="R. D. Congo" class="my-facet-drapeau" />
+    
+    R. D. Congo <span class="badge">...</span>
+  </a>
+
+
+
+
+<!-- ENDING TEMPLATE utilities/facet.html-->
+
+
+
+              </div>
+            
+              
+              
+              
+              <div class="my-country-button" data-country="Québec">
+                
+
+<!-- STARTING TEMPLATE utilities/facet.html-->
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <a href="/actualites/" data-add-category="Qu%C3%A9bec"  data-facet="pays" class="tags-block-link my-category btn my-facet-new-page">
+    
+      <img src="/media/drapeau-quebec.png" alt="Québec" class="my-facet-drapeau" />
+    
+    Québec <span class="badge">...</span>
+  </a>
+
+
+
+
+<!-- ENDING TEMPLATE utilities/facet.html-->
+
+
+
+              </div>
+            
+              
+              
+              
+              <div class="my-country-button" data-country="Niger">
+                
+
+<!-- STARTING TEMPLATE utilities/facet.html-->
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <a href="/actualites/" data-add-category="Niger"  data-facet="pays" class="tags-block-link my-category btn my-facet-new-page">
+    
+      <img src="/media/drapeau-niger.png" alt="Niger" class="my-facet-drapeau" />
+    
+    Niger <span class="badge">...</span>
+  </a>
+
+
+
+
+<!-- ENDING TEMPLATE utilities/facet.html-->
+
+
+
+              </div>
+            
+              
+              
+              
+              <div class="my-country-button" data-country="Nicaragua">
+                
+
+<!-- STARTING TEMPLATE utilities/facet.html-->
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <a href="/actualites/" data-add-category="Nicaragua"  data-facet="pays" class="tags-block-link my-category btn my-facet-new-page">
+    
+      <img src="/media/drapeau-nicaragua.png" alt="Nicaragua" class="my-facet-drapeau" />
+    
+    Nicaragua <span class="badge">...</span>
+  </a>
+
+
+
+
+<!-- ENDING TEMPLATE utilities/facet.html-->
+
+
+
+              </div>
+            
+              
+              
+              
+              <div class="my-country-button" data-country="Mondial">
+                
+
+<!-- STARTING TEMPLATE utilities/facet.html-->
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <a href="/actualites/" data-add-category="Mondial"  data-facet="pays" class="tags-block-link my-category btn my-facet-new-page">
+    
+      <img src="/media/drapeau-monde.png" alt="Mondial" class="my-facet-drapeau" />
+    
+    Mondial <span class="badge">...</span>
+  </a>
+
+
+
+
+<!-- ENDING TEMPLATE utilities/facet.html-->
+
+
+
+              </div>
+            
+              
+              
+              
+              <div class="my-country-button" data-country="Martinique">
+                
+
+<!-- STARTING TEMPLATE utilities/facet.html-->
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <a href="/actualites/" data-add-category="Martinique"  data-facet="pays" class="tags-block-link my-category btn my-facet-new-page">
+    
+      <img src="/media/drapeau-martinique.png" alt="Martinique" class="my-facet-drapeau" />
+    
+    Martinique <span class="badge">...</span>
+  </a>
+
+
+
+
+<!-- ENDING TEMPLATE utilities/facet.html-->
+
+
+
+              </div>
+            
+              
+              
+              
+              <div class="my-country-button" data-country="Haïti">
+                
+
+<!-- STARTING TEMPLATE utilities/facet.html-->
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <a href="/actualites/" data-add-category="Ha%C3%AFti"  data-facet="pays" class="tags-block-link my-category btn my-facet-new-page">
+    
+      <img src="/media/drapeau-haiti.png" alt="Haïti" class="my-facet-drapeau" />
+    
+    Haïti <span class="badge">...</span>
+  </a>
+
+
+
+
+<!-- ENDING TEMPLATE utilities/facet.html-->
+
+
+
+              </div>
+            
+              
+              
+              
+              <div class="my-country-button" data-country="Grèce">
+                
+
+<!-- STARTING TEMPLATE utilities/facet.html-->
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <a href="/actualites/" data-add-category="Gr%C3%A8ce"  data-facet="pays" class="tags-block-link my-category btn my-facet-new-page">
+    
+      <img src="/media/drapeau-grece.png" alt="Grèce" class="my-facet-drapeau" />
+    
+    Grèce <span class="badge">...</span>
+  </a>
+
+
+
+
+<!-- ENDING TEMPLATE utilities/facet.html-->
+
+
+
+              </div>
+            
+              
+              
+              
+              <div class="my-country-button" data-country="Finlande">
+                
+
+<!-- STARTING TEMPLATE utilities/facet.html-->
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <a href="/actualites/" data-add-category="Finlande"  data-facet="pays" class="tags-block-link my-category btn my-facet-new-page">
+    
+      <img src="/media/drapeau-finlande.png" alt="Finlande" class="my-facet-drapeau" />
+    
+    Finlande <span class="badge">...</span>
+  </a>
+
+
+
+
+<!-- ENDING TEMPLATE utilities/facet.html-->
+
+
+
+              </div>
+            
+              
+              
+              
+              <div class="my-country-button" data-country="Côte d'Ivoire">
+                
+
+<!-- STARTING TEMPLATE utilities/facet.html-->
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <a href="/actualites/" data-add-category="C%C3%B4te+d%27Ivoire"  data-facet="pays" class="tags-block-link my-category btn my-facet-new-page">
+    
+      <img src="/media/drapeau-cote-ivoire.png" alt="Côte d'Ivoire" class="my-facet-drapeau" />
+    
+    Côte d'Ivoire <span class="badge">...</span>
+  </a>
+
+
+
+
+<!-- ENDING TEMPLATE utilities/facet.html-->
+
+
+
+              </div>
+            
+              
+              
+              
+              <div class="my-country-button" data-country="Colombie">
+                
+
+<!-- STARTING TEMPLATE utilities/facet.html-->
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <a href="/actualites/" data-add-category="Colombie"  data-facet="pays" class="tags-block-link my-category btn my-facet-new-page">
+    
+      <img src="/media/drapeau-colombie.png" alt="Colombie" class="my-facet-drapeau" />
+    
+    Colombie <span class="badge">...</span>
+  </a>
+
+
+
+
+<!-- ENDING TEMPLATE utilities/facet.html-->
+
+
+
+              </div>
+            
+              
+              
+              
+              <div class="my-country-button" data-country="Cameroun">
+                
+
+<!-- STARTING TEMPLATE utilities/facet.html-->
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <a href="/actualites/" data-add-category="Cameroun"  data-facet="pays" class="tags-block-link my-category btn my-facet-new-page">
+    
+      <img src="/media/drapeau-cameroun.png" alt="Cameroun" class="my-facet-drapeau" />
+    
+    Cameroun <span class="badge">...</span>
+  </a>
+
+
+
+
+<!-- ENDING TEMPLATE utilities/facet.html-->
+
+
+
+              </div>
+            
+              
+              
+              
+              <div class="my-country-button" data-country="Burundi">
+                
+
+<!-- STARTING TEMPLATE utilities/facet.html-->
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <a href="/actualites/" data-add-category="Burundi"  data-facet="pays" class="tags-block-link my-category btn my-facet-new-page">
+    
+      <img src="/media/drapeau-burundi.png" alt="Burundi" class="my-facet-drapeau" />
+    
+    Burundi <span class="badge">...</span>
+  </a>
+
+
+
+
+<!-- ENDING TEMPLATE utilities/facet.html-->
+
+
+
+              </div>
+            
+              
+              
+              
+              <div class="my-country-button" data-country="Burkina Faso">
+                
+
+<!-- STARTING TEMPLATE utilities/facet.html-->
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <a href="/actualites/" data-add-category="Burkina+Faso"  data-facet="pays" class="tags-block-link my-category btn my-facet-new-page">
+    
+      <img src="/media/drapeau-burkina.png" alt="Burkina Faso" class="my-facet-drapeau" />
+    
+    Burkina Faso <span class="badge">...</span>
+  </a>
+
+
+
+
+<!-- ENDING TEMPLATE utilities/facet.html-->
+
+
+
+              </div>
+            
+              
+              
+              
+              <div class="my-country-button" data-country="Bénin">
+                
+
+<!-- STARTING TEMPLATE utilities/facet.html-->
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <a href="/actualites/" data-add-category="B%C3%A9nin"  data-facet="pays" class="tags-block-link my-category btn my-facet-new-page">
+    
+      <img src="/media/drapeau-benin.png" alt="Bénin" class="my-facet-drapeau" />
+    
+    Bénin <span class="badge">...</span>
+  </a>
+
+
+
+
+<!-- ENDING TEMPLATE utilities/facet.html-->
+
+
+
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ENDING TEMPLATE onlytext_blog.html-->
+
+
+
+
+  
+    </main>
+    <!-- footer sections -->
+    <!-- footer sections -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <!-- Section Logo et Description -->
+      <div class="col-lg-4 col-12 mb-4">
+        <img src="/images/logo/logotdj_blac.png" class="logo img-fluid" alt="Logo Terre des Jeunes">
+        <p class="text-white mt-3">Nous sommes Terre des Jeunes, un organisation sans but lucratif visant à sensibiliser les jeunes du monde entier à la sauvegarde de l'environnement et à la gestion locale ou régionale du patrimoine naturel et culturel, par et pour les jeunes eux-mêmes.</p>
+      </div>
+      <!-- Section Liens Directs -->
+      <div class="col-lg-4 col-md-6 col-12 mb-4">
+        <h5 class="site-footer-title mb-3 text-white">Liens Directs</h5>
+        <ul class="footer-menu list-unstyled">
+          
+          <li class="footer-menu-item"><a href="/#activites" class="footer-menu-link text-white">Causes</a></li>
+          
+          <li class="footer-menu-item"><a href="/a-propos/historique/" class="footer-menu-link text-white">Historique</a></li>
+          
+          <li class="footer-menu-item"><a href="/mots-du-president/" class="footer-menu-link text-white">Mots du Président</a></li>
+          
+          <li class="footer-menu-item"><a href="/actualites/" class="footer-menu-link text-white">Actualités</a></li>
+          
+          <li class="footer-menu-item"><a href="/guide-style/" class="footer-menu-link text-white">Guide de style et logo</a></li>
+          
+          <li class="footer-menu-item"><a href="/statuts/" class="footer-menu-link text-white">Statuts</a></li>
+          
+          <li class="footer-menu-item"><a href="/contact/" class="footer-menu-link text-white">Contactez-nous</a></li>
+          
+          <li class="footer-menu-item"><a href="/admin/status/" class="footer-menu-link text-white">Statut technique</a></li>
+          
+          <li class="footer-menu-item"><a href="/formations/ressources/" class="footer-menu-link text-white">Ressources pour les formations</a></li>
+          
+          <li class="footer-menu-item"><a href="/lancer-une-antenne.html" class="footer-menu-link text-white">Lancer une antenne</a></li>
+          
+          <li class="footer-menu-item"><a href="/archives/" class="footer-menu-link text-white">Archives</a></li>
+          
+        </ul>
+      </div>
+      <!-- Section Réseaux Sociaux -->
+      <div class="col-lg-4 col-md-6 col-12 mb-4">
+        <h5 class="site-footer-title mb-3 text-white">Suivez-nous</h5>
+        <ul class="social-icon list-unstyled d-flex justify-content-center">
+          
+          
+          <li class="social-icon-item me-3">
+            <a href="https://www.linkedin.com/company/terre-des-jeunes" class="social-icon-link bi-linkedin text-white"></a>
+          </li>
+          
+          
+          
+          <li class="social-icon-item me-3">
+            <a href="https://www.facebook.com/groups/terredesjeunes/" class="social-icon-link bi-facebook text-white"></a>
+          </li>
+          
+          
+          
+          
+          
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- Footer Bottom -->
+  <div class="site-footer-bottom py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <p class="text-white mb-0">&copy; 2025 Terre des Jeunes. Tous droits réservés. Modifier <a href="https://github.com/alberto56/tdj-comm/edit/main/docs/jekyll_blogposts/_posts/2023-12-21-gestion_des_dechets_solides_a_serekeni_dans_la_commune_de_djiouera_au_burkina_faso.md">le code source</a> ou <a href="/admin/#/collections/blog/entries/2023-12-21-gestion_des_dechets_solides_a_serekeni_dans_la_commune_de_djiouera_au_burkina_faso">dans le content manager</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- JAVASCRIPT FILES -->
+<script src="/js/jquery.sticky.js"></script>
+<script src="/js/counter.js"></script>
+<script src="/js/custom.js"></script>
+<script>
+  // we will store the image optmization map file json data in globalMappingData variable. Later we can access
+  // globalMappingData in news block to map the news block images.
+  let globalMappingData = null;
+  const newsContainer = document.getElementById("newsContainer"); // Assurez-vous que l'élément existe
+  const recentNewsContainer = document.getElementById("recentNewsContainer");
+  const countryList = document.getElementById("countryList");
+
+  function loadDefaultNews(defaultArticles) {
+    if (!defaultArticles || defaultArticles.length === 0) {
+      $('.my-hide-if-no-articles').hide();
+      return;
+    }
+
+    const newsContainer = document.getElementById("newsContainer"); // Assurez-vous que l'élément existe
+
+    if (!newsContainer) {
+      return;
+    }
+
+    newsContainer.innerHTML = ""; // Vider le conteneur avant d'ajouter de nouveaux articles
+
+    // Limiter le nombre d'articles affichés
+    const articlesToShow = defaultArticles.slice(0, );
+
+    articlesToShow.forEach(article => {
+    const newsBlock = document.createElement("div");
+    newsBlock.className = "col-lg- col-md-6 col-sm-12 mb-4";
+    newsBlock.setAttribute('data-url-for-filtering', article.url);
+
+    // Tronquer le titre à 50 caractères max
+    const truncatedTitle = article.title.length > 60 ? article.title.substring(0, 55) + "..." : article.title;
+
+    let lirePlus = '';
+    if (typeof article.url !== 'undefined') {
+        lirePlus = `<a href="${article.url}" class="custom-btn btn mt-2">Lire plus</a>`;
+    }
+
+    let pays = '';
+    if (typeof article.pays !== 'undefined') {
+        if (article.pays.drapeau && article.pays.pays && article.pays.antenne) {
+            pays = `<div class="pays-sur-article">
+                <img src="${article.pays.drapeau}"
+                    alt="${article.pays.pays}"
+                    class="img-fluid rounded-circle"
+                    style="object-fit: cover;">
+                <div class="antenne">${article.pays.antenne}</div>
+            </div>`;
+        }
+    }
+
+    if (typeof article.image == "undefined") {
+        article.image = "/images/news/medium-shot-volunteers-with-clothing-donations.jpg";
+    }
+
+    let imgSrc = article.image;
+    if (globalMappingData && imgSrc.startsWith("/media")) {
+      // fetch optimized Image Url for news block images.
+      const optimizePath = getOptimizedImageUrl(article.image, "604x400", globalMappingData, "https://images.terredesjeunes.org");
+      if (optimizePath != "") {
+        imgSrc = optimizePath;
+      }
+    } else {
+      // Optional: wait or retry
+      console.warn('Global Mapping data not loaded yet.');
+    }
+
+    let objPos = "";
+    if (article.position == 'top') {
+      objPos = "object-position: top;";
+    }
+
+    newsBlock.innerHTML = `
+        <div class="card shadow-sm mb-4" style="border: none;">
+            <div class="card-body text-center">
+                ${pays}
+                <h5 class="card-title">${truncatedTitle}</h5>
+                <div style="width: 100%; height: 200px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                    <img src="${imgSrc}" alt="${article.title}" class="img-fluid rounded" data-optimized-size="800x"
+                        style="width: 100%; height: 100%; object-fit: cover; ${objPos}">
+                </div>
+                ${lirePlus}
+            </div>
+        </div>
+    `;
+
+    newsContainer.appendChild(newsBlock);
+    });
+  }
+
+  // Récupérer les actualités par pays
+  async function fetchNewsByCountry(countryName) {
+      try {
+          const response = await fetch(`${NEWS_API_URL}?q=${encodeURIComponent(countryName)}&apiKey=${API_KEY}`);
+          const data = await response.json();
+
+          if (data.articles?.length) {
+              displayNews(data.articles);
+          } else {
+              newsContainer.innerHTML = `<p>Aucune actualité trouvée pour ${countryName}.</p>`;
+          }
+      } catch (error) {
+          console.error(`Erreur lors de la récupération des actualités pour ${countryName}:`, error);
+      }
+  }
+
+  // Afficher les actualités dans le conteneur principal
+  function displayNews(articles) {
+      newsContainer.innerHTML = "";
+      articles.forEach(article => {
+          const newsBlock = document.createElement("div");
+          newsBlock.className = "col-lg-6 col-md-6 col-sm-12 mb-4";
+          newsBlock.innerHTML = `
+      <div class="news-block"  style:"height:30px">
+          <img src="${article.urlToImage || 'C:\Users\rodri\OneDrive\Documents\GitHub\TerreDjeunes\images\news'}" alt="${article.title}" class="img-fluid">
+          <h4>${article.title}</h4>
+          <p>${article.description || "Pas de description disponible."}</p>
+          <a href="${article.url}" class="btn btn-primary read-more" target="_blank"><b>Lire plus</b></a>
+      </div>
+  `;
+          newsContainer.appendChild(newsBlock);
+      });
+  }
+
+  // Gérer les likes et dislikes
+  document.querySelectorAll('.like-icon').forEach(icon => {
+              icon.addEventListener('click', function () {
+                  let likes = parseInt(this.getAttribute('data-likes')) + 1;
+                  this.setAttribute('data-likes', likes);
+                  this.nextElementSibling.textContent = likes;
+              });
+          });
+
+          document.querySelectorAll('.dislike-icon').forEach(icon => {
+              icon.addEventListener('click', function () {
+                  let dislikes = parseInt(this.getAttribute('data-dislikes')) + 1;
+                  this.setAttribute('data-dislikes', dislikes);
+                  this.nextElementSibling.textContent = dislikes;
+              });
+          });
+</script>
+<!-- sections team -->
+<script>
+  //   team Terre des jeunes
+
+  const teamMembers = [
+  { name: "Alice Dupont", role: "Développeuse", image: "images/members/102.png", bio: "Alice est une développeuse passionnée.", social: { facebook: "#", instagram: "#", linkedin: "#" } },
+  { name: "Jean Martin", role: "Designer UX/UI", image: "images/members/membercreat.jpg", bio: "Jean conçoit des expériences utilisateurs.", social: { instagram: "#" } },
+  { name: "Marie Curie", role: "Scientifique", image: "images/c.jpg", bio: "Marie est une pionnière de la physique nucléaire.", social: { facebook: "#", linkedin: "#" } },
+  { name: "Jacques Leblanc", role: "Manager", image: "images/250.jpg", bio: "Jacques excelle en gestion de projets." },
+  ];
+
+  function team_reseaux(member) {
+    if (!member.reseaux) {
+      return '';
+    }
+    let ret = '<div class="team-social text-center">';
+    member.reseaux.forEach(function(social) {
+      ret += `<a class="btn btn-square" href="${social.lien}"><i class="bi bi-${social.type}"></i></a>`;
+    });
+    return ret + '</div>';
+  }
+
+  function populateTeamMembers(teamMembers) {
+  const teamContainer = document.getElementById('team-members');  /*mettre-membres-ici */
+  if (!teamContainer) {
+    return;
+  }
+  teamContainer.innerHTML = `
+          <div class="row row-cols-1 row-cols-md-3 row-cols-lg-6 g-4">
+              ${teamMembers.map((member, index) => `
+                  <div class="col">
+                    <a href="${member.url}">
+                      <div class="card text-center shadow-sm" style="cursor: pointer; border: none;" onclick="showModal(${index})">
+                          <img src="${member.image}" class="card-img-top rounded-circle mx-auto mt-3" alt="${member.name}"
+                            style="width: 120px; height: 120px; object-fit: cover;">
+                          <div class="card-body">
+                              <h5 class="card-title">${member.name}</h5>
+                              <p class="card-text text-muted">${member.role}</p>
+                              ${team_reseaux(member)}
+                          </div>
+                      </div>
+                    </a>
+                  </div>
+              `).join('')}
+          </div>
+      `;
+  }
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+      const navbarToggler = document.querySelector(".navbar-toggler");
+      const navLinks = document.querySelectorAll(".nav-link");
+
+      navLinks.forEach(link => {
+          link.addEventListener("click", function () {
+              if (navbarToggler.getAttribute("aria-expanded") === "true") {
+                  navbarToggler.click(); // Fermer le menu après le clic sur un lien
+              }
+          });
+      });
+  });
+</script>
+<script src="/js/contenu/contenu.js?token=1749843439"></script>
+<script>
+  const services = new Services();
+  $( document ).ready(async function() {
+    await services.init({
+      membres: {
+        callback: function(team) {
+          populateTeamMembers(team);
+        },
+      },
+      articles: {
+        callback: function(news) {
+          loadDefaultNews(news);
+        },
+        not: typeof _notArticlesOfType == "undefined" ? [] : _notArticlesOfType,
+        onlyantenne: typeof _onlyArticlesOfAntenne == "undefined" ? [] : _onlyArticlesOfAntenne,
+      }
+    });
+  });
+</script>
+<script src="/js/image-mapping.js?token=1749843439"></script>
+<script>
+  // Event listener to execute loadImages function when the page is fully loaded
+  window.addEventListener('load', function() {
+    loadImages("https://images.terredesjeunes.org", "https://image-mapping.terredesjeunes.org/mapping-beta-tdj-comm.json");
+  })
+</script>
+
+  </body>
+</html>
+

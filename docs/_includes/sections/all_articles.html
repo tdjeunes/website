@@ -1,0 +1,31 @@
+{% assign template="articles.html" %}
+{% include structure/debug.html %}
+<section class="news-section section-padding" id="actualites" data-cols="{{ _cols }}">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-12 mb-5">
+        {% include parts/all_facets.html %}
+      </div>
+      <div class="col-lg-8 col-12 mb-5">
+        <h2 class="my-no-articles">Aucun article ne correspond à ces filtres. <a class="my-init-all-facets">Voir toutes les actualités.</a></h2>
+        <h2 class="my-some-articles">Actualités correspondant à votre recherche
+          <span class="my-some-articles-recherche">, mot(s) clé(s):
+            <span class="my-some-articles-value"></span>
+          </span>
+          <span class="my-some-articles-categories">, catégorie(s):
+            <span class="my-some-articles-value"></span>
+          </span>
+          <span class="my-some-articles-pays">, pays:
+            <span class="my-some-articles-value"></span>
+          </span>.
+          <a class="my-init-all-facets">Voir toutes les actualités.</a>
+        </h2>
+        <div id="newsContainer" class="row">
+          <!-- Les articles par défaut seront chargés ici. Voir Articles.js -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% assign template="articles.html" %}
+{% include structure/enddebug.html %}

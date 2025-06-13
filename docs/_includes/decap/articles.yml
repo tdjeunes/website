@@ -1,0 +1,56 @@
+  - name: 'blog'
+    create: true
+    label: 'Articles'
+    folder: 'docs/jekyll_blogposts/_posts/'
+    slug: '{{slug}}'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - label: "Antenne"
+        name: antenne
+        widget: "select"
+        options:
+        - Togo
+        - Sénégal
+        - Seepat Burkina Faso
+        - "Côte d'ivoire"
+        - Haïti
+        - "ICCOD"
+        - "SOLIFEDE RDC"
+        - Québec
+        - Cameroun
+      - label: "Antenne (v2)"
+        name: antenne2
+        widget: "select"
+        multiple: true
+        options:
+{% for antenne in site.categories.jekyll_antennes %}
+        - {{ antenne.title }}
+{% endfor %}
+      - label: "Catégorie"
+        name: categories
+        required: false
+        widget: "select"
+        multiple: true
+        options:
+{% for categorie in site.categories.jekyll_categories %}
+        - {{ categorie.title }}
+{% endfor %}
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'blog' }
+      - label: "Tags (for example programming, web design)"
+        name: "tags"
+        widget: "list"
+      - label: "Images"
+        name: "img"
+        widget: "list"
+        required: false
+        field: {label: Image, name: image, widget: image}
+      - label: Position de la première image
+        hint:
+          Où se trouve l'action dans cette photo.
+        name: position
+        options:
+          - { label: 'Centre', value: 'center' }
+          - { label: 'Haut', value: 'top' }
+        widget: select
+        required: false
+      - { label: 'Contenu', name: 'body', widget: 'markdown' }

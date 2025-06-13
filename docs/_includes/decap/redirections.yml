@@ -1,0 +1,17 @@
+  - name: 'redirections'
+    create: true
+    label: 'Redirections'
+    folder: 'docs/jekyll_redirections/_posts/'
+    slug: '{{slug}}'
+    fields:
+      - label: 'Titre de la redirection'
+        name: 'title'
+        widget: 'string'
+      - label: 'De'
+        name: 'permalink'
+        widget: 'string'
+        hint: 'par exemple "/rapports.html"'
+      - label: 'À'
+        name: 'redirect'
+        widget: 'string'
+        hint: 'par exemple "/actualites/#categories/(rapports%20annuels), ou /actualites/x/y/z"'

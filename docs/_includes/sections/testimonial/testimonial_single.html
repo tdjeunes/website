@@ -1,0 +1,27 @@
+{% assign template="sectin/testimonial/testimonial_single.html" %}
+{% include structure/debug.html %}
+{% assign p="_citation" %}{% assign v=_citation %}{% include structure/r.html %}
+{% assign p="_img" %}{% assign v=_img %}{% include structure/r.html %}
+{% assign p="_nom" %}{% assign v=_nom %}{% include structure/r.html %}
+{% assign p="_fonction" %}{% assign v=_fonction %}{% include structure/r.html %}
+{% assign p="_url" %}{% assign v=_url %}{% include structure/r.html %}
+
+<div class="col-sm-6">
+  <div class="testimonial">
+      {{ _citation | markdownify }}
+  </div>
+  <a href="{{ _url }}">
+    <div class="media" style="display: flex; align-items: center;">
+      <img src="{{ _img }}" alt="" style="width: 75px; height: 75px; border-radius: 50%;">
+      <div class="media-body" style="margin-left: 10px;">
+        <div class="overview">
+          <div class="name"><b>{{ _nom }}</b></div>
+          <div class="details">{{ _fonction }}</div>
+        </div>
+      </div>
+    </div>
+    </a>
+</div>
+
+{% assign template="sectin/testimonial/testimonial_single.html" %}
+{% include structure/enddebug.html %}

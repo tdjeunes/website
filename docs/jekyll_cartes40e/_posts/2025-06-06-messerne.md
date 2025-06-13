@@ -1,0 +1,22 @@
+---
+title: Message de TDJ Gros-Morne, Haïti
+antenne:
+  - Gros-Morne (Haïti)
+---
+Jeudi 5 juin 2025.– Fête de l’Environnement (AJGR & Terre des Jeunes)
+
+Bonjour à toutes et à tous,
+
+Aujourd’hui, nous sommes réunis pour célébrer la fête de l’environnement, un moment important porté par l’association AJGR, en partenariat avec Terre des Jeunes.
+
+Cette journée est un appel à agir ensemble pour protéger notre planète. Chaque petit geste compte : planter un arbre, ramasser un déchet, économiser l’eau, sensibiliser autour de soi.
+
+Les jeunes, au cœur de notre action, sont les acteurs du changement. Grâce à eux, et grâce à l’engagement de tous, nous construisons un avenir plus vert, plus sain, plus solidaire.
+
+Merci à tous les participants, aux bénévoles, aux partenaires. Merci à Terre des Jeunes pour sa collaboration précieuse. 
+Bon 40ème et bonne fête Terre des Jeunes. 
+
+Protéger la nature, c’est protéger la vie.
+Vive AJGR/ TerredesJeunes, vive la jeunesse, et vive l’environnement !
+
+TRAGELUS WILSON, Président AJGR/ Terre des Jeunes de Gros-Morne

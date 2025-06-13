@@ -1,0 +1,25 @@
+.h1-hero-tdj-loves .my-tdj {
+  background: url(/logo/logo-tdj-vert-x.png);
+  text-indent: -9999px;
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+  background-size: cover;
+}
+
+.h1-hero-tdj-loves .my-loves {
+  font-size: 4em;
+  color: red;
+  padding: 0 60px;
+}
+
+.h1-hero-tdj-loves .my-partner-icon {
+  max-height: 150px;
+}
+
+.my-tdj-loves-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}

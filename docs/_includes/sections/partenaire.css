@@ -1,0 +1,52 @@
+#parteners {
+  padding: 2rem 1rem;
+}
+
+.partner-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.partner-card {
+  display: block;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s;
+  margin: 0.5rem;
+  flex: 0 0 18%; /* Adjust to fit 5 cards in a row */
+}
+
+.partner-card:hover {
+  transform: scale(1.05);
+}
+
+.partner-logo {
+  height: 40px; /* Adjusted logo size */
+  margin-bottom: 0.5rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 768px) {
+  .partner-card {
+    flex: 0 0 45%; /* Adjust for medium screens */
+  }
+
+  .partner-logo {
+    height: 50px; /* Adjust logo size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .partner-card {
+    flex: 0 0 90%; /* Adjust for mobile screens */
+  }
+}
+.partner-wrapper a {
+  text-emphasis: none;
+}

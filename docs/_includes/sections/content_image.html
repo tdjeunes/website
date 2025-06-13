@@ -1,0 +1,18 @@
+{% assign template="section/content_image.html" %}
+{% include structure/debug.html %}
+{% assign p="_image" %}{% assign v=_image %}{% include structure/r.html %}
+{% assign p="_content" %}{% assign v=_content %}{% include structure/r.html %}
+<section class="news-section section-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-12">
+        {{ _content | markdownify }}
+      </div>
+      <div class="col-lg-6 col-12">
+        <img src="{{ _image }}" class="img-fluid" alt="Image">
+      </div>
+    </div>
+  </div>
+</section>
+{% assign template="section/content_image.html" %}
+{% include structure/enddebug.html %}

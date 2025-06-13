@@ -1,0 +1,20 @@
+{% assign template="sections/syneco/single.html" %}
+{% include structure/debug.html %}
+
+{% assign p="_img" %}{% assign v=_img %}{% include structure/r.html %}
+{% assign p="_pdf" %}{% assign v=_pdf %}{% include structure/r.html %}
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <a class="custom-btn btn" href="{{ _pdf }}">Voir le PDf ici.</a>
+        <a class="custom-btn btn" href="{{ _carte }}">Voir sur la carte.</a>
+        <img class="my-full-width-image" src="{{ _img }}" />
+      </div>
+    </div>
+  </div>
+</section>
+
+{% assign template="sections/syneco/single.html" %}
+{% include structure/enddebug.html %}

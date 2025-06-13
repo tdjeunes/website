@@ -1,0 +1,17 @@
+  - name: 'texte'
+    create: true
+    label: 'Textes (mission, comment devenir bénévole, etc.)'
+    folder: 'docs/jekyll_texts/_posts/'
+    slug: '{{slug}}'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'blog' }
+      - label: "Tags (for example programming, web design)"
+        name: "tags"
+        widget: "list"
+      - label: "Images"
+        name: "img"
+        widget: "list"
+        required: false
+        field: {label: Image, name: image, widget: image}
+      - { label: 'Contenu', name: 'body', widget: 'markdown' }

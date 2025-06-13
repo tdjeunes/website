@@ -1,0 +1,17 @@
+{% assign template="parts/antennes_pays.html" %}
+{% include structure/debug.html %}
+
+{% assign p="_pays" %}{% assign v=_pays %}{% include structure/r.html %}
+
+{% assign sorted_antennes = (site.categories.jekyll_antennes | sort: 'title') %}
+{% for antenne in sorted_antennes %}
+  {% if antenne.active %}
+    {% if antenne.country2 contains _pays %}
+      {% assign _at_least_one_antenne = true %}
+      <ul><a href="{{ antenne.url }}">{{ antenne.title }}</a></ul>
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% assign template="parts/antennes_pays.html" %}
+{% include structure/enddebug.html %}

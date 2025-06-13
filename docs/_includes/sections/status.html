@@ -1,0 +1,27 @@
+{% assign template="sections/status.html" %}
+{% include structure/debug.html %}
+<!-- sections d'articles -->
+<style>
+  {% include sections/status/status.css %}
+</style>
+<section class="status">
+  <div class="container">
+    <div class="col-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Test</th>
+            <th scope="col">Description</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% include sections/status/duplicates.html %}
+          {% include sections/status/row.html %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+{% assign template="sections/status.html" %}
+{% include structure/enddebug.html %}

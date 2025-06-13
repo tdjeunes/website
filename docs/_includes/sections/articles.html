@@ -1,0 +1,31 @@
+{% assign template="articles.html" %}
+{% include structure/debug.html %}
+{% assign p="_show_link_to_all" %}{% assign v=_show_link_to_all %}{% include structure/r.html %}
+<!-- sections d'articles -->
+<section class="news-section section-padding" id="actualites" data-cols="{{ _cols }}">
+  <div class="container mt-0">
+      <h2 class="text-center my-hide-if-no-articles" style="color: #0d570d;">Dernières nouvelles</h2>
+    <div class="col-lg-12 col-12 mb-5">
+      <h2 class="my-no-articles">Aucun article ne correspond à ces filtres. <a href="/actualites/">Voir toutes les actualités.</a></h2>
+    </div>
+    <div id="countries" class="row">
+      <div class="col-lg-12 col-12">
+        <div id="newsContainer" class="row">
+          <!-- Les articles par défaut seront chargés ici. Voir Articles.js -->
+        </div>
+      </div>
+
+      {% if _show_link_to_all == 'show' %}
+        <a href="/actualites/" class="custom-btn btn  text-2xl font-bold text-center mt-0">
+          Voir les articles
+          <span class="icon-circle">
+            <i class="fas fa-arrow-right"></i>
+          </span>
+        </a>
+      {% endif %}
+
+    </div>
+  </div>
+</section>
+{% assign template="articles.html" %}
+{% include structure/enddebug.html %}

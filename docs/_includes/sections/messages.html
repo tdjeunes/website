@@ -1,0 +1,15 @@
+{% assign template="messages.html" %}
+{% include structure/debug.html %}
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-12 mettre-alertes-ici">
+        {% comment %}
+          Pour ajouter une alerte ici, faire: Alerts.add('danger', 'message');
+        {% endcomment %}
+      </div>
+    </div>
+  </div>
+</section>
+{% assign template="messages.html" %}
+{% include structure/enddebug.html %}

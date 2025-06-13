@@ -1,0 +1,236 @@
+{% include structure/footer/footer_content.html %}
+
+<!-- JAVASCRIPT FILES -->
+<script src="/js/jquery.sticky.js"></script>
+<script src="/js/counter.js"></script>
+<script src="/js/custom.js"></script>
+<script>
+  // we will store the image optmization map file json data in globalMappingData variable. Later we can access
+  // globalMappingData in news block to map the news block images.
+  let globalMappingData = null;
+  const newsContainer = document.getElementById("newsContainer"); // Assurez-vous que l'élément existe
+  const recentNewsContainer = document.getElementById("recentNewsContainer");
+  const countryList = document.getElementById("countryList");
+
+  function loadDefaultNews(defaultArticles) {
+    if (!defaultArticles || defaultArticles.length === 0) {
+      $('.my-hide-if-no-articles').hide();
+      return;
+    }
+
+    const newsContainer = document.getElementById("newsContainer"); // Assurez-vous que l'élément existe
+
+    if (!newsContainer) {
+      return;
+    }
+
+    newsContainer.innerHTML = ""; // Vider le conteneur avant d'ajouter de nouveaux articles
+
+    // Limiter le nombre d'articles affichés
+    const articlesToShow = defaultArticles.slice(0, {{ maxArticles }});
+
+    articlesToShow.forEach(article => {
+    const newsBlock = document.createElement("div");
+    newsBlock.className = "col-lg-{{ articleWidth }} col-md-6 col-sm-12 mb-4";
+    newsBlock.setAttribute('data-url-for-filtering', article.url);
+
+    // Tronquer le titre à 50 caractères max
+    const truncatedTitle = article.title.length > 60 ? article.title.substring(0, 55) + "..." : article.title;
+
+    let lirePlus = '';
+    if (typeof article.url !== 'undefined') {
+        lirePlus = `<a href="${article.url}" class="custom-btn btn mt-2">Lire plus</a>`;
+    }
+
+    let pays = '';
+    if (typeof article.pays !== 'undefined') {
+        if (article.pays.drapeau && article.pays.pays && article.pays.antenne) {
+            pays = `<div class="pays-sur-article">
+                <img src="${article.pays.drapeau}"
+                    alt="${article.pays.pays}"
+                    class="img-fluid rounded-circle"
+                    style="object-fit: cover;">
+                <div class="antenne">${article.pays.antenne}</div>
+            </div>`;
+        }
+    }
+
+    if (typeof article.image == "undefined") {
+        article.image = "/images/news/medium-shot-volunteers-with-clothing-donations.jpg";
+    }
+
+    let imgSrc = article.image;
+    if (globalMappingData && imgSrc.startsWith("/media")) {
+      // fetch optimized Image Url for news block images.
+      const optimizePath = getOptimizedImageUrl(article.image, "604x400", globalMappingData, "{{ site.data.config.thumbor.image_server_domain }}");
+      if (optimizePath != "") {
+        imgSrc = optimizePath;
+      }
+    } else {
+      // Optional: wait or retry
+      console.warn('Global Mapping data not loaded yet.');
+    }
+
+    let objPos = "";
+    if (article.position == 'top') {
+      objPos = "object-position: top;";
+    }
+
+    newsBlock.innerHTML = `
+        <div class="card shadow-sm mb-4" style="border: none;">
+            <div class="card-body text-center">
+                ${pays}
+                <h5 class="card-title">${truncatedTitle}</h5>
+                <div style="width: 100%; height: 200px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                    <img src="${imgSrc}" alt="${article.title}" class="img-fluid rounded" data-optimized-size="800x"
+                        style="width: 100%; height: 100%; object-fit: cover; ${objPos}">
+                </div>
+                ${lirePlus}
+            </div>
+        </div>
+    `;
+
+    newsContainer.appendChild(newsBlock);
+    });
+  }
+
+  // Récupérer les actualités par pays
+  async function fetchNewsByCountry(countryName) {
+      try {
+          const response = await fetch(`${NEWS_API_URL}?q=${encodeURIComponent(countryName)}&apiKey=${API_KEY}`);
+          const data = await response.json();
+
+          if (data.articles?.length) {
+              displayNews(data.articles);
+          } else {
+              newsContainer.innerHTML = `<p>Aucune actualité trouvée pour ${countryName}.</p>`;
+          }
+      } catch (error) {
+          console.error(`Erreur lors de la récupération des actualités pour ${countryName}:`, error);
+      }
+  }
+
+  // Afficher les actualités dans le conteneur principal
+  function displayNews(articles) {
+      newsContainer.innerHTML = "";
+      articles.forEach(article => {
+          const newsBlock = document.createElement("div");
+          newsBlock.className = "col-lg-6 col-md-6 col-sm-12 mb-4";
+          newsBlock.innerHTML = `
+      <div class="news-block"  style:"height:30px">
+          <img src="${article.urlToImage || 'C:\Users\rodri\OneDrive\Documents\GitHub\TerreDjeunes\images\news'}" alt="${article.title}" class="img-fluid">
+          <h4>${article.title}</h4>
+          <p>${article.description || "Pas de description disponible."}</p>
+          <a href="${article.url}" class="btn btn-primary read-more" target="_blank"><b>Lire plus</b></a>
+      </div>
+  `;
+          newsContainer.appendChild(newsBlock);
+      });
+  }
+
+  // Gérer les likes et dislikes
+  document.querySelectorAll('.like-icon').forEach(icon => {
+              icon.addEventListener('click', function () {
+                  let likes = parseInt(this.getAttribute('data-likes')) + 1;
+                  this.setAttribute('data-likes', likes);
+                  this.nextElementSibling.textContent = likes;
+              });
+          });
+
+          document.querySelectorAll('.dislike-icon').forEach(icon => {
+              icon.addEventListener('click', function () {
+                  let dislikes = parseInt(this.getAttribute('data-dislikes')) + 1;
+                  this.setAttribute('data-dislikes', dislikes);
+                  this.nextElementSibling.textContent = dislikes;
+              });
+          });
+</script>
+<!-- sections team -->
+<script>
+  //   team Terre des jeunes
+
+  const teamMembers = [
+  { name: "Alice Dupont", role: "Développeuse", image: "images/members/102.png", bio: "Alice est une développeuse passionnée.", social: { facebook: "#", instagram: "#", linkedin: "#" } },
+  { name: "Jean Martin", role: "Designer UX/UI", image: "images/members/membercreat.jpg", bio: "Jean conçoit des expériences utilisateurs.", social: { instagram: "#" } },
+  { name: "Marie Curie", role: "Scientifique", image: "images/c.jpg", bio: "Marie est une pionnière de la physique nucléaire.", social: { facebook: "#", linkedin: "#" } },
+  { name: "Jacques Leblanc", role: "Manager", image: "images/250.jpg", bio: "Jacques excelle en gestion de projets." },
+  ];
+
+  function team_reseaux(member) {
+    if (!member.reseaux) {
+      return '';
+    }
+    let ret = '<div class="team-social text-center">';
+    member.reseaux.forEach(function(social) {
+      ret += `<a class="btn btn-square" href="${social.lien}"><i class="bi bi-${social.type}"></i></a>`;
+    });
+    return ret + '</div>';
+  }
+
+  function populateTeamMembers(teamMembers) {
+  const teamContainer = document.getElementById('team-members');  /*mettre-membres-ici */
+  if (!teamContainer) {
+    return;
+  }
+  teamContainer.innerHTML = `
+          <div class="row row-cols-1 row-cols-md-3 row-cols-lg-6 g-4">
+              ${teamMembers.map((member, index) => `
+                  <div class="col">
+                    <a href="${member.url}">
+                      <div class="card text-center shadow-sm" style="cursor: pointer; border: none;" onclick="showModal(${index})">
+                          <img src="${member.image}" class="card-img-top rounded-circle mx-auto mt-3" alt="${member.name}"
+                            style="width: 120px; height: 120px; object-fit: cover;">
+                          <div class="card-body">
+                              <h5 class="card-title">${member.name}</h5>
+                              <p class="card-text text-muted">${member.role}</p>
+                              ${team_reseaux(member)}
+                          </div>
+                      </div>
+                    </a>
+                  </div>
+              `).join('')}
+          </div>
+      `;
+  }
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+      const navbarToggler = document.querySelector(".navbar-toggler");
+      const navLinks = document.querySelectorAll(".nav-link");
+
+      navLinks.forEach(link => {
+          link.addEventListener("click", function () {
+              if (navbarToggler.getAttribute("aria-expanded") === "true") {
+                  navbarToggler.click(); // Fermer le menu après le clic sur un lien
+              }
+          });
+      });
+  });
+</script>
+<script src="/js/contenu/contenu.js?token={{ site.time | date: '%s' }}"></script>
+<script>
+  const services = new Services();
+  $( document ).ready(async function() {
+    await services.init({
+      membres: {
+        callback: function(team) {
+          populateTeamMembers(team);
+        },
+      },
+      articles: {
+        callback: function(news) {
+          loadDefaultNews(news);
+        },
+        not: typeof _notArticlesOfType == "undefined" ? [] : _notArticlesOfType,
+        onlyantenne: typeof _onlyArticlesOfAntenne == "undefined" ? [] : _onlyArticlesOfAntenne,
+      }
+    });
+  });
+</script>
+<script src="/js/image-mapping.js?token={{ site.time | date: '%s' }}"></script>
+<script>
+  // Event listener to execute loadImages function when the page is fully loaded
+  window.addEventListener('load', function() {
+    loadImages("{{ site.data.config.thumbor.image_server_domain }}", "{{ site.data.config.thumbor.image_file_url }}");
+  })
+</script>

@@ -1,0 +1,35 @@
+  - name: 'carousel'
+    create: true
+    label: 'Carousel'
+    folder: 'docs/jekyll_carousel/_posts/'
+    slug: '{{slug}}'
+    fields:
+    - label: Titre
+      name: title
+      widget: string
+    - { label: 'Active', name: 'active', widget: 'boolean', default: true }
+    - label: Order
+      hint:
+        a vient avant b vient avant z.
+      name: order
+      widget: string
+      required: false
+    - label: lien
+      hint:
+        Dans le format http://example.com/
+      name: lien
+      widget: string
+      required: false
+    - label: Image
+      name: image
+      widget: image
+      required: false
+    - label: Position
+      hint:
+        Où se trouve l'action dans cette photo.
+      name: position
+      options:
+        - { label: 'Centre', value: 'center' }
+        - { label: 'Haut', value: 'top' }
+      widget: select
+      required: false

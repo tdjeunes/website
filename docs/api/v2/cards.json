@@ -1,0 +1,68 @@
+---
+---
+{% capture json %}[
+  {% for pays in site.categories.jekyll_pays %}
+  {% if forloop.first %}{% else %},{% endif %}
+  {% assign paysid = 'PAYS' | append: forloop.index %}
+  {
+    "title": {{ pays.title | jsonify }},
+    "flag": {{ pays.drapeau | jsonify }},
+    "cards": [
+      {% assign first_card_has_been_shown = 0 %}
+      {% for antenne in site.categories.jekyll_antennes %}
+      {% assign antenneid = paysid | append: 'ANTENNE' | append: forloop.index %}
+      {% for card in site.categories.jekyll_cartes40e %}
+      {% assign cardid = antenneid | append: 'CARD' | append: forloop.index %}
+      {% if antenne.country2[0] == pays.title %}
+      {% if card.antenne[0] == antenne.title %}
+      {% for img in card.img %}
+      {% if first_card_has_been_shown == 1 %},{% else %}{% endif %}
+      {% assign id = cardid | append: 'INDEX' | append: forloop.index %}
+      {% assign first_card_has_been_shown = 1 %}
+      {
+        "id": {{ id | jsonify }},
+        "pays": {{ pays.title | jsonify }},
+        "antenne": {{ antenne.title | jsonify }},
+        "flag": {{ pays.drapeau | jsonify }},
+        "title": {{ card.title | jsonify }},
+        "structure": "img",
+        "img": {{ img | jsonify }}
+      }
+      {% endfor %}
+      {% for video in card.video %}
+      {% assign id = cardid | append: 'INDEX' | append: forloop.index %}
+      {% if first_card_has_been_shown == 1 %},{% else %}{% endif %}
+      {% assign first_card_has_been_shown = 1 %}
+      {
+        "id": {{ id | jsonify }},
+        "pays": {{ pays.title | jsonify }},
+        "antenne": {{ antenne.title | jsonify }},
+        "flag": {{ pays.drapeau | jsonify }},
+        "title": {{ card.title | jsonify }},
+        "structure": "video",
+        "video": {{ video | jsonify }}
+      }
+      {% endfor %}
+      {% assign card_content_stripped = card.content | strip_newlines %}
+      {% if card_content_stripped != "" %}
+      {% if first_card_has_been_shown == 1 %},{% else %}{% endif %}
+      {% assign id = cardid | append: 'MESSAGE1' %}
+      {% assign first_card_has_been_shown = 1 %}
+      {
+        "id": {{ id | jsonify }},
+        "pays": {{ pays.title | jsonify }},
+        "antenne": {{ antenne.title | jsonify }},
+        "flag": {{ pays.drapeau | jsonify }},
+        "title": {{ card.title | jsonify }},
+        "structure": "text",
+        "content": {{ card.content | markdownify | jsonify }}
+      }
+      {% endif %}
+      {% endif %}
+      {% endif %}
+      {% endfor %}
+      {% endfor %}
+    ]
+  }
+  {% endfor %}
+]{% endcapture %}{{- json | strip_newlines | strip -}}

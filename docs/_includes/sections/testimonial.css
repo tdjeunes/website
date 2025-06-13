@@ -1,0 +1,213 @@
+/* Styles spécifiques à la section des témoignages */
+.sections-testimonial h2 {
+    color: #000;
+    font-size: 26px;
+    font-weight: 300;
+    position: relative;
+    margin: 0 0 50px 0;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.sections-testimonial h2::after {
+    content: "";
+    width: 50%;
+    position: absolute;
+    height: 4px;
+    border-radius: 1px;
+    background: #086b15;
+    left: 0;
+    bottom: -20px;
+}
+
+.sections-testimonial .carousel {
+    margin: 50px auto;
+}
+
+.sections-testimonial .carousel .carousel-item {
+    color: #027933;
+    overflow: hidden;
+    min-height: 120px;
+    font-size: 13px;
+}
+
+.sections-testimonial .carousel .media {
+    display: flex; /* Aligner les éléments sur la même ligne */
+    align-items: center;
+    position: relative;
+    padding: 0 0 0 20px;
+    margin-left: 20px;
+}
+
+.sections-testimonial .carousel .media img {
+    width: 75px;
+    height: 75px;
+    display: block;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border: 2px solid #fff;
+}
+
+.sections-testimonial .carousel .testimonial {
+    color: #fff;
+    position: relative;    
+    background: #027933;
+    padding: 15px;
+    margin: 0 0 20px 20px;
+}
+
+.sections-testimonial .carousel .testimonial::before,
+.sections-testimonial .carousel .testimonial::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+}
+
+.sections-testimonial .carousel .testimonial::before {
+    width: 20px;
+    height: 20px;
+    background: #027933;
+    box-shadow: inset 12px 0 13px rgba(0, 0, 0, 0.5);
+}
+
+.sections-testimonial .carousel .testimonial::after {
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-bottom-color: #fff;
+    border-left-color: #fff;
+}
+
+.sections-testimonial .carousel .carousel-item .row > div:first-child .testimonial {
+    margin: 0 20px 20px 0;
+}
+
+.sections-testimonial .carousel .carousel-item .row > div:first-child .media {
+    margin-left: 0;
+}
+
+.sections-testimonial .carousel .testimonial p {
+    text-indent: 40px;
+    line-height: 21px;
+    margin: 0;
+    color: #fff;
+}
+
+.sections-testimonial .carousel .testimonial p::before {
+    content: "\201D";
+    font-family: Arial, sans-serif;
+    color: #fff;
+    font-weight: bold;
+    font-size: 68px;
+    line-height: 70px;
+    position: absolute;
+    left: -25px;
+    top: 0;
+}
+
+.sections-testimonial .carousel .overview {
+    padding: 3px 0 0 15px;
+}
+
+.sections-testimonial .carousel .overview .details {
+    padding: 5px 0 8px;
+}
+
+.sections-testimonial .carousel .overview b {
+    text-transform: uppercase;
+    color: #027933;
+}
+
+/* Contrôles du carousel */
+.sections-testimonial .carousel-control-prev,
+.sections-testimonial .carousel-control-next {
+    width: 30px;
+    height: 30px;
+    background: #0e0e0f;
+    text-shadow: none;
+    top: 4px;
+}
+
+.sections-testimonial .carousel-control-prev i,
+.sections-testimonial .carousel-control-next i {
+    font-size: 16px;
+}
+
+.sections-testimonial .carousel-control-prev {
+    left: auto;
+    right: 40px;
+}
+
+.sections-testimonial .carousel-control-next {
+    left: auto;
+}
+
+.sections-testimonial .star-rating li {
+    padding: 0 2px;
+}
+
+.sections-testimonial .star-rating i {
+    font-size: 14px;
+    color: #ffdc12;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .sections-testimonial h2 {
+        font-size: 12px;
+    }
+
+    .sections-testimonial .carousel .carousel-item {
+        font-size: 12px;
+    }
+
+    .sections-testimonial .carousel .media img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .sections-testimonial .carousel .testimonial p {
+        text-indent: 30px;
+        color: #fff;
+    }
+}
+
+@media (max-width: 480px) {
+    .sections-testimonial h2 {
+        font-size: 20px;
+    }
+
+    .sections-testimonial .carousel .carousel-item {
+        font-size: 11px;
+    }
+
+    .sections-testimonial .carousel .media img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .sections-testimonial .carousel .testimonial p {
+        text-indent: 20px;
+    }
+
+    .sections-testimonial .carousel-control-prev,
+    .sections-testimonial .carousel-control-next {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+/* Font Loading Optimization */
+@font-face {
+    font-family: 'Material Icons';
+    src: url('https://fonts.gstatic.com/s/materialicons/v143/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2') format('woff2');
+    font-display: swap; /* Ensures text is visible while the font loads */
+}
+
+@font-face {
+    font-family: 'Bootstrap Icons';
+    src: url('http://127.0.0.1:4000/fonts/bootstrap-icons.woff2?30af91bf14e37666a085fb8a161ff36d') format('woff2');
+    font-display: swap; /* Ensures text is visible while the font loads */
+}

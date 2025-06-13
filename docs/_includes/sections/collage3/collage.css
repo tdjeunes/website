@@ -1,0 +1,41 @@
+.my-collage .grid {
+  max-width: 1200px;
+}
+
+/* reveal grid after images loaded */
+.my-collage .grid.are-images-unloaded {
+  opacity: 0;
+}
+
+.my-collage .grid__item,
+.my-collage .grid__col-sizer {
+  width: 32%;
+}
+
+.my-collage .grid__gutter-sizer { width: 2%; }
+
+.my-collage .grid__item {
+  margin-bottom: 20px;
+  float: left;
+}
+
+.my-collage .grid__item--height1 { height: 140px; background: #EA0; }
+.my-collage .grid__item--height2 { height: 220px; background: #C25; }
+.my-collage .grid__item--height3 { height: 300px; background: #19F; }
+
+.my-collage .grid__item--width2 { width: 66%; }
+
+.my-collage .grid__item img {
+  display: block;
+  max-width: 100%;
+}
+
+.my-collage .page-load-status {
+  display: none; /* hidden by default */
+  padding-top: 20px;
+  border-top: 1px solid #DDD;
+  text-align: center;
+  color: #777;
+}
+
+/* loader ellips in separate pen CSS */

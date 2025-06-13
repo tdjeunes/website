@@ -1,0 +1,25 @@
+  - name: "vars"
+    label: "Variables (phrases, liens, etc. sur les pages)"
+    editor:
+      preview: false
+    files:
+      - label: "Variables"
+        name: "variables"
+        create: false
+        file: "docs/_data/variables.yml"
+        fields:
+          - label: "Variable"
+            name: "variable"
+            widget: "list"
+            fields:
+              - label: "ID de la variable (ne pas changer)"
+                name: "title"
+                widget: "string"
+              - label: "description de la variable"
+                name: "desc"
+                required: false
+                widget: "string"
+              - label: "Valeur de la variable"
+                required: false
+                name: "val"
+                widget: "string"

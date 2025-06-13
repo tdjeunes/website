@@ -1,0 +1,22 @@
+.my-status-icon {
+  font-size: 2em;
+  display: none;
+}
+.my-status-check-in-progress {
+  color: #777;
+}
+.my-status-check-ok {
+  color: green;
+}
+.my-status-check-x {
+  color: red;
+}
+.my-status-in-progress .my-status-check-in-progress {
+  display: inline-block;
+}
+.my-status-error .my-status-check-x {
+  display: inline-block;
+}
+.my-status-ok .my-status-check-ok {
+  display: inline-block;
+}

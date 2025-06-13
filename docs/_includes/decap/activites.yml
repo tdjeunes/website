@@ -1,0 +1,29 @@
+  - name: 'activite'
+    create: true
+    label: 'Activités'
+    folder: 'docs/jekyll_activites/_posts/'
+    slug: '{{slug}}'
+    fields:
+      - label: "Titre, par exemple Éducation à l'environnement"
+        name: 'title'
+        widget: 'string'
+      - label: "Lien permanent, par exemple /education/"
+        name: 'permalink'
+        widget: 'string'
+      - label: "Layout"
+        name: layout
+        widget: "select"
+        options:
+        - { label: "Activité générique", value: 'activite' }
+        - { label: 'Synécoculture', value: 'synecoculture' }
+      - label: Image
+        name: image
+        widget: image
+      - label: "Documents"
+        name: "documents"
+        widget: "list"
+        required: false
+        field: {label: Document, name: document, widget: file}
+      - label: 'Contenu'
+        name: 'body'
+        widget: 'markdown'

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  {% include structure/head.html %}
+  <body id="section_1">
+    {% if site.data.config.jekyll != true%}
+    <div class="localdev-warning">
+      Attention! Vous devez générer le site avec Docker. SVP faire:
+      <code>
+      docker-compose up
+      </code>
+      Puis visiter http://0.0.0.0:4000
+    </div>
+    {% endif %}
+    {% include navbar.html %}
+    <main>
+      {{ inferred_sections }}
+    </main>
+    <!-- footer sections -->
+    {% include footer.html %}
+  </body>
+</html>

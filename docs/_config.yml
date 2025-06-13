@@ -1,0 +1,51 @@
+github_repo_url: https://github.com/alberto56/tdj-comm
+
+defaults:
+  -
+    scope:
+      path: "jekyll_blogposts"
+    values:
+      permalink: "articles/:year/:month/:day/:title:output_ext"
+  -
+    scope:
+      path: "jekyll_motsdupresident"
+    values:
+      permalink: "mots-du-president/:pathid"
+  -
+    scope:
+      path: "jekyll_antennes"
+    values:
+      layout: "antenne"
+  -
+    scope:
+      path: "jekyll_pages_v2"
+    values:
+      layout: "page2"
+  -
+    scope:
+      path: "jekyll_pages_v3"
+    values:
+      layout: "page3"
+  -
+    scope:
+      path: "jekyll_redirections"
+    values:
+      layout: "redirect"
+  -
+    scope:
+      path: "jekyll_partenaires"
+    values:
+      layout: "partenaire"
+      permalink: "partenaires/:title/"
+  -
+    scope:
+      path: "jekyll_bios"
+    values:
+      layout: "bio"
+      permalink: "bios/:title"
+  -
+    scope:
+      path: "jekyll_temoignages"
+    values:
+      layout: "temoignage"
+      permalink: "temoignages/:title/"

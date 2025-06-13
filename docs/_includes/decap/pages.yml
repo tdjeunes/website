@@ -1,0 +1,40 @@
+  - name: 'pages'
+    create: true
+    label: 'Pages'
+    folder: 'docs/jekyll_pages/_posts/'
+    slug: '{{slug}}'
+    fields:
+      - { label: 'Titre', name: 'title', widget: 'string' }
+      - label: "Mise en page"
+        name: layout
+        widget: "select"
+        options:
+        - { label: 'apropos', value: 'apropos' }
+        - { label: 'blog', value: 'blog' }
+        - { label: 'contact', value: 'contact' }
+        - { label: 'don', value: 'don' }
+        - { label: 'liste_antennes', value: 'liste_antennes' }
+        - { label: 'liste_articles', value: 'liste_articles' }
+        - { label: 'liste_bios', value: 'liste_bios' }
+        - { label: 'liste_motsdupresident', value: 'liste_motsdupresident' }
+        - { label: 'liste_partenaires', value: 'liste_partenaires' }
+        - { label: 'liste_temoignages', value: 'liste_temoignages' }
+        - { label: 'page', value: 'page' }
+        - { label: 'Page structurée (expérimental)', value: 'page2' }
+      - label: 'Chemin'
+        name: 'permalink'
+        widget: 'string'
+        required: false
+        hint: 'Sert à créer le lien vers la page, par exemple /a-propos-de-nous/'
+      - label: "Sections (expérimental)"
+        name: "sections"
+        widget: "list"
+        required: false
+        fields:
+        - label: 'Structure'
+          name: 'structure'
+          widget: 'select'
+          options:
+          - { label: 'Carousel', value: 'carousel' }
+          hint: 'ex: facebook, instagram, twitter-x, linkedin'
+      - { label: 'Content', name: 'body', widget: 'markdown', required: false }

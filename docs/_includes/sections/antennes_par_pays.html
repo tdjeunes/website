@@ -1,0 +1,19 @@
+{% assign template="sections/antennes_par_pays.html" %}
+{% include structure/debug.html %}
+{% assign p="_pays" %}{% assign v=_pays %}{% include structure/r.html %}
+{% assign p="_drapeau" %}{% assign v=_drapeau %}{% include structure/r.html %}
+
+<section>
+  <div class="container">
+    <div class="col-lg-12 col-12 mb-5">
+      <img src="{{ _drapeau }}" alt="Drapeau: {{ _pays }}" class="img-fluid mb-3" style="width: 90px" />
+      <h2>{{ _pays }}: antennes</h2>
+      <ul>
+        {% include parts/antennes_pays.html %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+{% assign template="sections/antennes_par_pays.html" %}
+{% include structure/enddebug.html %}

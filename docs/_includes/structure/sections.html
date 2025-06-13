@@ -1,0 +1,7 @@
+{% assign template="containers.html" %}
+{% include structure/debug.html %}
+{% for section in sections %}
+  {% include section.filename %}
+{% endfor %}
+{% assign template="containers.html" %}
+{% include structure/enddebug.html %}

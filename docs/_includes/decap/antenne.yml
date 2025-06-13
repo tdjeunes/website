@@ -1,0 +1,52 @@
+  - name: 'antenne'
+    create: true
+    label: 'Antennes'
+    folder: 'docs/jekyll_antennes/_posts/'
+    slug: '{{slug}}'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string', required: false }
+      - { label: 'Lien, par exemple /mexico/', name: 'permalink', widget: 'string', required: false }
+      - { label: 'Pays', name: 'country', widget: 'string', required: false }
+      - label: "Liens"
+        name: "liens"
+        widget: "list"
+        fields:
+        - label: 'Text'
+          name: 'texte'
+          widget: 'string'
+          required: false
+          hint: 'ex: Notre charte'
+        - label: 'Document'
+          name: 'document'
+          required: false
+          widget: 'file'
+        - label: 'Lien'
+          name: 'lien'
+          required: false
+          widget: 'string'
+          hint: 'ex: http://example.com/charte'
+      - label: "Email"
+        name: email
+        widget: "string"
+        required: false
+      - label: "Téléphone"
+        name: tel
+        widget: "string"
+        required: false
+      - label: "Pays (v2)"
+        name: country2
+        widget: "select"
+        multiple: true
+        options:
+{% for categorie in site.categories.jekyll_pays %}
+        - {{ categorie.title }}
+{% endfor %}
+      - { label: 'Page Url (désuet)', name: 'page_url', widget: 'string', required: false }
+      - { label: 'Active', name: 'active', widget: 'boolean', default: true }
+      - { label: 'Logo Image (25*25)', name: 'logo_image', widget: 'image', required: false, default: '/media/default-antenna-logo.png' }
+      - label: "Images"
+        name: "img"
+        widget: "list"
+        required: false
+        field: {label: Image, name: image, widget: image}
+      - { label: 'Contenu', name: 'body', widget: 'markdown', required: false }

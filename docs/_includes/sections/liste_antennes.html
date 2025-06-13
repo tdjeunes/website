@@ -1,0 +1,33 @@
+{% assign template="liste_antennes.html" %}
+{% include structure/debug.html %}
+<section>
+  <div class="container">
+    <div class="row">
+      {% assign sorted_pays = (site.categories.jekyll_pays | sort: 'title') %}
+      {% for pays in sorted_pays %}
+
+        {% assign _at_least_one_antenne = false %}
+
+        {% capture antennes_dans_pays %}
+        {% assign _pays = pays.title %}
+        {% include parts/antennes_pays.html %}
+        {% endcapture %}
+        {% assign antennes_dans_pays = antennes_dans_pays | strip_newlines %}
+
+        {% if _at_least_one_antenne %}
+          <div class="col-12 col-lg-6">
+            <div class="news-block">
+              <img src="{{ pays.drapeau }}" alt="{{ pays.title }}" class="img-fluid" />
+              <h2>
+                {{ pays.title }}
+              </h2>
+              {{ antennes_dans_pays }}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% assign template="liste_antennes.html" %}
+{% include structure/enddebug.html %}

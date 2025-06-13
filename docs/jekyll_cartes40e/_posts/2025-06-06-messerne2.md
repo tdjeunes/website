@@ -1,0 +1,14 @@
+---
+title: Message de Messerne de TDJ Jean-Rabel
+antenne:
+  - TDJ/Jean-Rabel, Haïti
+---
+Malheureusement, je suis coincé à Port-au-Prince et je ne pouvais célébrer, en pleine nature, ce Fameux 40ème anniversaire de notre grand mouvement: Terre des Jeunes
+
+Bon combat à vous!
+Bon combat à nous !
+40 ans de résistance et d'engagement citoyen!
+
+Un autre monde est possible!
+
+Messerne SAGESSE

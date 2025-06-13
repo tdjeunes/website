@@ -1,0 +1,44 @@
+  - name: 'pages_v2'
+    create: true
+    label: 'Pages (expérimental)'
+    folder: 'docs/jekyll_pages_v2/_posts/'
+    slug: '{{slug}}'
+    fields:
+      - { label: 'Titre', name: 'title', widget: 'string' }
+      - label: 'Chemin (permalink)'
+        name: 'permalink'
+        widget: 'string'
+        required: false
+        hint: 'Sert à créer le lien vers la page, par exemple /a-propos-de-nous/'
+      - label: "Sections (expérimental)"
+        name: "sections"
+        widget: "list"
+        required: false
+        fields:
+        - label: 'Structure'
+          name: 'structure'
+          widget: 'select'
+          options:
+          - { label: 'Breadcrumb', value: 'breadcrumb' }
+          - { label: 'Message', value: 'message' }
+          - { label: 'Image and content', value: 'image_content' }
+          - { label: 'Content and image', value: 'content_image' }
+          - { label: 'Status', value: 'status' }
+          - { label: 'Collage', value: 'collage' }
+        - { label: 'Message', name: 'message', widget: 'string', required: false, hint: 'some text [only:message]' }
+        - { label: 'Type', name: 'type', widget: 'string', required: false, hint: 'type of message, e.g. "info", "warning", "error" [only:message]' }
+        - label: 'Crumbs'
+          hint: 'Breadcrumbs [only:breadcrumb]'
+          name: 'crumbs'
+          widget: "list"
+          required: false
+          fields:
+          - label: 'Title'
+            name: 'title'
+            widget: 'string'
+          - label: 'Url'
+            name: 'url'
+            widget: 'string'
+        - { label: 'Image', name: 'image', widget: 'image', required: false, hint: 'select an image [only:image_content,content_image]' }
+        - { label: 'Content', name: 'content', widget: 'markdown', required: false, hint: 'some text [only:image_content,content_image]' }
+      - { label: 'Content', name: 'body', widget: 'markdown', required: false }

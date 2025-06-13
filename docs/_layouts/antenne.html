@@ -1,0 +1,39 @@
+{% capture inferred_sections2 %}
+
+  {% assign _crumbs = site.data.config.default_antennes_crumbs %}
+  {% include sections/breadcrumb.html %}
+
+  {% assign _h1 = page.title %}
+  {% assign _bg = site.data.config.default_header_bg_img %}
+  {% assign _height = 'short' %}
+  {% include sections/h1_hero.html %}
+
+  {% include sections/messages.html %}
+
+  {% if page.liens %}
+    {% capture links %}
+      {% assign _links = page.liens %}
+      {% include parts/list_of_links.html %}
+    {% endcapture %}
+  {% endif %}
+
+  {% if page.img[0] %}
+    {% assign _image = page.img[0] %}
+    {% assign _content = content | append: links %}
+    {% include sections/image_content.html %}
+  {% else %}
+    {% assign _text = content | append: links %}
+    {% include sections/onlytext.html %}
+  {% endif %}
+
+  <script>
+    const _onlyArticlesOfAntenne = ['{{ page.title }}'];
+  </script>
+  {% assign _show_link_to_all = 'hide' %}
+  {% include sections/articles.html %}
+
+  {% endcapture %}
+{% assign inferred_sections = inferred_sections | append: inferred_sections2 %}
+
+{% assign _decap_path = page.path | replace: '.md', '' | replace: 'jekyll_antennes/_posts/', '/admin/#/collections/antenne/entries/' %}
+{% include layouts/page.html %}

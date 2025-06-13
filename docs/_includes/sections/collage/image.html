@@ -1,0 +1,20 @@
+
+
+{% assign template="sections/collage/image.html" %}
+{% include structure/debug.html %}
+{% assign p="_title" %}{% assign v=_title %}{% include structure/r.html %}
+{% assign p="_img" %}{% assign v=_img %}{% include structure/r.html %}
+{% assign p="_modalid" %}{% assign v=_modalid %}{% include structure/r.html %}
+
+<div class="my-collage-card col-12 col-md-6 col-lg-4 mb-4" style="position: absolute; left: 0%; top: 0px;">
+  <div class="card" data-bs-toggle="modal" data-bs-target="#{{ _modalid }}">
+    <img src="{{ _img }}" class="card-img-top" alt="{{ _title }}">
+
+    <div class="card-body">
+      {% include sections/collage/title.html %}
+    </div>
+  </div>
+</div>
+
+{% assign template="sections/collage/image.html" %}
+{% include structure/enddebug.html %}

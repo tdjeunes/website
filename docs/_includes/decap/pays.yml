@@ -1,0 +1,23 @@
+  - name: 'pays'
+    create: true
+    label: 'Pays'
+    folder: 'docs/jekyll_pays/_posts/'
+    slug: '{{slug}}'
+    fields:
+      - label: 'Nom du pays'
+        name: 'title'
+        widget: 'string'
+      - label: 'Drapeau (prendre 256 flat rounded corners de https://flagdownload.com/)'
+        name: 'drapeau'
+        widget: 'image'
+        required: false
+      - label: 'Layout'
+        name: 'layout'
+        widget: 'hidden'
+        default: 'pays'
+      - label: 'Chemin'
+        hint:
+          par exemple "/regions/haiti/" ou "/regions/rdc/".
+        name: 'permalink'
+        widget: 'string'
+        required: false

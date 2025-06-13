@@ -1,0 +1,36 @@
+{% assign template="structure/section.html" %}
+{% include structure/debug.html %}
+{% assign p="_section" %}{% assign v=_section %}{% include structure/r.html %}
+
+{% assign structure = _section.structure %}
+
+{% if structure == 'breadcrumb' %}
+  {% assign _crumbs = _section.crumbs %}
+  {% include sections/breadcrumb.html %}
+{% elsif structure == 'image_content' %}
+  {{ _section.structure}} == 'image_content'
+  {% assign _image = _section.image %}
+  {% assign _content = _section.content %}
+  {% include sections/image_content.html %}
+{% elsif structure == 'collage' %}
+  {% include sections/collage.html %}
+{% elsif structure == 'formations' %}
+  {% include sections/formations.html %}
+{% elsif structure == 'collage3' %}
+  {% include sections/collage3.html %}
+{% elsif structure == 'content_image' %}
+  {% assign _image = _section.image %}
+  {% assign _content = _section.content %}
+  {% include sections/content_image.html %}
+{% elsif structure == 'status' %}
+  {% include sections/status.html %}
+{% elsif structure == 'message' %}
+  {% assign _message = _section.message %}
+  {% assign _type = _section.type %}
+  {% include sections/message.html %}
+{% else %}
+  <div class="my-build-error-to-display-with-js">unknown section _section</div>
+{% endif %}
+
+{% assign template="structure/section.html" %}
+{% include structure/enddebug.html %}

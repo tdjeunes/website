@@ -1,0 +1,49 @@
+{% assign template="parts/all_facets.html" %}
+{% include structure/debug.html %}
+
+<div class="my-all-facets">
+
+  <div class="my-all-facets-group mb-4">
+    <a class="tags-block-link my-category btn my-init-all-facets">
+      Réinitialiser la recherche
+    </a>
+  </div>
+
+  <div class="my-all-facets-group mb-4">
+    <div class="input-group">
+      <div class="form-outline" data-mdb-input-init>
+        <input type="search" id="form1" class="form-control my-article-search" />
+      </div>
+      <button type="button" class="btn btn-primary" data-mdb-ripple-init>
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="my-all-facets-group mb-4">
+    <h6>Catégories</h6>
+
+    {% for category in site.categories.jekyll_categories %}
+      {% assign _category = category.title %}
+      {% assign _facet = "categories" %}
+      {% assign _classes = "my-facet-not-new-page" %}
+      {% include utilities/facet.html %}
+    {% endfor %}
+  </div>
+
+  <div class="my-all-facets-group mb-4">
+    <h6>Pays</h6>
+
+    {% for pays in site.categories.jekyll_pays %}
+    {% assign _category = pays.title %}
+    {% assign _facet = "pays" %}
+    {% assign _drapeau = pays.drapeau %}
+    {% assign _classes = "my-facet-not-new-page" %}
+    {% include utilities/facet.html %}
+    {% endfor %}
+  </div>
+
+</div>
+
+{% assign template="parts/all_facets.html" %}
+{% include structure/enddebug.html %}

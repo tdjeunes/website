@@ -1,0 +1,36 @@
+---
+---
+{% assign slug = "{{year}}-{{month}}-{{day}}-{{slug}}" %}
+locale: 'fr'
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "_"
+backend:
+  # See https://www.netlifycms.org/docs/authentication-backends/#github-backend
+  name: github
+  repo: alberto56/tdj-comm
+  branch: main
+  base_url: https://auth.static.dcycle.com
+  auth_endpoint: auth/github/alberto56
+media_folder: 'docs/media'
+public_folder: "/media"
+collections:
+{% include decap/articles.yml %}
+{% include decap/categories.yml %}
+{% include decap/motsdupresident.yml %}
+{% include decap/pages.yml %}
+{% include decap/activites.yml %}
+{% include decap/carousel.yml %}
+{% include decap/pays.yml %}
+{% include decap/antenne.yml %}
+{% include decap/bio.yml %}
+{% include decap/partenaire.yml %}
+{% include decap/textes.yml %}
+{% include decap/variables.yml %}
+{% include decap/temoignages.yml %}
+{% include decap/redirections.yml %}
+{% include decap/pages_v2.yml %}
+{% include decap/pages_v3.yml %}
+{% include decap/cartes_40e.yml %}
+{% include decap/formations.yml %}

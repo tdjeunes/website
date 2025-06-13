@@ -1,0 +1,34 @@
+  - name: 'formations'
+    create: true
+    label: 'Formations'
+    folder: 'docs/jekyll_formations/_posts/'
+    slug: '{{slug}}'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string', required: false }
+      - label: "Section"
+        name: section
+        widget: "select"
+        options:
+{% for section in site.data.config.categories_ressources %}
+        - "{{ section }}"
+{% endfor %}
+      - label: "Liens"
+        name: "liens"
+        widget: "list"
+        fields:
+        - label: 'Text'
+          name: 'texte'
+          widget: 'string'
+          required: false
+          hint: 'ex: Notre charte'
+        - label: 'Document'
+          name: 'document'
+          required: false
+          widget: 'file'
+        - label: 'Lien'
+          name: 'lien'
+          required: false
+          widget: 'string'
+          hint: 'ex: http://example.com/charte'
+      - { label: 'Image', name: 'img', widget: 'image', required: false, default: '/archives/avant-2025/sites/terredesjeunes.org/files/imagecache/tdj_image_ressource/imagefield_default_images/Screen%20shot%202011-04-21%20at%2012.05.41%20PM.png' }
+      - { label: 'Contenu', name: 'body', widget: 'markdown', required: false }
