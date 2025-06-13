@@ -124,7 +124,7 @@ syneco_metrics_about: |
 
   L'[onglet "overall"](https://docs.google.com/spreadsheets/d/1mZhrxwnM2VhfynTstiIp-PTUitLaBz28DV9Pi4ffT_M/edit?gid=860806845#gid=860806845) contient les données nettoyées, traçables et transformées.
 
-  Le projet Python [Google Sheets To CVS](https://github.com/dcycle/google-sheets-to-csv) est ensuite utilsé pour prouire un fichier CSV à partir de ces données. Ce CSV est ensuite stocké à https://beta.terredesjeunes.org/data/syneco.csv.
+  Le projet Python [Google Sheets To CVS](https://github.com/dcycle/google-sheets-to-csv) est ensuite utilsé pour prouire un fichier CSV à partir de ces données. Ce CSV est ensuite stocké à https://www.terredesjeunes.org/data/syneco.csv.
 
   Le projet [Starterkit CSV to D3](https://github.com/dcycle/starterkit-csv-to-d3) est utilisé pour convertir le CSV en graphiques D3.js.
 thumbor:
