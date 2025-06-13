@@ -1,0 +1,5 @@
+.DS_Store
+docs/.jekyll-cache/
+docs/.jekyll-metadata
+docs/_site/
+do-not-commit

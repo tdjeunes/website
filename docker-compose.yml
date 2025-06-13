@@ -1,0 +1,13 @@
+services:
+  jekyll:
+    image: jekyll/minimal:3.8
+    command: jekyll serve --watch --force_polling --verbose
+    ports:
+      - 4000:4000
+    volumes:
+      - ./docs:/srv/jekyll
+
+networks:
+  default:
+    name: tdj_comm
+    external: true
