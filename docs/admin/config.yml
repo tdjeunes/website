@@ -9,7 +9,7 @@ slug:
 backend:
   # See https://www.netlifycms.org/docs/authentication-backends/#github-backend
   name: github
-  repo: alberto56/tdj-comm
+  repo: tdjeunes/website
   branch: main
   base_url: https://auth.static.dcycle.com
   auth_endpoint: auth/github/alberto56
