@@ -35,6 +35,19 @@ class MyCollage3Card {
     new_elem.innerHTML = new_html;
     return new_elem;
   }
+  fetchOptimizedImages(image, size) {
+    if (globalMappingData && image.startsWith("/media")) {
+      // fetch optimized Image Url for news block images.
+      const optimizePath = getOptimizedImageUrl(image, size, globalMappingData, "{{ site.data.config.thumbor.image_server_domain }}");
+      if (optimizePath != "") {
+        return optimizePath;
+      }
+    } else {
+      // Optional: wait or retry
+      console.warn('Global Mapping data not loaded yet in MyCollage3VideoCard .');
+    }
+    return image;
+  }
 }
 
 class MyCollage3VideoCard extends MyCollage3Card {
@@ -44,7 +57,8 @@ class MyCollage3VideoCard extends MyCollage3Card {
     const pays = this._data.pays;
     const title = this._data.title;
     const video = this._data.video;
-    const poster = video + '.jpg';
+    let poster = video + '.jpg';
+    poster = this.fetchOptimizedImages(poster, "604x400");
 
     return `<div class="card">
       <video controls="controls" preload="none" poster="${poster}">
@@ -90,9 +104,9 @@ class MyCollage3ImgCard extends MyCollage3Card {
     const flag = this._data.flag;
     const pays = this._data.pays;
     const title = this._data.title;
-    const img = this._data.img;
+    let img = this._data.img;
     const id = this.id();
-
+    img = this.fetchOptimizedImages(img, "604x400");
     return `<div class="card" data-bs-toggle="modal" data-bs-target="#${id}">
       <img src="${img}" class="card-img-top" alt="${title}">
       <div class="card-body">
@@ -110,8 +124,9 @@ class MyCollage3ImgCard extends MyCollage3Card {
     const flag = this._data.flag;
     const pays = this._data.pays;
     const title = this._data.title;
-    const img = this._data.img;
+    let img = this._data.img;
     const id = this.id();
+    img = this.fetchOptimizedImages(img, "800x800");
     return `<div class="modal fade" id="${id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen" role="document">
       <div class="modal-content">
