@@ -5,9 +5,10 @@
     slug: '{{slug}}'
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
-      - label: "Antenne"
+      - label: "Antenne (obsolète)"
         name: antenne
         widget: "select"
+        required: false
         options:
         - Togo
         - Sénégal
