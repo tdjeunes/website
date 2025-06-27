@@ -12,6 +12,11 @@
   {% assign _image = _section.image %}
   {% assign _content = _section.content %}
   {% include sections/image_content.html %}
+{% elsif structure == 'icons_text' %}
+  {% include sections/icons_text.html %}
+{% elsif structure == 'onlytext' %}
+  {% assign _text = _section.content %}
+  {% include sections/onlytext.html %}
 {% elsif structure == 'collage' %}
   {% include sections/collage.html %}
 {% elsif structure == 'formations' %}

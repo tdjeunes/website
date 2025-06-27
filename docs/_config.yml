@@ -3,6 +3,12 @@ github_repo_url: https://github.com/alberto56/tdj-comm
 defaults:
   -
     scope:
+      path: "jekyll_visualblocktypes"
+    values:
+      permalink: "guide-style/sections/:title"
+      layout: "sections"
+  -
+    scope:
       path: "jekyll_blogposts"
     values:
       permalink: "articles/:year/:month/:day/:title:output_ext"

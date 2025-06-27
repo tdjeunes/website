@@ -25,6 +25,9 @@
           - { label: 'Content and image', value: 'content_image' }
           - { label: 'Status', value: 'status' }
           - { label: 'Collage', value: 'collage' }
+{% for block in site.categories.jekyll_visualblocktypes %}
+          - { label: '{{ block.label }}', value: '{{ block.title }}' }
+{% endfor %}
         - { label: 'Message', name: 'message', widget: 'string', required: false, hint: 'some text [only:message]' }
         - { label: 'Type', name: 'type', widget: 'string', required: false, hint: 'type of message, e.g. "info", "warning", "error" [only:message]' }
         - label: 'Crumbs'
@@ -40,5 +43,5 @@
             name: 'url'
             widget: 'string'
         - { label: 'Image', name: 'image', widget: 'image', required: false, hint: 'select an image [only:image_content,content_image]' }
-        - { label: 'Content', name: 'content', widget: 'markdown', required: false, hint: 'some text [only:image_content,content_image]' }
+        - { label: 'Content', name: 'content', widget: 'markdown', required: false, hint: 'some text [only:image_content,content_image,onlytext]' }
       - { label: 'Content', name: 'body', widget: 'markdown', required: false }

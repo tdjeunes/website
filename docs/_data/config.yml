@@ -33,6 +33,11 @@ default_partenaires_crumbs:
     url: "/"
   - title: "Partenaires"
     url: "/partenaires/"
+default_sections_crumbs:
+  - title: "Accueil"
+    url: "/"
+  - title: "Guide de style et logo"
+    url: "/guide-style/"
 default_blog_crumbs:
   - title: "Accueil"
     url: "/"

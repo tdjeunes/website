@@ -104,3 +104,10 @@ Ceci est un tableau:
 | YYYY-MM-DD | Invoice | unrealized revenue | payable | 100    |
 | YYYY-MM-DD | Invoice | unrealized revenue | payable | 100    |
 | YYYY-MM-DD | Invoice | unrealized revenue | payable | 100    |
+
+Sections
+-----
+
+{% for block in site.categories.jekyll_visualblocktypes %}
+* [{{ block.label }} ({{ block.title }})]({{ block.url }})
+{% endfor %}
