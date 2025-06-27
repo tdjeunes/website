@@ -14,9 +14,18 @@
   text-align: center;
   width: 100%;
   display: inline-block;
-  padding-top: 4px;
+  padding-top: 19px;
 }
 
 .my-icons-text .my-col {
   text-align: center;
+}
+
+.my-icons-text a {
+  text-decoration: none;
+}
+
+.my-icons-text .my-text a {
+  font-weight: bold;
+  margin-top: 4px;
 }

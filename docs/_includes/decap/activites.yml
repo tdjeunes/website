@@ -24,6 +24,7 @@
         widget: "list"
         required: false
         field: {label: Document, name: document, widget: file}
+{% include decap/parts/sections.yml %}
       - label: 'Contenu'
         name: 'body'
         widget: 'markdown'

@@ -1,6 +1,6 @@
 ---
 title: Photos et vidéos sur le projet de synécoculture
-permalink: /no-robots/synecoculture/photos/
+permalink: /synecoculture/photos/
 sections:
   - structure: breadcrumb
     crumbs:
@@ -9,5 +9,5 @@ sections:
       - title: Activités
         url: /#activites
       - title: Synécoculture
-        url: /no-robots/synecoculture/
+        url: /synecoculture/
 ---

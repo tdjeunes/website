@@ -24,4 +24,18 @@ cd "$ROOT"/do-not-commit/google-sheets-to-csv
 
 mkdir -p "$ROOT"/docs/data
 
-cp "$ROOT"/do-not-commit/google-sheets-to-csv/unversioned/scripts/data.csv "$ROOT"/docs/data/overview.csv
+for w in \
+overview-average \
+overview-m1 \
+overview-m2 \
+overview-m3 \
+overview-m4.1 \
+overview-m4.2 \
+overview-m4.3 \
+overview-m4.4 \
+overview-m5 \
+;do
+  ./scripts/fetch-google-sheets.sh "$SYNECO_GOOGLE_SHEETS_API_KEY" "$SYNECO_GOOGLE_SHEETS_SPREADSHEET_ID" "$w" ./app/unversioned/scripts/"$w".csv
+
+  cp "$ROOT"/do-not-commit/google-sheets-to-csv/unversioned/scripts/"$w".csv "$ROOT"/docs/data/"$w".csv
+done

@@ -1,6 +1,6 @@
 ---
-title: "Synécoculture: métrique M5 : Attaque des plantes"
-permalink: /synecoculture/metriques/m5/
+title: "Synécoculture: métrique M1 : Dépense par semaine en CFA des intrants chimiques
+permalink: /synecoculture/metriques/m2x/
 sections:
   - structure: breadcrumb
     crumbs:
@@ -13,5 +13,5 @@ sections:
       - title: Métriques
         url: /synecoculture/metriques/
   - structure: synecometrics2
-    sheet: overview-m5
+    sheet: overview-m1
 ---

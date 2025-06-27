@@ -1,6 +1,6 @@
 ---
 title: "Synécoculture: métrique M4.2 : Inquiétude par rapport à la qualité nutritive de vos aliments"
-permalink: /no-robots/synecoculture/metriques/m4.2/
+permalink: /synecoculture/metriques/m4.2/
 sections:
   - structure: breadcrumb
     crumbs:
@@ -9,7 +9,9 @@ sections:
       - title: Activités
         url: /#activites
       - title: Synécoculture
-        url: /no-robots/synecoculture/
+        url: /synecoculture/
       - title: Métriques
-        url: /no-robots/synecoculture/metriques/
+        url: /synecoculture/metriques/
+  - structure: synecometrics2
+    sheet: overview-m4.2
 ---

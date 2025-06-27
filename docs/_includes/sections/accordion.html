@@ -1,0 +1,30 @@
+{% assign template="sections/accordion.html" %}
+{% include structure/debug.html %}
+{% assign p="_parts" %}{% assign v=_parts %}{% include structure/r.html %}
+<section class="my-accordion">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="accordion" id="accordionExample">
+          {% for part in _parts %}
+            {% assign _id = 'my-accordion-' | append: forloop.index %}
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading-{{ _id }}">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ _id }}" aria-expanded="false" aria-controls="collapse-{{ _id }}">
+                  {{ part.title }}
+                </button>
+              </h2>
+              <div id="collapse-{{ _id }}" class="accordion-collapse collapse show" aria-labelledby="heading-{{ _id }}" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  {{ part.body }}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% assign template="sections/accordion.html" %}
+{% include structure/enddebug.html %}

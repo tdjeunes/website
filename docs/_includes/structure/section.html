@@ -18,6 +18,16 @@
 {% elsif structure == 'onlytext' %}
   {% assign _text = _section.content %}
   {% include sections/onlytext.html %}
+{% elsif structure == 'largetext' %}
+  {% assign _text = _section.content %}
+  {% include sections/largetext.html %}
+{% elsif structure == 'accordion' %}
+  {% assign _parts = _section.parts %}
+  {% include sections/accordion.html %}
+{% elsif structure == 'synecometrics2' %}
+  {% assign _sheet = _section.sheet %}
+  {% assign _legend = _section.legend %}
+  {% include sections/syneco/metrics2.html %}
 {% elsif structure == 'collage' %}
   {% include sections/collage.html %}
 {% elsif structure == 'formations' %}

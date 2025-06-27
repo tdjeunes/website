@@ -1,0 +1,22 @@
+{% assign template="onlytext.html" %}
+{% include structure/debug.html %}
+{% assign p="_text" %}{% assign v=_text %}{% include structure/r.html %}
+{% if included_styles_largetext %}{% else %}
+  <style>
+  {% include sections/largetext.css %}
+  </style>
+  {% assign included_styles_largetext = true %}
+{% endif %}
+<section class="news-section section-padding my-largetext">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="my-text">
+          {{ _text | markdownify }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% assign template="onlytext.html" %}
+{% include structure/enddebug.html %}

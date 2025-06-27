@@ -1,0 +1,62 @@
+      - label: "Sections (expérimental)"
+        name: "sections"
+        widget: "list"
+        required: false
+        fields:
+        - label: 'Structure'
+          name: 'structure'
+          widget: 'select'
+          options:
+          - { label: 'Breadcrumb', value: 'breadcrumb' }
+          - { label: 'Message', value: 'message' }
+          - { label: 'Image and content', value: 'image_content' }
+          - { label: 'Content and image', value: 'content_image' }
+          - { label: 'Status', value: 'status' }
+          - { label: 'Collage', value: 'collage' }
+{% for block in site.categories.jekyll_visualblocktypes %}
+          - { label: '{{ block.label }}', value: '{{ block.title }}' }
+{% endfor %}
+        - { label: 'Message', name: 'message', widget: 'string', required: false, hint: 'some text [only:message]' }
+        - { label: 'Type', name: 'type', widget: 'string', required: false, hint: 'type of message, e.g. "info", "warning", "error" [only:message]' }
+        - label: 'Icons'
+          hint: 'Icons [only:icon_text]'
+          name: 'icons'
+          widget: "list"
+          required: false
+          fields:
+          - label: 'Icon, e.g. "fa-solid fa-flask-vial" for https://fontawesome.com/icons/flask-vial?f=classic&s=solid'
+            name: 'icon'
+            widget: 'string'
+          - label: 'Title'
+            name: 'text'
+            widget: 'string'
+          - label: 'Url'
+            name: 'link'
+            widget: 'string'
+        - label: 'Crumbs'
+          hint: 'Breadcrumbs [only:breadcrumb]'
+          name: 'crumbs'
+          widget: "list"
+          required: false
+          fields:
+          - label: 'Title'
+            name: 'title'
+            widget: 'string'
+          - label: 'Url'
+            name: 'url'
+            widget: 'string'
+        - label: 'Accordion parts'
+          name: 'parts'
+          widget: "list"
+          required: false
+          fields:
+          - label: 'Title'
+            name: 'title'
+            widget: 'string'
+          - label: 'Body'
+            name: 'body'
+            widget: 'markdown'
+        - { label: 'Image', name: 'image', widget: 'image', required: false, hint: 'select an image [only:image_content,content_image]' }
+        - { label: 'Sheet', name: 'sheet', widget: 'string', required: false, hint: 'a sheet in data, for example overview-metrics' }
+        - { label: 'Legend', name: 'legend', widget: 'string', required: false, hint: 'a legend which explains the sheet' }
+        - { label: 'Content', name: 'content', widget: 'markdown', required: false, hint: 'some text [only:image_content,content_image,onlytext]' }

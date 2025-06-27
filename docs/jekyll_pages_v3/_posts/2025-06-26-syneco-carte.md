@@ -1,6 +1,6 @@
 ---
 title: Cartes des jardins de synécoculture au Cameroun
-permalink: /no-robots/synecoculture/cartes/
+permalink: /synecoculture/cartes/
 sections:
   - structure: breadcrumb
     crumbs:
@@ -9,5 +9,5 @@ sections:
       - title: Activités
         url: /#activites
       - title: Synécoculture
-        url: /no-robots/synecoculture/
+        url: /synecoculture/
 ---

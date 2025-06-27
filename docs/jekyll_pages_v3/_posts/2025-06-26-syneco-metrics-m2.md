@@ -1,6 +1,6 @@
 ---
 title: "Synécoculture: métrique M2 : Entretien des écosystèmes et de la biodiversité"
-permalink: /no-robots/synecoculture/metriques/m2/
+permalink: /synecoculture/metriques/m2/
 sections:
   - structure: breadcrumb
     crumbs:
@@ -9,7 +9,9 @@ sections:
       - title: Activités
         url: /#activites
       - title: Synécoculture
-        url: /no-robots/synecoculture/
+        url: /synecoculture/
       - title: Métriques
-        url: /no-robots/synecoculture/metriques/
+        url: /synecoculture/metriques/
+  - structure: synecometrics2
+    sheet: overview-m2
 ---
