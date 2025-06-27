@@ -8,6 +8,7 @@ sections:
         url: /
       - title: Guide de style
         url: /guide-style/
+  - structure: onlytext
   - structure: breadcrumb
     crumbs:
       - title: Item One
@@ -18,5 +19,4 @@ sections:
         url: /
       - title: Item Four
         url: /
-  - structure: onlytext
 ---
