@@ -18,4 +18,5 @@ sections:
         url: /
       - title: Item Four
         url: /
+  - structure: onlytext
 ---
