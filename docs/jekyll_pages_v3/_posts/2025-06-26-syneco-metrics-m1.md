@@ -1,0 +1,18 @@
+---
+title: "Synécoculture: métrique M1 : Dépense par semaine en CFA des intrants chimiques"
+permalink: /synecoculture/metriques/m1/
+sections:
+  - structure: breadcrumb
+    crumbs:
+      - title: Accueil
+        url: /
+      - title: Activités
+        url: /#activites
+      - title: Synécoculture
+        url: /synecoculture/
+      - title: Métriques
+        url: /synecoculture/metriques/
+  - structure: synecometrics2
+    sheet: overview-m1
+    legend: Ce graphique sur 4 mois (commençant au mois 2 -- mars 2025 -- car le mois 1 n'a pas assez de données) montre des dépenses encourues mensuellement par parcelle pour les intrants chimiques. Sur les parcelles conventionnelles, on voit qu'au début, 200 francs CFA, soit à peu près 30 centimes d'euro, sont dépensées, une somme relativement modeste. Toutefois, plus tard dans la saison, les dépenses montent à plus de 1,400 francs CFA par semaine en moyenne, soit plus de 2 euros. Plus on utilise des intrants chimiques, plus on doit continuer à les utiliser. La synécoculture vise à briser ce cycle en entourant par exemple les parcelles de "plantes insecticides" qui attirent les insectes qui s'attaqueraient sinon aux autres plantes.
+---

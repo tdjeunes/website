@@ -22,6 +22,9 @@
         name: "img"
         widget: "list"
         field: {label: Image, name: img, widget: image}
+      - label: "Tags (for example programming, web design)"
+        name: "tags"
+        widget: "list"
       - label: 'Vidéo'
         required: false
         hint: "Pour une video /media/video.mp4, assurez-vous qu'il y a aussi une fichier media/video.mp4.jpg avec une image de la vidéo"

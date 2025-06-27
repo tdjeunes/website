@@ -14,4 +14,5 @@ sections:
         url: /synecoculture/metriques/
   - structure: synecometrics2
     sheet: overview-m4.3
+    legend: Ce graphique sur 4 mois (commençant au mois 2 -- mars 2025 -- car le mois 1 n'a pas assez de données) montre que la valeur marchande perçue des denrées produites en synécoculture est à peu près trois (3) fois supérieure aux parcelles conventionnelles. Ceci est d'autant plus marquant que les parcelles synécoles ne nécessitent aucun intrant chimique.
 ---
