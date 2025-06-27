@@ -30,6 +30,21 @@
 {% endfor %}
         - { label: 'Message', name: 'message', widget: 'string', required: false, hint: 'some text [only:message]' }
         - { label: 'Type', name: 'type', widget: 'string', required: false, hint: 'type of message, e.g. "info", "warning", "error" [only:message]' }
+        - label: 'Icons'
+          hint: 'Icons [only:icon_text]'
+          name: 'icons'
+          widget: "list"
+          required: false
+          fields:
+          - label: 'Icon, e.g. "fa-solid fa-flask-vial" for https://fontawesome.com/icons/flask-vial?f=classic&s=solid'
+            name: 'icon'
+            widget: 'string'
+          - label: 'Title'
+            name: 'text'
+            widget: 'string'
+          - label: 'Url'
+            name: 'link'
+            widget: 'string'
         - label: 'Crumbs'
           hint: 'Breadcrumbs [only:breadcrumb]'
           name: 'crumbs'

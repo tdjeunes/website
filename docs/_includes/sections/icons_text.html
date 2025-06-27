@@ -1,21 +1,28 @@
 {% assign template="sections/icons_text.html" %}
 {% include structure/debug.html %}
+{% assign p="_icons" %}{% assign v=_icons %}{% include structure/r.html %}
 
-<section>
+{% assign libreq_font_awesome = true %}
+
+{% if included_styles_icons_text %}{% else %}
+  <style>
+  {% include sections/icons_text.css %}
+  </style>
+  {% assign included_styles_icons_text = true %}
+{% endif %}
+<section class="my-icons-text">
   <div class="container">
     <div class="row">
-      <div class="col-6 col-lg-2">
-        <div class="my-rounded-rect">
-          <i class="bi bi-4-square"></i>
-        </div>
-        Hello world
+      {% for icon in _icons %}
+      <div class="col-6 col-lg-2 my-col">
+        <a href="{{ icon.link }}">
+          <div class="my-rounded-rect">
+            <i class="{{ icon.icon }}"></i>
+          </div>
+          {{ icon.text }}
+        </a>
       </div>
-      <div class="col-6 col-lg-2">
-        <div class="my-rounded-rect">
-          <i class="bi bi-4-square"></i>
-        </div>
-        Hello world
-      </div>
+      {% endfor %}
     </div>
   </div>
 </section>

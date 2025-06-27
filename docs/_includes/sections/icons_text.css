@@ -1,0 +1,22 @@
+.my-icons-text .my-rounded-rect {
+  background-color: #027933;
+  display: block;
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.my-icons-text .my-rounded-rect i {
+  color: white;
+  font-size: 60px;
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+  padding-top: 4px;
+}
+
+.my-icons-text .my-col {
+  text-align: center;
+}

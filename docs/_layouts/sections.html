@@ -19,9 +19,14 @@
 
   {% include sections/messages.html %}
 
+  {% for section in page.sections %}
+    {% assign _section = section %}
+    {% include structure/section.html %}
+  {% endfor %}
+
   {% assign _text = requires | append: content | markdownify %}
   {% include sections/onlytext.html %}
 {% endcapture %}
 {% assign inferred_sections = inferred_sections | append: inferred_sections2 %}
 
-{% include layouts/page.html %}
+{% include layouts/page3.html %}

@@ -13,6 +13,7 @@
   {% assign _content = _section.content %}
   {% include sections/image_content.html %}
 {% elsif structure == 'icons_text' %}
+  {% assign _icons = _section.icons %}
   {% include sections/icons_text.html %}
 {% elsif structure == 'onlytext' %}
   {% assign _text = _section.content %}
