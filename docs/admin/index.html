@@ -24,9 +24,8 @@
     {% for obj in site.categories.jekyll_visualblocktypes %}
       {% if forloop.first %}{% else %},{% endif %}
       {
-        "url": {{ obj.url | jsonify }},
-        "title": {{ obj.title | jsonify }},
-        "label": {{ obj.label | jsonify }}
+        "type": {{ obj.title | jsonify }},
+        "requires": {{ obj.requires | jsonify }}
       }
     {% endfor %}
   ]

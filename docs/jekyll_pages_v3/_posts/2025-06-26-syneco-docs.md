@@ -20,3 +20,4 @@ sections:
 * [Formulaire de réponse du projet CTCN, 2024](/media/response-plan.pdf) (source: [page web du projet](https://www.ctc-n.org/technical-assistance/projects/local-climate-resilience-through-synecoculture-high-yield))
 * [Safeguard Risk Identification Form (SRIF)](/media/risk.pdf) (source: [page web du projet](https://www.ctc-n.org/technical-assistance/projects/local-climate-resilience-through-synecoculture-high-yield))
 * [Kit d’Apprentissage des Principes de la Synécoculture, octobre 2020](/media/synecokit_ver033f20201016.pdf) (source: [Sony CSL](https://www.sonycsl.co.jp/wp-content/uploads/2020/10/synecokit_ver033f20201016.pdf))
+* [Synecoculture and Human Augmentation of Ecosystems: Project Overview, Sony CSL Synecocuture Association SynecO, Inc., Masa Funabashi](/media/Sony_Masatoshi_Funabashi.pdf) (source: [FAO](https://www.fao.org/fileadmin/user_upload/GSP/GSOBI-21/DAY2/Plenary/Sony_Masatoshi_Funabashi.pdf))
