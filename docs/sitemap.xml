@@ -6,7 +6,7 @@
   {% for obj in site.categories.jekyll_activites %}
     <url>
       <loc>https://www.terredesjeunes.com{{ obj.url | remove: 'index.html' }}</loc>
-      <lastmod>{{ obj.date }}</lastmod>
+      <lastmod>{{ obj.date | date: "%Y-%m-%d" }}</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
@@ -15,7 +15,7 @@
   {% for obj in site.categories.jekyll_antennes %}
     <url>
       <loc>https://www.terredesjeunes.com{{ obj.url | remove: 'index.html' }}</loc>
-      <lastmod>{{ obj.date }}</lastmod>
+      <lastmod>{{ obj.date | date: "%Y-%m-%d" }}</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
@@ -24,7 +24,7 @@
   {% for obj in site.categories.jekyll_bios %}
     <url>
       <loc>https://www.terredesjeunes.com{{ obj.url | remove: 'index.html' }}</loc>
-      <lastmod>{{ obj.date }}</lastmod>
+      <lastmod>{{ obj.date | date: "%Y-%m-%d" }}</lastmod>
       <changefreq>yearly</changefreq>
       <priority>0.3</priority>
    </url>
@@ -33,7 +33,7 @@
   {% for obj in site.categories.jekyll_blogposts %}
     <url>
       <loc>https://www.terredesjeunes.com{{ obj.url | remove: 'index.html' }}</loc>
-      <lastmod>{{ obj.date }}</lastmod>
+      <lastmod>{{ obj.date | date: "%Y-%m-%d" }}</lastmod>
       <changefreq>yearly</changefreq>
       <priority>0.6</priority>
    </url>
@@ -42,7 +42,7 @@
   {% for obj in site.categories.jekyll_motsdupresident %}
     <url>
       <loc>https://www.terredesjeunes.com{{ obj.url | remove: 'index.html' }}</loc>
-      <lastmod>{{ obj.date }}</lastmod>
+      <lastmod>{{ obj.date | date: "%Y-%m-%d" }}</lastmod>
       <changefreq>yearly</changefreq>
       <priority>0.3</priority>
    </url>
@@ -51,7 +51,7 @@
   {% for obj in site.categories.jekyll_pages %}
     <url>
       <loc>https://www.terredesjeunes.com{{ obj.url | remove: 'index.html' }}</loc>
-      <lastmod>{{ obj.date }}</lastmod>
+      <lastmod>{{ obj.date | date: "%Y-%m-%d" }}</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
    </url>
@@ -60,7 +60,7 @@
   {% for obj in site.categories.jekyll_pages_v2 %}
     <url>
       <loc>https://www.terredesjeunes.com{{ obj.url | remove: 'index.html' }}</loc>
-      <lastmod>{{ obj.date }}</lastmod>
+      <lastmod>{{ obj.date | date: "%Y-%m-%d" }}</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
    </url>
@@ -69,7 +69,7 @@
   {% for obj in site.categories.jekyll_pages_v3 %}
     <url>
       <loc>https://www.terredesjeunes.com{{ obj.url | remove: 'index.html' }}</loc>
-      <lastmod>{{ obj.date }}</lastmod>
+      <lastmod>{{ obj.date | date: "%Y-%m-%d" }}</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
    </url>
@@ -78,7 +78,7 @@
   {% for obj in site.categories.jekyll_partenaires %}
     <url>
       <loc>https://www.terredesjeunes.com{{ obj.url | remove: 'index.html' }}</loc>
-      <lastmod>{{ obj.date }}</lastmod>
+      <lastmod>{{ obj.date | date: "%Y-%m-%d" }}</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
@@ -87,7 +87,7 @@
   {% for obj in site.categories.jekyll_pays %}
     <url>
       <loc>https://www.terredesjeunes.com{{ obj.url | remove: 'index.html' }}</loc>
-      <lastmod>{{ obj.date }}</lastmod>
+      <lastmod>{{ obj.date | date: "%Y-%m-%d" }}</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
    </url>
@@ -96,7 +96,7 @@
   {% for obj in site.categories.jekyll_syneco2025terrains %}
     <url>
       <loc>https://www.terredesjeunes.com{{ obj.url | remove: 'index.html' }}</loc>
-      <lastmod>{{ obj.date }}</lastmod>
+      <lastmod>{{ obj.date | date: "%Y-%m-%d" }}</lastmod>
       <changefreq>yearly</changefreq>
       <priority>0.3</priority>
    </url>
@@ -105,7 +105,7 @@
   {% for obj in site.categories.jekyll_temoignages %}
     <url>
       <loc>https://www.terredesjeunes.com{{ obj.url | remove: 'index.html' }}</loc>
-      <lastmod>{{ obj.date }}</lastmod>
+      <lastmod>{{ obj.date | date: "%Y-%m-%d" }}</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.3</priority>
    </url>
