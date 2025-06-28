@@ -5,7 +5,7 @@
   <!-- type: activites -->
   {% for obj in site.categories.jekyll_activites %}
     <url>
-      <loc>https://www.terredesjeunes.com{{ obj.url | remove: 'index.html' }}</loc>
+      <loc>https://www.terredesjeunes.org{{ obj.url | remove: 'index.html' }}</loc>
       <lastmod>{{ obj.date | date: "%Y-%m-%d" }}</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
@@ -14,7 +14,7 @@
   <!-- type: antennes -->
   {% for obj in site.categories.jekyll_antennes %}
     <url>
-      <loc>https://www.terredesjeunes.com{{ obj.url | remove: 'index.html' }}</loc>
+      <loc>https://www.terredesjeunes.org{{ obj.url | remove: 'index.html' }}</loc>
       <lastmod>{{ obj.date | date: "%Y-%m-%d" }}</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
@@ -23,7 +23,7 @@
   <!-- type: bios -->
   {% for obj in site.categories.jekyll_bios %}
     <url>
-      <loc>https://www.terredesjeunes.com{{ obj.url | remove: 'index.html' }}</loc>
+      <loc>https://www.terredesjeunes.org{{ obj.url | remove: 'index.html' }}</loc>
       <lastmod>{{ obj.date | date: "%Y-%m-%d" }}</lastmod>
       <changefreq>yearly</changefreq>
       <priority>0.3</priority>
@@ -32,7 +32,7 @@
   <!-- type: blogposts -->
   {% for obj in site.categories.jekyll_blogposts %}
     <url>
-      <loc>https://www.terredesjeunes.com{{ obj.url | remove: 'index.html' }}</loc>
+      <loc>https://www.terredesjeunes.org{{ obj.url | remove: 'index.html' }}</loc>
       <lastmod>{{ obj.date | date: "%Y-%m-%d" }}</lastmod>
       <changefreq>yearly</changefreq>
       <priority>0.6</priority>
@@ -41,7 +41,7 @@
   <!-- type: motsduprésident -->
   {% for obj in site.categories.jekyll_motsdupresident %}
     <url>
-      <loc>https://www.terredesjeunes.com{{ obj.url | remove: 'index.html' }}</loc>
+      <loc>https://www.terredesjeunes.org{{ obj.url | remove: 'index.html' }}</loc>
       <lastmod>{{ obj.date | date: "%Y-%m-%d" }}</lastmod>
       <changefreq>yearly</changefreq>
       <priority>0.3</priority>
@@ -50,7 +50,7 @@
   <!-- type: pages -->
   {% for obj in site.categories.jekyll_pages %}
     <url>
-      <loc>https://www.terredesjeunes.com{{ obj.url | remove: 'index.html' }}</loc>
+      <loc>https://www.terredesjeunes.org{{ obj.url | remove: 'index.html' }}</loc>
       <lastmod>{{ obj.date | date: "%Y-%m-%d" }}</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
@@ -59,7 +59,7 @@
   <!-- type: pages (v2) -->
   {% for obj in site.categories.jekyll_pages_v2 %}
     <url>
-      <loc>https://www.terredesjeunes.com{{ obj.url | remove: 'index.html' }}</loc>
+      <loc>https://www.terredesjeunes.org{{ obj.url | remove: 'index.html' }}</loc>
       <lastmod>{{ obj.date | date: "%Y-%m-%d" }}</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
@@ -68,7 +68,7 @@
   <!-- type: pages (v3) -->
   {% for obj in site.categories.jekyll_pages_v3 %}
     <url>
-      <loc>https://www.terredesjeunes.com{{ obj.url | remove: 'index.html' }}</loc>
+      <loc>https://www.terredesjeunes.org{{ obj.url | remove: 'index.html' }}</loc>
       <lastmod>{{ obj.date | date: "%Y-%m-%d" }}</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
@@ -77,7 +77,7 @@
   <!-- type: partenaires -->
   {% for obj in site.categories.jekyll_partenaires %}
     <url>
-      <loc>https://www.terredesjeunes.com{{ obj.url | remove: 'index.html' }}</loc>
+      <loc>https://www.terredesjeunes.org{{ obj.url | remove: 'index.html' }}</loc>
       <lastmod>{{ obj.date | date: "%Y-%m-%d" }}</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
@@ -86,7 +86,7 @@
   <!-- type: pays -->
   {% for obj in site.categories.jekyll_pays %}
     <url>
-      <loc>https://www.terredesjeunes.com{{ obj.url | remove: 'index.html' }}</loc>
+      <loc>https://www.terredesjeunes.org{{ obj.url | remove: 'index.html' }}</loc>
       <lastmod>{{ obj.date | date: "%Y-%m-%d" }}</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -95,7 +95,7 @@
   <!-- type: synéco terrains -->
   {% for obj in site.categories.jekyll_syneco2025terrains %}
     <url>
-      <loc>https://www.terredesjeunes.com{{ obj.url | remove: 'index.html' }}</loc>
+      <loc>https://www.terredesjeunes.org{{ obj.url | remove: 'index.html' }}</loc>
       <lastmod>{{ obj.date | date: "%Y-%m-%d" }}</lastmod>
       <changefreq>yearly</changefreq>
       <priority>0.3</priority>
@@ -104,7 +104,7 @@
   <!-- type: synéco témoignages -->
   {% for obj in site.categories.jekyll_temoignages %}
     <url>
-      <loc>https://www.terredesjeunes.com{{ obj.url | remove: 'index.html' }}</loc>
+      <loc>https://www.terredesjeunes.org{{ obj.url | remove: 'index.html' }}</loc>
       <lastmod>{{ obj.date | date: "%Y-%m-%d" }}</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.3</priority>

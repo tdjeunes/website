@@ -20,16 +20,18 @@
     <script   src="https://code.jquery.com/jquery-3.7.1.slim.min.js"   integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="   crossorigin="anonymous"></script>
     <script>
 {% capture types %}
-  {% for obj in site.categories.jekyll_visualblocktypes %}
-    {% if forloop.first %}{% else %},{% endif %}
-    {
-      "url": {{ obj.url | jsonify }},
-      "title": {{ obj.title | jsonify }},
-      "label": {{ obj.label | jsonify }}
-    }
-  {% endfor %}
+  [
+    {% for obj in site.categories.jekyll_visualblocktypes %}
+      {% if forloop.first %}{% else %},{% endif %}
+      {
+        "url": {{ obj.url | jsonify }},
+        "title": {{ obj.title | jsonify }},
+        "label": {{ obj.label | jsonify }}
+      }
+    {% endfor %}
+  ]
 {% endcapture %}
-      const types = {{ types | strip_newlines | jsonify }};
+      const types = {{ types | strip_newlines | replace: "  ", " " | replace: "  ", " " }};
     </script>
     <script src="/admin/extensions/conditional.js"></script>
   </body>
