@@ -1,5 +1,6 @@
-{% assign template="sections/contact.html" %}
+{% assign template="sections/collage3.html" %}
 {% include structure/debug.html %}
+{% assign p="_tag" %}{% assign v=_tag %}{% include structure/r.html %}
 
 <div class="my-collage-3-put-modal-here">
 </div>
@@ -8,14 +9,11 @@
   <div class="container">
     <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
     <script>
+      {% include sections/collage3/collage-data.js %}
       {% include sections/collage3/collage.js %}
     </script>
-
     <div class="row my-collage-3-put-blocks-here" data-masonry="{&quot;percentPosition&quot;: true }" style="position: relative; height: 690px;">
-
-
     </div>
-
   </div>
 </section>
 
@@ -23,5 +21,7 @@
   {% include sections/collage3/collage.css %}
 </style>
 
-{% assign template="sections/contact.html" %}
+{% assign libreq_legacy_2025 = true %}
+{% assign libreq_jquery = true %}
+{% assign template="sections/collage3.html" %}
 {% include structure/enddebug.html %}

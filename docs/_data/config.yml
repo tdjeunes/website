@@ -55,6 +55,8 @@ default_syneco_garden_crumbs:
     url: "/#activites"
   - title: "Synécoculture"
     url: "/synecoculture/"
+  - title: "Cartes"
+    url: "/synecoculture/cartes/"
 default_antennes_crumbs:
   - title: "Accueil"
     url: "/"

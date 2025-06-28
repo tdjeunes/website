@@ -10,4 +10,6 @@ sections:
         url: /#activites
       - title: Synécoculture
         url: /synecoculture/
+  - structure: collage3
+    tag: syneco
 ---

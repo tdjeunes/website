@@ -25,6 +25,7 @@
         "antenne": {{ antenne.title | jsonify }},
         "flag": {{ pays.drapeau | jsonify }},
         "title": {{ card.title | jsonify }},
+        "tags": {{ card.tags | jsonify }},
         "structure": "img",
         "img": {{ img | jsonify }}
       }
@@ -39,6 +40,7 @@
         "antenne": {{ antenne.title | jsonify }},
         "flag": {{ pays.drapeau | jsonify }},
         "title": {{ card.title | jsonify }},
+        "tags": {{ card.tags | jsonify }},
         "structure": "video",
         "video": {{ video | jsonify }}
       }
@@ -54,6 +56,7 @@
         "antenne": {{ antenne.title | jsonify }},
         "flag": {{ pays.drapeau | jsonify }},
         "title": {{ card.title | jsonify }},
+        "tags": {{ card.tags | jsonify }},
         "structure": "text",
         "content": {{ card.content | markdownify | jsonify }}
       }

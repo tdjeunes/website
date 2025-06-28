@@ -10,4 +10,5 @@ sections:
         url: /#activites
       - title: Synécoculture
         url: /synecoculture/
+  - structure: synecomaps
 ---

@@ -28,7 +28,6 @@ Chaque mois à partir du 18 mars 2025, l'équipe terrain envoie, sous forme de c
 * M4.2: Inquiétude par rapport à la qualité nutritive de vos aliments
 * M4.3: Vente (valeur approximative des denrées vendues) en CFA
 * M4.4: Nombre de Récolte (démontrant que la synecoculture n’est pas saisonnier)
-* M4.4: Nombre de Récolte (démontrant que la synecoculture n’est pas saisonnier)
 * M5: Attaque des plantes
 
 Pour chaque métrique et chaque parcelle, on évalue uniquement des réponses chiffrées de 1 (très inquiet) à 5 (très satisfait). Des métriques qui ne correspondent pas à un chiffre de 1 à 5 sont exclues de l'analyse.

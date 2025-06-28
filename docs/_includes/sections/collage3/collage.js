@@ -36,7 +36,7 @@ class MyCollage3Card {
     return new_elem;
   }
   fetchOptimizedImages(image, size) {
-    if (globalMappingData && image.startsWith("/media")) {
+    if (typeof globalMappingData !== 'undefined' && image.startsWith("/media")) {
       // fetch optimized Image Url for news block images.
       const optimizePath = getOptimizedImageUrl(image, size, globalMappingData, "{{ site.data.config.thumbor.image_server_domain }}");
       if (optimizePath != "") {
@@ -168,7 +168,6 @@ class MyCollage3RandomColorCard extends MyCollage3Card {
     `;
   }
 }
-
 
 class MyCollage3DataSet {
   constructor(data) {
@@ -355,8 +354,4 @@ class MyCollage3 {
   }
 }
 
-loadJSON('/api/v2/cards.json', function(data) {
-  MyCollage3.instance(data).init();
-}, function(err) {
-  console.error('Error loading cards:', err);
-});
+MyCollage3.instance(myCollageData).init();

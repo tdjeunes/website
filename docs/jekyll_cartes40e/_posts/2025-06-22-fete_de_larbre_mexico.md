@@ -2,6 +2,8 @@
 title: FETE DE L'ARBRE MEXICO
 antenne:
   - Tierra de los Jóvenes en México
+tags:
+  - 40e
 img:
   - /media/mexico-1.jpeg
   - /media/mexico-4.jpeg

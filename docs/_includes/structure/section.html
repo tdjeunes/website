@@ -18,6 +18,11 @@
 {% elsif structure == 'onlytext' %}
   {% assign _text = _section.content %}
   {% include sections/onlytext.html %}
+{% elsif structure == 'synecomaps' %}
+  {% include sections/syneco/maps.html %}
+{% elsif structure == 'collage3' %}
+  {% assign _tag = _section.tag %}
+  {% include sections/collage3.html %}
 {% elsif structure == 'largetext' %}
   {% assign _text = _section.content %}
   {% include sections/largetext.html %}
