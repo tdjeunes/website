@@ -9,6 +9,7 @@
       </div>
       <div class="col-lg-3 col-12 ms-auto d-lg-block d-none ">
         <ul class="social-icon">
+          {% include libraries/bootstrap-icons.html %}
           {% for item in site.data.config.social %}
             {% if item.actif %}
               <li class="social-icon-item">

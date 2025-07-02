@@ -1,4 +1,5 @@
 <head>
+  {% assign lib_phase = 'css' %}
   {% include structure/gtag.html %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,5 +11,4 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <link href="/css/style.css?token={{ site.time | date: '%s' }}" rel="stylesheet">
   <link href="/css/my.css?token={{ site.time | date: '%s' }}" rel="stylesheet">
-  {% include structure/libraries.html %}
 </head>
