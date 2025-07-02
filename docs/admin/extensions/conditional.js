@@ -1,12 +1,32 @@
+// Show or hide fields conditionally.
+// Example:- If User selects accordian from structure field in a section.
+// we are fetching types json and get accordion object from types.
+//
+//  {
+//   "type": "accordion",
+//   "requires": [
+//     {
+//       "label": "parts",
+//       "id": "_parts"
+//     }
+//   ]
+// }
+//
+// Accordian requires parts field . we are displaying parts field and hidding
+// all other fields inside the section.
+//
+// if selected value from structure not found in types then we are
+// displaying all the fields
+
 class ConditionalFieldChecker {
   run() {
     const that = this;
 
     // Attach the click listener for selecting options new page.
-    // On change in structure dropdown select value we are fetching selected structure value
-    // and displaying the fields based on hints of the field.
-    // ex:- if selected structure value is breadcrumb then fields with hint
-    // hint: 'Breadcrumbs [only:breadcrumb]' are only field visible.
+    // On change in structure dropdown, Get selected structure value
+    // and display the fields based on types json.
+    // ex:- if selected structure value is only text then fields with onlytext
+    // is filtered from types and we will know which field to be displayed.
     this.attachOptionClickListener();
 
     // Attach the click event listener for the dynamic ListItem element in edit page.
@@ -16,60 +36,122 @@ class ConditionalFieldChecker {
 
   }
 
-  // Method to check if the condition is met for a hint based on field value
-  isConditionMet(fieldValue, condition) {
-    const conditions = condition.split(';');
-    return conditions.includes(fieldValue);  // Simplified, can be expanded
-  }
-
-  // Refactored method to attach the click event listener for option selection
+  // attach the click event listener for option selection
   attachOptionClickListener() {
     const that = this;
     $(document).on('click', '[class*="css-"][class*="option"]', function() {
       const selectedLabel = $(this).text();
+      // remove space, "and" and - and replace with space.
       const formattedLabel = that.formatLabel(selectedLabel);
 
-      // Get the parent div and hints
+      // Get the parent div which is a wrapper of all fields inside section.
       const parentDiv = that.getParentDiv(this);
-      const hints = that.getHints(parentDiv);
 
-      // Loop through each hint to update its visibility based on the formatted label
-      that.updateHintsVisibilityBasedOnLabel(hints, formattedLabel);
+      // Get structure field parent element.
+      const structureContainer = this.closest('div[class*="-ControlContainer"]');
+
+      that.handleFieldVisibility(formattedLabel, structureContainer, parentDiv);
     });
   }
 
-  // Method to format the label (convert to lowercase, replace spaces, remove "and", etc.)
-  formatLabel(selectedLabel) {
-    let formattedLabel = selectedLabel.toLowerCase().replace(/\s+/g, '_');
-    formattedLabel = formattedLabel.replace(/and/g, '').trim();
-    formattedLabel = formattedLabel.replace(/__+/g, '_');
-    return formattedLabel;
+  // Get require from types json based on selected structure field value.
+  // If require object is found then show the required field and hide other.
+  handleFieldVisibility(formattedLabel, structureContainer, parentDiv) {
+    const foundRequires = this.getRequiresByType(formattedLabel);
+
+    if (foundRequires) {
+      this.toggleControlContainerSiblings(structureContainer, 'none');
+      this.showHideFieldsVisibility(foundRequires, parentDiv);
+    } else {
+      this.toggleControlContainerSiblings(structureContainer, 'revert');
+    }
   }
 
-  // Method to find the parent div that contains the selected option
-  getParentDiv(optionElement) {
-    return $(optionElement).closest('div[class*="css-1cjg468"]');
+  // Function to get requires from types json
+  getRequiresByType(typeName) {
+    const foundType = types.find(item => item.type === typeName);
+
+    if (!foundType) {
+      console.log(`Type '${typeName}' not found.`);
+      return null;
+    }
+
+    if (!Array.isArray(foundType.requires) || foundType.requires.length === 0) {
+      console.log(`Type '${typeName}' has no requirements.`);
+      return null;
+    }
+
+    return foundType.requires;
   }
 
-  // Method to get the hints within the parent div
-  getHints(parentDiv) {
-    return parentDiv.find('[class*="ControlHint"]');
-  }
+  // Method to loop through each required field, try to find the label first then wrapper
+  // of the field and Show that field.
+  // Suppose if you want to show parts field then we have to get label element having
+  // attribute for^="parts-field-*. (* is a field number) and then label and input field
+  // parent ControlContainer and show that field.
+  showHideFieldsVisibility(requires, parentDiv) {
+    requires.forEach(req => {
 
-  // Method to loop through each hint and update its visibility based on the formatted label
-  updateHintsVisibilityBasedOnLabel(hints, formattedLabel) {
-    hints.each(function() {
-      const hintText = $(this).text();  // Get the hint text
-      if (hintText.includes(formattedLabel)) {
-          // If the formatted label is within the hint, show its parent div
-          $(this).closest('.css-1rsca1y-ControlContainer').show();
+      const labelText = req.label.trim();
+      let lookfor = 'label[for^="'+labelText+'-field-"]';
+
+      // Wrap in jQuery in case it's not already
+      const $parentDiv = $(parentDiv);
+
+      if ($parentDiv.length) {
+        console.log("parentDiv:", $parentDiv);
+        const $label = $parentDiv.find(lookfor);
+
+        if ($label.length) {
+          const $controlContainer = $label.closest('div[class*="ControlContainer"]');
+
+          if ($controlContainer.length) {
+            $controlContainer.css('display', 'revert');
+            console.log("Display set to revert on:", $controlContainer);
+          } else {
+            console.log("ControlContainer div not found.");
+          }
+        } else {
+          console.log(lookfor + " not found.");
+        }
       } else {
-          // If the formatted label is NOT in the hint, hide its parent div
-          $(this).closest('.css-1rsca1y-ControlContainer').hide();
+        console.log("Parent div not found.");
       }
     });
   }
 
+  // Show or hide the fields which are rendered after structure field.
+  toggleControlContainerSiblings(structureContainer, displayValue) {
+
+    if (!structureContainer) {
+      console.log("structureContainer not found.");
+      return;
+    }
+
+    let sibling = structureContainer.nextElementSibling;
+    while (sibling) {
+      if (sibling.matches('div[class*="-ControlContainer"]')) {
+        sibling.style.display = displayValue;
+      }
+      sibling = sibling.nextElementSibling;
+    }
+  }
+
+  // Method to format the label (convert to lowercase, remove spaces, remove "and".)
+  formatLabel(selectedLabel) {
+    let formattedLabel = selectedLabel.toLowerCase().replace(/\s+/g, '_');
+    formattedLabel = formattedLabel.replace(/and/g, '').trim();
+    formattedLabel = formattedLabel.replace(/__+/g, '');
+    formattedLabel = formattedLabel.replace(/_+/g, '');
+    return formattedLabel;
+  }
+
+  // Method to find the parent div which is a wrapper of all fields inside section.
+  getParentDiv(element) {
+    return $(element).closest('div[class*="css-"]');
+  }
+
+  // Handle show or hide field in edit page.
   attachDynamicTopBarButtonClickListener() {
     const that = this;
 
@@ -102,15 +184,18 @@ class ConditionalFieldChecker {
     // Based on the state (collapsed or uncollapsed), find the appropriate parent div
     const parentDiv = that.getParentDivByState(button, state);
 
-    // Find the initial selected label inside the parent div
+    // Find the initially selected label inside the parent div element
     const initialSelectedLabel = parentDiv.find('[class*="css-"][class*="singleValue"]').text();
+    if (initialSelectedLabel) {
+      const formattedLabel = that.formatLabel(initialSelectedLabel);
+      const structureContainer = parentDiv
+      .find('[class*="css-"][class*="singleValue"]')
+      .closest('div[class*="-ControlContainer"]');
 
-    // Now, get the hints within the parent div
-    const hints = that.getHints(parentDiv);
-    const formattedLabel = that.formatLabel(initialSelectedLabel);
-
-    that.updateHintsVisibilityBasedOnLabel(hints, formattedLabel);
-
+      // convert jquery output to DOM
+      const structureContainerDOM = structureContainer.get(0);
+      that.handleFieldVisibility(formattedLabel, structureContainerDOM, parentDiv);
+    }
   }
 
   // Method to find the correct parent div based on the collapsed/uncollapsed state

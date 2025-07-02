@@ -1,5 +1,5 @@
 ---
-title: icons_text
+title: iconstext
 label: Icons and Text
 requires:
 - label: icons

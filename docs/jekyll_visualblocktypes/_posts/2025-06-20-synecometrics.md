@@ -1,6 +1,6 @@
 ---
-title: synecometrics2
-label: Synécolculture metrics
+title: synécolculturemetrics2
+label: Synécolculture metrics2
 requires:
 - label: sheet
   id: _sheet
