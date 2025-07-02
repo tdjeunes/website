@@ -58,7 +58,7 @@ class MyCollage3VideoCard extends MyCollage3Card {
     const title = this._data.title;
     const video = this._data.video;
     let poster = video + '.jpg';
-    poster = this.fetchOptimizedImages(poster, "604x400");
+    poster = this.fetchOptimizedImages(poster, "604x");
 
     return `<div class="card">
       <video controls="controls" preload="none" poster="${poster}">
@@ -106,7 +106,7 @@ class MyCollage3ImgCard extends MyCollage3Card {
     const title = this._data.title;
     let img = this._data.img;
     const id = this.id();
-    img = this.fetchOptimizedImages(img, "604x400");
+    img = this.fetchOptimizedImages(img, "604x");
     return `<div class="card" data-bs-toggle="modal" data-bs-target="#${id}">
       <img src="${img}" class="card-img-top" alt="${title}">
       <div class="card-body">
@@ -126,7 +126,7 @@ class MyCollage3ImgCard extends MyCollage3Card {
     const title = this._data.title;
     let img = this._data.img;
     const id = this.id();
-    img = this.fetchOptimizedImages(img, "800x800");
+    img = this.fetchOptimizedImages(img, "800x");
     return `<div class="modal fade" id="${id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen" role="document">
       <div class="modal-content">

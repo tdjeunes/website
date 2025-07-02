@@ -100,9 +100,9 @@ social:
   - url:
     icon: instagram
     actif: false
-  - url:
+  - url: https://youtube.com/@tdjeunes
     icon: youtube
-    actif: false
+    actif: true
   - url:
     icon: whatsapp
     actif: false

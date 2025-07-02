@@ -1,12 +1,14 @@
+{% capture navbar %}
+{% include navbar.html %}
+{% endcapture %}
 <!doctype html>
 <html lang="en">
   {% include structure/head3.html %}
   <body>
-    {% include navbar.html %}
+    {{ navbar }}
     <main>
       {{ inferred_sections }}
     </main>
-    <!-- footer sections -->
     {% include structure/footer3.html %}
   </body>
 </html>
