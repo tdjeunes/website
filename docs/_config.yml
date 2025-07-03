@@ -5,7 +5,7 @@ defaults:
     scope:
       path: "jekyll_visualblocktypes"
     values:
-      permalink: "guide-style/sections/:title"
+      permalink: "guide-style/sections/:title/"
       layout: "sections"
   -
     scope:
