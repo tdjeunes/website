@@ -22,6 +22,9 @@ class ConditionalFieldChecker {
   run() {
     const that = this;
 
+    // In new page no structure selected hence hide all fields initially.
+    this.hideAllFieldsInNewPage();
+
     // Attach the click listener for selecting options new page.
     // On change in structure dropdown, Get selected structure value
     // and display the fields based on types json.
@@ -36,19 +39,49 @@ class ConditionalFieldChecker {
 
   }
 
+  // In new page or when user clicks on add section
+  // no structure selected hence hide all fields initially.
+  hideAllFieldsInNewPage() {
+    $(document).on('click', '.css-cutcix-AddButton-button-widget', function () {
+      // Delay 30ms to wait for DOM updates
+      setTimeout(function () {
+        const lastItem = $('[class*="css-"][class*="ListItem-listControlItem-ListControl"]').last();
+
+        if (lastItem.length === 0) return;
+
+        const singleValue = lastItem.find('[class*="css-"][class*="singleValue"]').first();
+
+        if (singleValue.length) {
+          console.log("Found singleValue:", singleValue.text());
+        } else {
+          const label = lastItem.find('label[for^="structure-field-"]').first();
+
+          if (label.length) {
+            const controlContainer = label.closest('[class*="css-"][class*="ControlContainer"]');
+
+            if (controlContainer.length) {
+              controlContainer.siblings('[class*="css-"][class*="ControlContainer"]').hide();
+            }
+          }
+        }
+      }, 30); // 30 milliseconds delay
+    });
+  }
+
   // attach the click event listener for option selection
   attachOptionClickListener() {
     const that = this;
     $(document).on('click', '[class*="css-"][class*="option"]', function() {
       const selectedLabel = $(this).text();
+
       // remove space, "and" and - and replace with space.
       const formattedLabel = that.formatLabel(selectedLabel);
 
       // Get the parent div which is a wrapper of all fields inside section.
-      const parentDiv = that.getParentDiv(this);
 
       // Get structure field parent element.
       const structureContainer = this.closest('div[class*="-ControlContainer"]');
+      const parentDiv = that.getParentDiv(structureContainer);
 
       that.handleFieldVisibility(formattedLabel, structureContainer, parentDiv);
     });
@@ -148,7 +181,7 @@ class ConditionalFieldChecker {
 
   // Method to find the parent div which is a wrapper of all fields inside section.
   getParentDiv(element) {
-    return $(element).closest('div[class*="css-"]');
+    return $(element).parent().parent();
   }
 
   // Handle show or hide field in edit page.
