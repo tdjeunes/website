@@ -1,15 +1,15 @@
 ---
 # CAUTION: if you change the title here, you must also change it in the
 # if statements in ./docs/_includes/structure/section.html
-title: synécolculturemetrics2
-label: Synécolculture metrics2
+title: synecometrics2
+label: Syneco metrics2
 requires:
 - label: sheet
   id: _sheet
 - label: legend
   id: _legend
 sections:
-- structure: synécolculturemetrics2
+- structure: synecometrics2
   sheet: overview-average
   legend: Une légende expliquant le graphique
 ---
