@@ -102,11 +102,18 @@ class ConditionalFieldChecker {
 
   // Function to get requires from types json
   getRequiresByType(typeName) {
-    const foundType = types.find(item => item.type === typeName);
+    // First try finding the type as-is
+    let foundType = types.find(item => item.type === typeName);
 
+    // If not found, try removing underscores and search again
     if (!foundType) {
-      console.log(`Type '${typeName}' not found.`);
-      return null;
+      const cleanedTypeName = typeName.replace(/_+/g, '');
+      foundType = types.find(item => item.type === cleanedTypeName);
+
+      if (!foundType) {
+        console.log(`Type '${typeName}' (or '${cleanedTypeName}') not found.`);
+        return null;
+      }
     }
 
     if (!Array.isArray(foundType.requires) || foundType.requires.length === 0) {
@@ -174,8 +181,7 @@ class ConditionalFieldChecker {
   formatLabel(selectedLabel) {
     let formattedLabel = selectedLabel.toLowerCase().replace(/\s+/g, '_');
     formattedLabel = formattedLabel.replace(/and/g, '').trim();
-    formattedLabel = formattedLabel.replace(/__+/g, '');
-    formattedLabel = formattedLabel.replace(/_+/g, '');
+    formattedLabel = formattedLabel.replace(/__+/g, '_');
     return formattedLabel;
   }
 

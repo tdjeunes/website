@@ -9,7 +9,7 @@ requires:
 - label: legend
   id: _legend
 sections:
-- structure: synecometrics2
+- structure: synécolculturemetrics2
   sheet: overview-average
   legend: Une légende expliquant le graphique
 ---
