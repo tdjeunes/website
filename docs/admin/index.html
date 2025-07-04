@@ -32,6 +32,6 @@
 {% endcapture %}
       const types = {{ types | strip_newlines | replace: "  ", " " | replace: "  ", " " }};
     </script>
-    <script src="/admin/extensions/conditional.js"></script>
+    <script src="/admin/extensions/conditional.js?token={{ site.time | date: '%s' }}"></script>
   </body>
 </html>

@@ -1,4 +1,6 @@
 ---
+# CAUTION: if you change the title here, you must also change it in the
+# if statements in ./docs/_includes/structure/section.html
 title: largetext
 label: Large Text
 requires:
@@ -9,5 +11,5 @@ sections:
   content: |
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magdna aliqua. Ut enim ad
 
-    minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea codmmodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. [Excepteur sint occaecat](example.com) cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea codmmodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. [Excepteur sint occaecat](http://example.com) cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 ---

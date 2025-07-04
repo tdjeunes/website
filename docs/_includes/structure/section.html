@@ -4,6 +4,13 @@
 
 {% assign structure = _section.structure %}
 
+{% comment %}
+  structure is defined in
+  the title fields of posts in
+  ./docs/jekyll_visualblocktypes/_posts/*
+
+  Any change here must be also changed there.
+{% endcomment %}
 {% if structure == 'breadcrumb' %}
   {% assign _crumbs = _section.crumbs %}
   {% include sections/breadcrumb.html %}
