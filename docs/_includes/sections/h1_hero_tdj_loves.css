@@ -23,3 +23,12 @@
   align-items: center;
   height: 200px;
 }
+
+@media (max-width: 1000px) {
+  .my-tdj-loves-wrapper {
+    display: inline-grid;
+    justify-content: flex-start;
+    align-items: baseline;
+    height: 300px;
+  }
+}
