@@ -2158,3 +2158,10 @@ footer {
 .mettre-activites-ici .custom-btn:hover {
   background-color: #027933;
 }
+
+.news-block-body p img {
+  height: auto;
+  max-height: 100vh;
+  max-width: 100%;
+  width: auto;
+}

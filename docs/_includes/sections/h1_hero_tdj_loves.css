@@ -23,3 +23,25 @@
   align-items: center;
   height: 200px;
 }
+
+@media (max-width: 1000px) {
+  .my-tdj-loves-wrapper {
+    display: block;
+    height: 300px;
+    text-align: center;
+  }
+
+  .my-tdj-logo,
+  .my-loves {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 5px;
+    font-size: 1.5rem;
+  }
+
+  .my-partner-icon {
+    display: block;
+    margin: 3rem auto 0 auto;
+    max-width: 300px;
+  }
+}

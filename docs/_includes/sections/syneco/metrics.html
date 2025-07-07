@@ -37,7 +37,8 @@
             (like lines, points, and axes).
             Define margins, width, and height
           */
-          const width = 1200 - margin.left - margin.right;
+          let fullWidth = window.innerWidth > 1200 ? 1200 : window.innerWidth;
+          const width = fullWidth - margin.left - margin.right;
           const height = 400 - margin.top - margin.bottom;
 
           // If displayXAxisPlotting is true to then X axis displayed in chart.
