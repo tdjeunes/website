@@ -1,8 +1,8 @@
 {% capture _lib %}
 {% if lib_phase == 'build' %}
-  {% assign lib_boostrap_icons = 'true' %}
+  {% assign lib_bootstrap_icons = 'true' %}
 {% else if lib_phase == 'css' %}
-  {% if lib_boostrap_icons == 'true' %}
+  {% if lib_bootstrap_icons == 'true' %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
   {% endif %}
 {% endif %}
