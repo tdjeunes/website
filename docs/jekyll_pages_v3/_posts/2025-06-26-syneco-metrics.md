@@ -19,6 +19,8 @@ sections:
       Le graphique ci-dessous montre un degré de satisfaction nettement supérieur avec l'approche synécole. Voyez aussi la foire aux questions et les données détaillées plus bas.
 
       <a href="/synecoculture/metriques/methodologie/" class="btn btn-primary">Méthodologie complète</a>
+
+      <a href="https://creativecommons.org/licenses/by/4.0/">Les métriques sont distribuées sous la license CC BY 4</a>
   - structure: synecometrics2
     sheet: overview-average
     legend: Ce graphique sur 4 mois (commençant au mois 2 -- mars 2025 -- car le mois 1 n'a pas assez de données) est une moyenne de toutes les métriques qui se calculent par une satisfaction des agricultrices sur une échelle de 1 (mauvais) à 5 (bon). On peut y constater que le niveau de satisfaction est supérieur avec l'approche synécole. Cliquer sur une métrique précise plus bas pour voir des métriques particulières.
