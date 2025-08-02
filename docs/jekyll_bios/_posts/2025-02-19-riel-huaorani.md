@@ -1,5 +1,5 @@
 ---
-title: Riel HUAORANI
+title: Riel Huaorani
 fonction: Président-fondateur de Terre des jeunes transnational
 image: /media/riel_presi.jpg
 reseaux:
