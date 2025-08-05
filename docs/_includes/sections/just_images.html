@@ -1,0 +1,16 @@
+{% assign template="sections/just_images.html" %}
+{% include structure/debug.html %}
+{% assign p="_img" %}{% assign v=_img %}{% include structure/r.html %}
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-12">
+        {%for img in _img %}
+          <img src="{{ img }}" class="img-fluid" data-optimized-size="604x" style="max-height: 200px; width: auto; height: auto;">
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% assign template="just_images.html" %}
+{% include structure/enddebug.html %}

@@ -8,7 +8,7 @@
 
 ## Développement local
 
-Suivez la procédure au <https://beta.terredesjeunes.org/procedure-dev-site-web/>
+Suivez la procédure au <https://www.terredesjeunes.org/procedure-dev-site-web/>
 
 ## Liste de fonctionalités
 

@@ -28,6 +28,14 @@
   {% endcapture %}
   {% assign _categories = page.categories %}
   {% assign _antennes = page.antenne2 %}
+
+  {% capture _content_top %}
+    {% assign _img = page.img | shift %}
+    {% if _img %}
+      {% include sections/just_images.html %}
+    {% endif %}
+  {% endcapture %}
+
   {% include sections/onlytext_blog.html %}
 
   {% endcapture %}
