@@ -1,10 +1,14 @@
 ---
 title: "Terre des jeunes Gonaïves (Haïti), un pilier de sa communauté: Rapport
   d'activités 2013 - 2025"
+antenne: Haïti
 antenne2:
   - Gonaïves, Haïti
 categories:
   - Rapports annuels
+  - Agriculture
+  - Sensibilisation
+  - Ecologie
 layout: blog
 img:
   - /media/tdj-2013-2025.jpeg
