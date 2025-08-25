@@ -28,10 +28,14 @@ Dans le cadre de sa mission de promotion de l’éducation environnementale et d
 Après la mise en place des poquets, des planches de culture et l’apport d’amendements organiques, plusieurs variétés ont été mises en terre : **tomates, piments, poivrons, aubergines, amarantes**, entre autres.
 
 **Perspectives d’aménagement**
+
+
 Pour assurer la pérennité du potager sur une superficie de **600 m²**, nous envisageons :
 
 * L’installation d’un **grillage de protection** afin de prévenir l’intrusion d’animaux
 * La mise en place d’un **système solaire** sur le forage existant pour garantir un accès durable à l’eau
 
 Appel à soutien
-AJEDD ONG Bénin lance un appel à partenaires, donateurs et personnes de bonne volonté pour accompagner cette initiative porteuse de transformation sociale et écologique.
+
+
+TDJ Bénin lance un appel à partenaires, donateurs et personnes de bonne volonté pour accompagner cette initiative porteuse de transformation sociale et écologique.DJ
