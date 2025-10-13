@@ -41,7 +41,7 @@ Au programme:
 * Nous avons prévu une séance de travail le 15 novembre sur comment écrire et soumettre un projet de financement.
 * Bohui MELAIRE nous parle de sa nouvelle présidente Ruth Mélaire qui est actuellement dans les inscriptions des écoles.
 * Le Togo n'étant pas réprésenté à cette rencontre, Lydie nous parle de ce qui se passe au Togo: créer un grand terrain agricole et générer des fonds avec la production agricole.
-* Terre des jeunes Finlande nous parle de l'approche des écovillages.
+* Siru Kuusela de Terre des jeunes Finlande nous parle de l'approche des écovillages.
 * Riel, Président de Terre des jeunes transnational, rappelle l'histoire de Terre des jeunes et son objectif: de protéger la terre de de partager des solutions simples parmi les peuples. Il est question de l'expansion de Terre des jeunes dans de nouveaux pays, notamment la Finland, le Mexique et la Grèce.
 * Daniel OKE de TDJ Bénin nous parle de l'avancement de la Sève écologique qui a reçu une bourse du CA; la bourse a permis de mettre en place un jardin de production agricole.
 * Messerne SAGESSE de TDJ Jean-Rabel nous parle du projet Jardin des femmes et de coopératives de femmes. Il y a eu des séances de formation en agroécologie avec des agronomes qui se sont mis disponibles pour former les participantes.
