@@ -21,7 +21,7 @@ Comme à chaque changement de saison, les membres des antennes de Terre des jeun
 * Ruth LANGSI Présidente de Terre des jeunes Cameroun.
 * Jacques KAMBETI, de ICCOD au Nord-Kivu, RD. Congo
 * Daniel OKE de Terre des jeunes Bénin.
-* Annu de Terre des jeunes Finlande.
+* Siru de Terre des jeunes Finlande.
 * Lydie Servanin, VP de Terre des jeunes transnational
 * Riel Huaorani, Président de Terre des jeunes transnational
 * Albert Albala, secrétaire-trésorier de Terre des jeunes transnational
