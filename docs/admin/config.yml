@@ -11,8 +11,8 @@ backend:
   name: github
   repo: tdjeunes/website
   branch: master
-  base_url: https://auth.static.dcycle.com
-  auth_endpoint: auth/github/alberto56
+  base_url: https://app.staticauth.com
+  auth_endpoint: auth/github/repo/697278b1ade6bd32e69a2418
 media_folder: 'docs/media'
 public_folder: "/media"
 collections:
