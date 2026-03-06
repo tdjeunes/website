@@ -23,3 +23,5 @@ sections:
 * [Synecoculture and Human Augmentation of Ecosystems: Project Overview, Sony CSL Synecocuture Association SynecO, Inc., Masa Funabashi](/media/Sony_Masatoshi_Funabashi.pdf) (source: [FAO](https://www.fao.org/fileadmin/user_upload/GSP/GSOBI-21/DAY2/Plenary/Sony_Masatoshi_Funabashi.pdf))
 * [livrable 3.1.1: Rapport d'enquête d'analyse des besoins des parties prenantes et des bénéficiaires du projet, TDJ et CASE, novembre 2024](/media/2024-11-24-analyse-besoins-preclisyno.pdf)
 * [ENGLISH version translated by NoteGPT: livrable 3.1.1: Rapport d'enquête d'analyse des besoins des parties prenantes et des bénéficiaires du projet, TDJ et CASE, novembre 2024](/media/notegpt_translator_2024-11-24-analyse-besoins-preclisyno.pdf) (* incomplete translation)
+* [ENGLISH version translated by NoteGPT: livrable 3.1.1: Rapport d'enquête d'analyse des besoins des parties prenantes et des bénéficiaires du projet, TDJ et CASE, novembre 2024](/media/notegpt_translator_2024-11-24-analyse-besoins-preclisyno.pdf) (* incomplete translation)
+* [Guide pratique pour la synécoculture, à l'intention d'éducateurs](/media/guide-pratique-synecoculture.pdf)
