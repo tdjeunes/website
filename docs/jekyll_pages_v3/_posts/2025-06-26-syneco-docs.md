@@ -25,3 +25,5 @@ sections:
 * [ENGLISH version translated by NoteGPT: livrable 3.1.1: Rapport d'enquête d'analyse des besoins des parties prenantes et des bénéficiaires du projet, TDJ et CASE, novembre 2024](/media/notegpt_translator_2024-11-24-analyse-besoins-preclisyno.pdf) (* incomplete translation)
 * [ENGLISH version translated by NoteGPT: livrable 3.1.1: Rapport d'enquête d'analyse des besoins des parties prenantes et des bénéficiaires du projet, TDJ et CASE, novembre 2024](/media/notegpt_translator_2024-11-24-analyse-besoins-preclisyno.pdf) (* incomplete translation)
 * [Guide pratique pour la synécoculture, à l'intention d'éducateurs](/media/guide-pratique-synecoculture.pdf)
+* [La nature comme guide: synécoculture au Nord du Cameroun](/media/syneco-final-fr-2026-03-24.compressed.pdf)
+* [When Nature Leads: Synecoculture in Northern Cameroon](/media/syneco-final-en-2026-03-24.compressed.pdf)
