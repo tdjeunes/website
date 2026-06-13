@@ -1,6 +1,6 @@
 ---
-title: "Synécoculture: méthodologie des métriques"
-permalink: /synecoculture/metriques/methodologie/
+title: "Galeries"
+permalink: /galeries/
 sections:
   - structure: breadcrumb
     crumbs:

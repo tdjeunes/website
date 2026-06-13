@@ -1,8 +1,8 @@
 ---
-title: 40 ans que nous sommes engagés
+title: Un partenaire terrain qui agit
 active: true
-order: J
-lien: https://www.terredesjeunes.org/a-propos/
+order: CC
+lien: /a-propos/
 image: /media/camions.jpg
 position: top
 ---

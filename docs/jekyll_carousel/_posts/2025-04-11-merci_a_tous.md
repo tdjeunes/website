@@ -1,7 +1,7 @@
 ---
-title: Merci  à tous
+title: Protéger la planète, c'est la vie
 active: true
-order: Q
-lien: https://www.terredesjeunes.org/a-propos/
+order: CG
+lien: /a-propos/
 image: /media/cameroun_6.png
 ---
