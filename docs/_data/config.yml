@@ -78,6 +78,8 @@ menu_bas:
     url: "/actualites/"
   - title: "Guide de style et logo"
     url: "/guide-style/"
+  - title: "Politique de genre"
+    url: "/politique-de-genre/"
   - title: "Statuts"
     url: "/statuts/"
   - title: "Contactez-nous"
