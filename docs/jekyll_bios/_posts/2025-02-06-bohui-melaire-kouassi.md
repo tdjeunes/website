@@ -1,6 +1,6 @@
 ---
 title: Bohui Melaire K.
-fonction: Vice-Président Côte d'Ivoire
+fonction: 1er vice président TERRE DES JEUNES Côte d'Ivoire Chargé du Sud
 nom: Bohui Melaire Kouassi
 image: /media/whatsapp_image_2025-04-02_a_11.59.48_a33150da.jpg
 reseaux:
