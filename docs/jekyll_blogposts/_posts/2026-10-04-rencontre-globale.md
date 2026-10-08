@@ -1,5 +1,5 @@
 ---
-title: Rencontre mondiale de Terre des jeunes : 3 octobre 2026
+title: "Rencontre mondiale de Terre des jeunes : 3 octobre 2026"
 antenne: Mondial
 antenne2:
   - Mondial
